@@ -3,7 +3,8 @@
 A staked originality-challenge market for short creative text — settled by GenLayer
 validator consensus, not a moderator.
 
-**Contract (StudioNet):** [`0x15d23034427f84caECed16F8f21fB58C15B01BE7`](https://explorer-studio.genlayer.com/address/0x15d23034427f84caECed16F8f21fB58C15B01BE7) — public explorer
+**Live app:** https://originalstake.vercel.app
+**Contract (StudioNet):** [`0x15d23034427f84caECed16F8f21fB58C15B01BE7`](https://explorer-studio.genlayer.com/address/0x15d23034427f84caECed16F8f21fB58C15B01BE7) — public explorer, 12 real transactions
 **Source:** this repo
 
 ## What it is
@@ -117,19 +118,22 @@ gltest tests/integration/ -v -s --network studionet
 
 - **Lint:** clean.
 - **Direct tests:** 39 passed, 0 failed.
-- **StudioNet integration:** 2 real tests passed against live consensus. A full-lifecycle
-  test found a real stored neighbor via `VecDB.knn` and resolved **`SUBSTANTIALLY_SAME`**,
-  with validators correctly identifying a "harbour"/"harbor" spelling variant as
-  substantively the same creative expression rather than a false negative. A second test
-  confirmed the deterministic no-neighbor path resolves **`INCONCLUSIVE`** with zero nondet
-  spend, exactly as designed.
+- **StudioNet integration:** 2 real tests passed against live consensus, plus a full live
+  walkthrough on the persistent deployed contract — **12/12 transactions `SUCCESS`/`Accepted`,
+  zero errors.** A near-verbatim spelling variant ("harbour" vs "harbor") was challenged and
+  resolved **`SUBSTANTIALLY_SAME`**: *"The sentences are identical in wording and structure
+  except for the trivial spelling variant 'harbor/harbour'."* Bond moved to the challenger. A
+  genuinely unrelated submission (a business-revenue sentence, challenged against the lighthouse
+  text) resolved **`DISTINCT`**: *"One is a business revenue statement and the other is
+  atmospheric lighthouse imagery, with no shared wording, structure, or expressive details."*
+  Both bonds returned to their original owners, as designed. The deterministic no-neighbor path
+  also independently confirmed **`INCONCLUSIVE`** with zero nondet spend.
 
 ## Honest limits
 
-- Only two real consensus outcomes have been observed live on StudioNet so far
-  (`SUBSTANTIALLY_SAME`, and the zero-cost deterministic `INCONCLUSIVE`); `DERIVATIVE`,
-  `DISTINCT`, and a genuine model-judged `INCONCLUSIVE` are exercised thoroughly in
-  direct-mode tests with mocked responses, not yet independently reproduced live.
+- `DERIVATIVE` and a genuine model-judged `INCONCLUSIVE` (as opposed to the zero-neighbor
+  deterministic case) are exercised thoroughly in direct-mode tests with mocked responses, not
+  yet independently reproduced live on real StudioNet consensus.
 - The hosted StudioNet RPC enforces real rate limits (30 requests/minute, 500/hour) that are
   easy to hit while testing or developing against this contract.
 - StudioNet balances are simulated — bond/counter-bond settlement arithmetic is proven
