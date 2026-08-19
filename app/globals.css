@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/*
+  Design tokens for OriginalStake: a dark, near-black navy system, deliberately
+  distinct from project-1/BriefBond's powder-blue-on-light palette. The mood
+  target is "higher-stakes, serious" (real value staked on a judgment call),
+  not playful dark-mode SaaS — so the accent gradient is used sparingly
+  (hero glow, primary CTAs, key numerals) rather than smeared everywhere.
+*/
+:root {
+  --color-bg: rgb(7, 9, 16);
+  --color-bg-raised: rgb(14, 17, 28);
+  --color-ink: rgb(235, 238, 246);
+  --color-ink-soft: rgb(174, 181, 201);
+  --color-ink-faint: rgb(115, 122, 145);
+  --color-line: rgb(40, 45, 64);
+  --color-accent: rgb(84, 140, 255);
+  --color-accent-deep: rgb(30, 58, 138);
+
+  --color-success: rgb(74, 222, 165);
+  --color-success-bg: rgb(15, 46, 38);
+  --color-warning: rgb(250, 199, 92);
+  --color-warning-bg: rgb(54, 40, 12);
+  --color-danger: rgb(255, 121, 121);
+  --color-danger-bg: rgb(56, 20, 24);
+  --color-pending: rgb(196, 165, 255);
+  --color-pending-bg: rgb(40, 28, 66);
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-raised: var(--color-bg-raised);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-line: var(--color-line);
+  --color-accent: var(--color-accent);
+  --color-accent-deep: var(--color-accent-deep);
+  --color-success: var(--color-success);
+  --color-success-bg: var(--color-success-bg);
+  --color-warning: var(--color-warning);
+  --color-warning-bg: var(--color-warning-bg);
+  --color-danger: var(--color-danger);
+  --color-danger-bg: var(--color-danger-bg);
+  --color-pending: var(--color-pending);
+  --color-pending-bg: var(--color-pending-bg);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Sparingly-used hero gradient: deep navy fading to near-black, with a
+   restrained blue glow — not a purple-blue cliché, not slapped everywhere. */
+.bg-hero-gradient {
+  background:
+    radial-gradient(60% 50% at 15% 0%, rgba(84, 140, 255, 0.16), transparent 60%),
+    linear-gradient(180deg, rgb(11, 15, 26) 0%, rgb(7, 9, 16) 60%);
+}
+
+.bg-cta-gradient {
+  background: linear-gradient(135deg, rgb(84, 140, 255) 0%, rgb(30, 58, 138) 100%);
+}
