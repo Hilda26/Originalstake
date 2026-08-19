@@ -24,8 +24,7 @@ export const chainName: ChainName = resolveChainName();
 export const chain = CHAINS[chainName];
 
 // Left blank until the contract is deployed. The rest of the app must
-// render a clean "no contract configured" empty state when this is unset —
-// never fabricate or hardcode a placeholder address.
+// render a clean "no contract configured" empty state when this is unset - // never fabricate or hardcode a placeholder address.
 const RAW_ADDRESS = process.env.NEXT_PUBLIC_GENLAYER_CONTRACT_ADDRESS?.trim() ?? "";
 
 export const contractAddress: Address | null =
@@ -36,7 +35,7 @@ export const contractAddress: Address | null =
 export const isContractConfigured = contractAddress !== null;
 
 // genlayer-js's chain definitions don't populate blockExplorers for
-// studionet, so this can't be derived from `chain` — hardcode per network.
+// studionet, so this can't be derived from `chain` - hardcode per network.
 // explorer-studio.genlayer.com is a distinct site from studio.genlayer.com
 // (the IDE); the IDE has no per-address/per-tx routes at all.
 const EXPLORER_BASE_URLS: Record<ChainName, string> = {
@@ -56,7 +55,7 @@ export function explorerTxUrl(hash: string): string {
   return `${explorerBaseUrl}/tx/${hash}`;
 }
 
-// Local wallet persistence keys — namespaced so OriginalStake never
+// Local wallet persistence keys - namespaced so OriginalStake never
 // collides with other apps (e.g. project-1/BriefBond) sharing a browser
 // profile or domain.
 export const LOCAL_WALLET_KEY = "originalstake.generatedWalletPrivateKey.v1";

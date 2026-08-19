@@ -2,7 +2,7 @@
 
 // The two-wallet system: injected EIP-1193 wallet, or a generated browser
 // wallet persisted in localStorage. Whichever mode is active, the SAME
-// account/address feeds both the read client and the write client — there
+// account/address feeds both the read client and the write client - there
 // is exactly one `client` value exposed by this context, used everywhere.
 //
 // All of this runs client-side only. Nothing here touches window/localStorage

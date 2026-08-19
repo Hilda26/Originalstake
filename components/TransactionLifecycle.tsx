@@ -23,7 +23,7 @@ const STAGE_LABEL: Record<string, string> = {
   REVEALING: "Validators revealing votes",
   ACCEPTED: "Accepted (appeal window open)",
   FINALIZED: "Finalized",
-  UNDETERMINED: "Undetermined — no majority reached",
+  UNDETERMINED: "Undetermined - no majority reached",
   CANCELED: "Canceled",
   VALIDATORS_TIMEOUT: "Validators timed out",
   LEADER_TIMEOUT: "Leader timed out",
@@ -103,8 +103,7 @@ export function TransactionLifecycle({
       {retryable && (
         <div className="mb-3 rounded-md border border-pending bg-pending-bg p-3 text-pending">
           <p className="text-sm">
-            Validators did not reach a majority. <strong>Nothing was written on-chain</strong> —
-            this is a normal, retryable outcome, not an error.
+            Validators did not reach a majority. <strong>Nothing was written on-chain</strong> - this is a normal, retryable outcome, not an error.
           </p>
           {onRetry && (
             <button

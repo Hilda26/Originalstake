@@ -1614,7 +1614,7 @@ Note:
   Type aliases ("u8"..``u256``, "i8"..``i256``) are no longer
   "typing.NewType" instances; they are now "typing.Annotated[int,
   ...]". They still work as type annotations, but they are no longer
-  callable, so the "u256(0)" wrapping is gone — pass a plain "int"
+  callable, so the "u256(0)" wrapping is gone - pass a plain "int"
   instead:
 
      # v0.2.x
@@ -1802,7 +1802,7 @@ Warning:
      gl.vm.run_nondet_unsafe(...)   gl.vm.run_nondet(...)
 
 The high-level equivalence principles ("gl.eq_principle.*") are
-unaffected — they were updated internally.
+unaffected - they were updated internally.
 
 "gl.vm.spawn_sandbox" replaced the single "allow_write_ops" flag with
 three granular permissions, each effective only if the current VM

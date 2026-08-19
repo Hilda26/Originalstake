@@ -1,6 +1,6 @@
 "use client";
 
-// Every functionName here must exist in the deployed schema — verified by
+// Every functionName here must exist in the deployed schema - verified by
 // scripts/verify-schema.ts. Do not add a call site without updating both.
 
 import type { GenLayerClient } from "genlayer-js/types";
@@ -10,9 +10,13 @@ import {
   normalizeSubmission,
   normalizeChallenge,
   normalizeNeighborPreview,
+  normalizeSearchResult,
+  normalizeTrackRecord,
   type Submission,
   type Challenge,
   type NeighborPreview,
+  type SearchResult,
+  type TrackRecord,
 } from "./submission";
 
 type Client = GenLayerClient<typeof chain>;
@@ -121,6 +125,25 @@ export async function previewNearestNeighbor(client: Client, submissionId: numbe
   return normalizeNeighborPreview(result);
 }
 
+export async function searchSimilar(client: Client, queryText: string, k: number): Promise<SearchResult[]> {
+  const result = await client.readContract({
+    address: requireAddress(),
+    functionName: "search_similar",
+    args: [queryText, k],
+  });
+  const arr = Array.isArray(result) ? result : [];
+  return arr.map(normalizeSearchResult);
+}
+
+export async function getTrackRecord(client: Client, address: string): Promise<TrackRecord> {
+  const result = await client.readContract({
+    address: requireAddress(),
+    functionName: "get_track_record",
+    args: [address],
+  });
+  return normalizeTrackRecord(result);
+}
+
 // ---------------------------------------------------------------------------
 // Writes
 // ---------------------------------------------------------------------------
@@ -153,6 +176,26 @@ export async function resolveChallenge(client: Client, challengeId: number): Pro
   const hash = await client.writeContract({
     address: requireAddress(),
     functionName: "resolve_challenge",
+    args: [challengeId],
+    value: 0n,
+  });
+  return hash as `0x${string}`;
+}
+
+export async function addBounty(client: Client, submissionId: number, valueWei: bigint): Promise<`0x${string}`> {
+  const hash = await client.writeContract({
+    address: requireAddress(),
+    functionName: "add_bounty",
+    args: [submissionId],
+    value: valueWei,
+  });
+  return hash as `0x${string}`;
+}
+
+export async function expireStaleChallenge(client: Client, challengeId: number): Promise<`0x${string}`> {
+  const hash = await client.writeContract({
+    address: requireAddress(),
+    functionName: "expire_stale_challenge",
     args: [challengeId],
     value: 0n,
   });

@@ -19,9 +19,13 @@ const CALLS: { name: string; kind: "view" | "write"; argCount: number }[] = [
   { name: "list_challenges_page", kind: "view", argCount: 2 },
   { name: "list_challenges_for_submission", kind: "view", argCount: 1 },
   { name: "preview_nearest_neighbor", kind: "view", argCount: 1 },
+  { name: "search_similar", kind: "view", argCount: 2 },
+  { name: "get_track_record", kind: "view", argCount: 1 },
   { name: "submit", kind: "write", argCount: 1 },
   { name: "challenge", kind: "write", argCount: 1 },
   { name: "resolve_challenge", kind: "write", argCount: 1 },
+  { name: "add_bounty", kind: "write", argCount: 1 },
+  { name: "expire_stale_challenge", kind: "write", argCount: 1 },
 ];
 
 async function main() {
@@ -30,7 +34,7 @@ async function main() {
   const address = process.env.NEXT_PUBLIC_GENLAYER_CONTRACT_ADDRESS?.trim();
 
   if (!address) {
-    console.error("NEXT_PUBLIC_GENLAYER_CONTRACT_ADDRESS is not set — nothing to verify against yet.");
+    console.error("NEXT_PUBLIC_GENLAYER_CONTRACT_ADDRESS is not set - nothing to verify against yet.");
     process.exit(1);
   }
 

@@ -156,7 +156,7 @@ export function WalletPanel() {
               </div>
               <p className="text-xs leading-relaxed">
                 This private key lives only in this browser&apos;s local storage. Clearing
-                site data or switching browsers destroys it permanently — this is not
+                site data or switching browsers destroys it permanently - this is not
                 custody-grade. Export it now if you want to keep access.
               </p>
               <button
@@ -201,7 +201,7 @@ export function WalletPanel() {
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-1.5 text-xs text-ink-faint">
                     <ShieldAlert size={12} aria-hidden="true" />
-                    This key is not custody-grade — export it to keep access.
+                    This key is not custody-grade - export it to keep access.
                   </div>
                   <div className="flex gap-2">
                     <button

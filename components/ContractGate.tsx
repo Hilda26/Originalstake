@@ -10,7 +10,7 @@ export function ContractGate({ children }: { children: ReactNode }) {
       <EmptyState
         icon={<ShieldOff size={32} aria-hidden="true" />}
         title="No contract configured yet"
-        description={`This deployment doesn't have an OriginalStake contract address set for ${chainName}. Set NEXT_PUBLIC_GENLAYER_CONTRACT_ADDRESS in your environment once the contract is deployed — nothing here is faked or mocked in the meantime.`}
+        description={`This deployment doesn't have an OriginalStake contract address set for ${chainName}. Set NEXT_PUBLIC_GENLAYER_CONTRACT_ADDRESS in your environment once the contract is deployed - nothing here is faked or mocked in the meantime.`}
       />
     </div>
   );

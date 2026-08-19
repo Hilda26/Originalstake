@@ -242,3 +242,87 @@ def test_originalstake_no_neighbor_is_inconclusive_on_studionet():
 
     sub = _with_retry(lambda: contract.get_submission(args=[sub_id]).call())
     assert sub["status"] == "OPEN"
+
+
+def test_originalstake_bounty_paid_to_winning_challenger_on_studionet():
+    """
+    Real StudioNet scenario for the v2 `add_bounty` mechanic: a third party
+    (not the submitter, not the challenger) crowdfunds a bounty on a
+    submission, a challenger opens against a near-duplicate, resolve_challenge
+    runs a real nondet consensus round, and -- if the challenger wins -- the
+    accumulated bounty must be paid out ON TOP of the forfeited bond, with
+    bounty_pool reset to zero afterward. If the real model instead lands on
+    DISTINCT or INCONCLUSIVE, the bounty must be left untouched/rolled over
+    -- both outcomes are asserted for real observed behavior, not mocked.
+    """
+    accounts = get_accounts()
+    submitter, bounty_funder, challenger, resolver = (
+        accounts[0],
+        accounts[1],
+        accounts[2],
+        accounts[0],
+    )
+
+    contract, factory = _deploy_as(submitter)
+    _pace()
+
+    original_text = "A weathered lighthouse keeper counts the waves before dawn breaks"
+    tx = _with_retry(lambda: contract.submit(args=[original_text]).transact(value=1000))
+    assert tx_execution_succeeded(tx)
+    _pace()
+
+    near_dup_text = "A weathered lighthouse keeper counts the waves before dawn breaks softly"
+    tx = _with_retry(lambda: contract.submit(args=[near_dup_text]).transact(value=1000))
+    assert tx_execution_succeeded(tx)
+    _pace()
+
+    ids = _with_retry(lambda: contract.list_submission_ids(args=[]).call())
+    assert len(ids) == 2
+    challenged_id = ids[-1]
+    _pace()
+
+    # ---- a third party crowdfunds a bounty on the near-duplicate --------
+    funder_contract = factory.build_contract(contract_address=contract.address, account=bounty_funder)
+    _pace()
+    tx = _with_retry(lambda: funder_contract.add_bounty(args=[challenged_id]).transact(value=300))
+    assert tx_execution_succeeded(tx)
+    _pace()
+
+    sub = _with_retry(lambda: contract.get_submission(args=[challenged_id]).call())
+    assert int(sub["bounty_pool"]) == 300
+    assert int(sub["bounty_total"]) == 300
+    _pace()
+
+    challenger_contract = factory.build_contract(contract_address=contract.address, account=challenger)
+    _pace()
+    tx = _with_retry(lambda: challenger_contract.challenge(args=[challenged_id]).transact(value=1000))
+    assert tx_execution_succeeded(tx)
+    _pace()
+
+    challenge_ids = _with_retry(lambda: contract.list_challenge_ids(args=[]).call())
+    challenge_id = challenge_ids[-1]
+    _pace()
+
+    resolver_contract = factory.build_contract(contract_address=contract.address, account=resolver)
+    _pace()
+    tx = _with_retry(lambda: resolver_contract.resolve_challenge(args=[challenge_id]).transact())
+    assert tx_execution_succeeded(tx)
+    _pace()
+
+    ch = _with_retry(lambda: contract.get_challenge(args=[challenge_id]).call())
+    print("Observed bounty-scenario band:", ch["band"], "| reason:", ch["reason"])
+    assert ch["band"] in ("SUBSTANTIALLY_SAME", "DERIVATIVE", "DISTINCT", "INCONCLUSIVE")
+    _pace()
+
+    sub = _with_retry(lambda: contract.get_submission(args=[challenged_id]).call())
+    print("Observed post-resolution bounty_pool:", sub["bounty_pool"], "| bounty_total:", sub["bounty_total"])
+    if ch["band"] in ("SUBSTANTIALLY_SAME", "DERIVATIVE"):
+        # challenger won: bounty paid out and reset to zero; total unchanged
+        assert int(sub["bounty_pool"]) == 0
+        assert int(sub["bounty_total"]) == 300
+        assert sub["status"] == "FLAGGED"
+    else:
+        # DISTINCT or INCONCLUSIVE: bounty rolls over untouched
+        assert int(sub["bounty_pool"]) == 300
+        assert int(sub["bounty_total"]) == 300
+        assert sub["status"] == "OPEN"

@@ -102,6 +102,7 @@ import genlayer_embeddings
 from genlayer_embeddings import VecDB, EuclideanDistanceSquared
 import typing
 import json
+from datetime import datetime
 from dataclasses import dataclass
 
 
@@ -117,6 +118,17 @@ MAX_TEXT_LEN = 400
 MAX_REASON_LEN = 300
 MAX_PAGE_SIZE = 100
 KNN_SEARCH_K = 5  # small defensive buffer so we can skip self / stale entries
+MAX_SEARCH_K = 20  # defensive cap on search_similar's requested k
+
+# A challenge left OPEN forever would lock both bonds permanently -- see
+# expire_stale_challenge below. Expressed as an ISO-8601 duration for the
+# docstring's sake; enforced as seconds via datetime arithmetic on the two
+# Z-suffixed message-datetime strings already stored on the challenge.
+# P3D = 3 days. Chosen as "long enough that a legitimate resolver has ample
+# time to call resolve_challenge, short enough that a forgotten challenge
+# doesn't lock capital indefinitely."
+MAX_CHALLENGE_AGE_ISO = "P3D"
+MAX_CHALLENGE_AGE_SECONDS = 3 * 24 * 3600
 
 STATUS_OPEN = "OPEN"  # submittable target for a new challenge
 STATUS_CHALLENGED = "CHALLENGED"  # a challenge is currently in flight
@@ -164,6 +176,18 @@ def _now_iso() -> str:
     if isinstance(nested, dict) and "datetime" in nested:
         return nested["datetime"]
     raise gl.vm.UserError("EXTERNAL: unable to read transaction datetime")
+
+
+def _parse_iso(iso: str) -> datetime:
+    # Both `now` and every stored timestamp in this contract come from the
+    # same source (_now_iso, ultimately gl.message_raw's Z-suffixed
+    # datetime), so this parse is deterministic and identical across
+    # validators -- never wall-clock, never datetime.utcnow().
+    return datetime.fromisoformat(iso.replace("Z", "+00:00"))
+
+
+def _seconds_between(earlier_iso: str, later_iso: str) -> float:
+    return (_parse_iso(later_iso) - _parse_iso(earlier_iso)).total_seconds()
 
 
 def _strip_code_fences(text: str) -> str:
@@ -229,6 +253,8 @@ class Submission:
     created_at: str
     updated_at: str
     challenge_count: u32
+    bounty_pool: u256
+    bounty_total: u256
 
 
 @allow_storage
@@ -245,9 +271,25 @@ class Challenge:
     resolved_at: str
 
 
+@allow_storage
+@dataclass
+class TrackRecord:
+    """This market's own credibility signal -- deterministic counters,
+    updated only from inside resolve_challenge / expire_stale_challenge.
+    There is no privileged editor entry point, same non-negotiable rule as
+    any reputation-style state elsewhere in this series."""
+
+    submissions_made: u32
+    times_flagged: u32  # lost as a submitter (challenger won against them)
+    challenges_opened: u32
+    challenges_won: u32  # opened a challenge that resolved in their favor
+    challenges_lost: u32  # opened a challenge that resolved DISTINCT
+
+
 class OriginalStake(gl.Contract):
     submissions: TreeMap[u32, Submission]
     challenges: TreeMap[u32, Challenge]
+    track_records: TreeMap[str, TrackRecord]
     vector_store: VecDB[np.float32, EMBED_DIM, u32, EuclideanDistanceSquared]
     next_submission_id: u32
     next_challenge_id: u32
@@ -289,6 +331,10 @@ class OriginalStake(gl.Contract):
         slot.created_at = now
         slot.updated_at = now
         slot.challenge_count = u32(0)
+        slot.bounty_pool = u256(0)
+        slot.bounty_total = u256(0)
+
+        self._bump_track_record(slot.submitter, submissions_made_delta=1)
         return sid
 
     # ------------------------------------------------------------------
@@ -324,7 +370,38 @@ class OriginalStake(gl.Contract):
         sub.status = STATUS_CHALLENGED
         sub.updated_at = now
         sub.challenge_count = u32(sub.challenge_count + 1)
+
+        self._bump_track_record(sender, challenges_opened_delta=1)
         return cid
+
+    # ------------------------------------------------------------------
+    # Writes -- flag bounties (crowdfunded incentive to challenge)
+    # ------------------------------------------------------------------
+
+    @gl.public.write.payable
+    def add_bounty(self, submission_id: u32) -> None:
+        """Anyone -- not just the submitter or a future challenger -- may
+        contribute GEN to a per-submission bounty pool that sweetens the
+        incentive for someone else to open a challenge against it.
+
+        Payout policy (see module docstring's design-choice notes):
+          * challenger wins (SUBSTANTIALLY_SAME/DERIVATIVE) -> the entire
+            accumulated bounty_pool is paid to the challenger IN ADDITION
+            to the forfeited bond, and the pool resets to zero.
+          * challenger loses (DISTINCT) or result is INCONCLUSIVE -> the
+            bounty_pool is left completely untouched. It is never returned
+            to contributors and never lost -- it simply rolls over as a
+            live incentive for a future challenge against this same
+            submission. Contributors are betting the market will
+            eventually catch something, not making a return-if-wrong
+            donation.
+        """
+        if gl.message.value == u256(0):
+            raise gl.vm.UserError("EXPECTED: a bounty contribution must carry GEN")
+        sub = self._get_submission_or_raise(submission_id)
+        sub.bounty_pool = u256(sub.bounty_pool + gl.message.value)
+        sub.bounty_total = u256(sub.bounty_total + gl.message.value)
+        sub.updated_at = _now_iso()
 
     # ------------------------------------------------------------------
     # The permissionless resolution -- the single non-deterministic write.
@@ -367,25 +444,70 @@ class OriginalStake(gl.Contract):
 
         if band in CHALLENGER_WINS_BANDS:
             # challenger wins: submitter's bond moves to the challenger; the
-            # challenger's own counter-bond is returned to them.
+            # challenger's own counter-bond is returned to them. Any
+            # accumulated bounty is ALSO paid out to the challenger, then
+            # reset to zero (see add_bounty's payout policy docstring).
             self._pay(challenger_addr, bond)
             self._pay(challenger_addr, counter_bond)
+            bounty = sub.bounty_pool
+            if bounty > u256(0):
+                self._pay(challenger_addr, bounty)
+                sub.bounty_pool = u256(0)
             sub.status = STATUS_FLAGGED
+            self._bump_track_record(submitter_addr, times_flagged_delta=1)
+            self._bump_track_record(challenger_addr, challenges_won_delta=1)
         elif band == BAND_DISTINCT:
             # challenger loses: their counter-bond moves to the submitter;
-            # the submitter's own bond is returned to them.
+            # the submitter's own bond is returned to them. bounty_pool is
+            # left untouched -- it rolls over for a future challenge.
             self._pay(submitter_addr, bond)
             self._pay(submitter_addr, counter_bond)
             sub.status = STATUS_OPEN
+            self._bump_track_record(challenger_addr, challenges_lost_delta=1)
         else:
             # INCONCLUSIVE: both bonds returned untouched, no one penalized,
-            # submission remains open to a future challenge.
+            # submission remains open to a future challenge. bounty_pool is
+            # left untouched here too, same as the DISTINCT branch.
             self._pay(submitter_addr, bond)
             self._pay(challenger_addr, counter_bond)
             sub.status = STATUS_OPEN
 
         sub.updated_at = now
         return band
+
+    @gl.public.write
+    def expire_stale_challenge(self, challenge_id: u32) -> None:
+        """Permissionless. If an OPEN challenge has sat unresolved for
+        longer than MAX_CHALLENGE_AGE_SECONDS, anyone may deterministically
+        settle it as INCONCLUSIVE -- both bonds returned untouched, no
+        nondet round spent, bounty_pool (if any) left untouched/rolled over
+        exactly like a judged INCONCLUSIVE. This exists so a challenge no
+        one ever calls resolve_challenge on cannot lock both bonds forever;
+        it is NOT the same mechanic as a pre-assignment reclaim -- it only
+        ever lands on INCONCLUSIVE's existing settlement path, never a new
+        outcome. Strictly-greater-than the threshold is required; exactly
+        at the threshold is NOT yet expired (symmetric with the rest of
+        this series' deadline semantics)."""
+        ch = self._get_challenge_or_raise(challenge_id)
+        if ch.status != CH_STATUS_OPEN:
+            raise gl.vm.UserError("EXPECTED: challenge is already resolved")
+        sub = self._get_submission_or_raise(ch.submission_id)
+
+        now = _now_iso()
+        age_seconds = _seconds_between(ch.created_at, now)
+        if not (age_seconds > MAX_CHALLENGE_AGE_SECONDS):
+            raise gl.vm.UserError("EXPECTED: challenge has not exceeded the stale-challenge threshold yet")
+
+        ch.status = CH_STATUS_RESOLVED
+        ch.band = BAND_INCONCLUSIVE
+        ch.reason = "EXPECTED: challenge expired unresolved past MAX_CHALLENGE_AGE, settled as INCONCLUSIVE"
+        ch.resolved_at = now
+        ch.neighbor_submission_id = NO_NEIGHBOR
+
+        self._pay(sub.submitter, sub.bond)
+        self._pay(ch.challenger, ch.counter_bond)
+        sub.status = STATUS_OPEN
+        sub.updated_at = now
 
     # ------------------------------------------------------------------
     # Views
@@ -448,6 +570,53 @@ class OriginalStake(gl.Contract):
             return {"found": False, "neighbor_id": 0, "neighbor_text": ""}
         return {"found": True, "neighbor_id": int(neighbor_id), "neighbor_text": neighbor_text}
 
+    @gl.public.view
+    def search_similar(self, query_text: str, k: u32) -> list[dict]:
+        """A genuinely new, user-facing search capability: given arbitrary
+        query text NOT tied to any existing submission id, deterministically
+        embed it and run VecDB.knn across the WHOLE corpus, returning the
+        top-k matches. Lets a writer check "has anything like this already
+        been submitted?" BEFORE they even submit -- unlike
+        preview_nearest_neighbor, which only works on an already-submitted
+        id. Purely deterministic vector math, no nondet call, and not part
+        of judging (resolve_challenge never calls this)."""
+        if len(query_text) == 0:
+            raise gl.vm.UserError("EXPECTED: query_text must not be empty")
+        if len(query_text) > MAX_TEXT_LEN:
+            raise gl.vm.UserError("EXPECTED: query_text exceeds max length")
+        requested_k = int(k)
+        if requested_k <= 0:
+            raise gl.vm.UserError("EXPECTED: k must be positive")
+        if requested_k > MAX_SEARCH_K:
+            requested_k = MAX_SEARCH_K
+        corpus_size = len(self.vector_store)
+        if corpus_size == 0:
+            return []
+        effective_k = min(requested_k, corpus_size)
+
+        vec = self._embed(query_text)
+        out = []
+        for elem in self.vector_store.knn(vec, effective_k):
+            candidate_id = u32(int(elem.value))
+            candidate_sub = self.submissions.get(candidate_id, None)
+            if candidate_sub is None:
+                continue
+            out.append(
+                {
+                    "submission_id": int(candidate_id),
+                    "text": candidate_sub.text,
+                    "submitter": candidate_sub.submitter.as_hex,
+                    "status": candidate_sub.status,
+                }
+            )
+        return out
+
+    @gl.public.view
+    def get_track_record(self, address: str) -> dict:
+        key = self._track_record_key(_coerce_address(address))
+        rec = self.track_records.get(key, None)
+        return self._track_record_to_view(key, rec)
+
     # ------------------------------------------------------------------
     # Internals -- lookups
     # ------------------------------------------------------------------
@@ -493,6 +662,8 @@ class OriginalStake(gl.Contract):
             "created_at": sub.created_at,
             "updated_at": sub.updated_at,
             "challenge_count": int(sub.challenge_count),
+            "bounty_pool": int(sub.bounty_pool),
+            "bounty_total": int(sub.bounty_total),
         }
 
     def _challenge_to_view(self, challenge_id: u32, ch: Challenge) -> dict:
@@ -510,6 +681,56 @@ class OriginalStake(gl.Contract):
             "created_at": ch.created_at,
             "resolved_at": ch.resolved_at,
         }
+
+    def _track_record_key(self, addr: Address) -> str:
+        return addr.as_hex
+
+    def _track_record_to_view(self, address_key: str, rec: "TrackRecord | None") -> dict:
+        if rec is None:
+            return {
+                "address": address_key,
+                "submissions_made": 0,
+                "times_flagged": 0,
+                "challenges_opened": 0,
+                "challenges_won": 0,
+                "challenges_lost": 0,
+            }
+        return {
+            "address": address_key,
+            "submissions_made": int(rec.submissions_made),
+            "times_flagged": int(rec.times_flagged),
+            "challenges_opened": int(rec.challenges_opened),
+            "challenges_won": int(rec.challenges_won),
+            "challenges_lost": int(rec.challenges_lost),
+        }
+
+    def _bump_track_record(
+        self,
+        addr: Address,
+        submissions_made_delta: int = 0,
+        times_flagged_delta: int = 0,
+        challenges_opened_delta: int = 0,
+        challenges_won_delta: int = 0,
+        challenges_lost_delta: int = 0,
+    ) -> None:
+        """The ONLY place TrackRecord counters are ever written. Called
+        exclusively from submit / challenge / resolve_challenge /
+        expire_stale_challenge -- there is no privileged editor entry
+        point, same non-negotiable rule as reputation elsewhere in this
+        series. expire_stale_challenge deliberately does NOT call this: an
+        expired-stale challenge is nobody's win or loss."""
+        key = self._track_record_key(addr)
+        rec = self.track_records.get_or_insert_default(key)
+        if submissions_made_delta:
+            rec.submissions_made = u32(rec.submissions_made + submissions_made_delta)
+        if times_flagged_delta:
+            rec.times_flagged = u32(rec.times_flagged + times_flagged_delta)
+        if challenges_opened_delta:
+            rec.challenges_opened = u32(rec.challenges_opened + challenges_opened_delta)
+        if challenges_won_delta:
+            rec.challenges_won = u32(rec.challenges_won + challenges_won_delta)
+        if challenges_lost_delta:
+            rec.challenges_lost = u32(rec.challenges_lost + challenges_lost_delta)
 
     # ------------------------------------------------------------------
     # Internals -- deterministic embedding + knn (no model call involved)

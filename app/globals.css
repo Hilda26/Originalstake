@@ -4,7 +4,7 @@
   Design tokens for OriginalStake: a dark, near-black navy system, deliberately
   distinct from project-1/BriefBond's powder-blue-on-light palette. The mood
   target is "higher-stakes, serious" (real value staked on a judgment call),
-  not playful dark-mode SaaS — so the accent gradient is used sparingly
+  not playful dark-mode SaaS - so the accent gradient is used sparingly
   (hero glow, primary CTAs, key numerals) rather than smeared everywhere.
 */
 :root {
@@ -85,7 +85,7 @@ body {
 }
 
 /* Sparingly-used hero gradient: deep navy fading to near-black, with a
-   restrained blue glow — not a purple-blue cliché, not slapped everywhere. */
+   restrained blue glow - not a purple-blue cliché, not slapped everywhere. */
 .bg-hero-gradient {
   background:
     radial-gradient(60% 50% at 15% 0%, rgba(84, 140, 255, 0.16), transparent 60%),

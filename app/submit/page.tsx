@@ -1,20 +1,78 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Search } from "lucide-react";
 import { ContractGate } from "@/components/ContractGate";
 import { EmptyState } from "@/components/EmptyState";
 import { TransactionLifecycle } from "@/components/TransactionLifecycle";
 import { WalletPanel } from "@/components/WalletPanel";
 import { useWallet } from "@/lib/walletContext";
-import { submitEntry, getSubmissionCount } from "@/lib/contractCalls";
+import { submitEntry, getSubmissionCount, searchSimilar } from "@/lib/contractCalls";
 import { validateSubmissionText, validateBondAmount, classifyError } from "@/lib/errors";
-import { parseGenToWei, MAX_TEXT_LEN } from "@/lib/submission";
+import { parseGenToWei, MAX_TEXT_LEN, type SearchResult } from "@/lib/submission";
 import { addPendingTx, type PendingTxArg } from "@/lib/pendingTx";
+import { getReadOnlyClient } from "@/lib/genlayerClient";
+
+const SEARCH_DEBOUNCE_MS = 400;
+const SEARCH_MIN_CHARS = 4;
+
+function LiveSimilaritySearch({ text }: { text: string }) {
+  const { client } = useWallet();
+  const [results, setResults] = useState<SearchResult[] | null>(null);
+  const [searching, setSearching] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (timer.current) clearTimeout(timer.current);
+    const query = text.trim();
+    if (query.length < SEARCH_MIN_CHARS) {
+      setResults(null);
+      return;
+    }
+    timer.current = setTimeout(() => {
+      const activeClient = client ?? getReadOnlyClient();
+      setSearching(true);
+      searchSimilar(activeClient, query, 5)
+        .then(setResults)
+        .catch(() => setResults(null))
+        .finally(() => setSearching(false));
+    }, SEARCH_DEBOUNCE_MS);
+    return () => {
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, [text, client]);
+
+  if (text.trim().length < SEARCH_MIN_CHARS) return null;
+
+  return (
+    <div className="rounded-md border border-line bg-bg-raised p-3 text-xs text-ink-soft">
+      <div className="mb-1.5 flex items-center gap-1.5 font-semibold text-ink">
+        <Search size={13} className="text-accent" aria-hidden="true" />
+        Has anything like this already been submitted?
+      </div>
+      {searching && <p>Searching the corpus…</p>}
+      {!searching && results && results.length === 0 && <p>Nothing similar found yet - looks original so far.</p>}
+      {!searching && results && results.length > 0 && (
+        <ul className="flex flex-col gap-1.5">
+          {results.map((r) => (
+            <li key={r.submission_id}>
+              <Link href={`/submission/${r.submission_id}`} className="text-accent underline underline-offset-2">
+                #{r.submission_id}
+              </Link>{" "}
+              <span className="text-ink-faint">({r.status})</span>{" "}
+              <span className="line-clamp-1 italic">&ldquo;{r.text}&rdquo;</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 // Live preview_nearest_neighbor is only meaningful once the text is
-// on-chain — the contract's embedding step only runs once text is stored,
+// on-chain - the contract's embedding step only runs once text is stored,
 // so there is no honest client-side way to preview a neighbor before
 // submitting. Instead this form points the writer at the real
 // preview_nearest_neighbor view on the submission-detail page once the
@@ -35,7 +93,7 @@ function SubmitForm() {
     return (
       <EmptyState
         title="Connect a wallet to submit"
-        description="You'll need a wallet identity to fund the bond — generate a browser wallet in a few seconds, or connect an injected one, from the wallet button above."
+        description="You'll need a wallet identity to fund the bond - generate a browser wallet in a few seconds, or connect an injected one, from the wallet button above."
         action={<WalletPanel />}
       />
     );
@@ -75,7 +133,7 @@ function SubmitForm() {
         label: "Posting submission",
       });
       // The new id is deterministic (next_submission_id at call time), but
-      // we don't assume success — only used to build a "view it" link once
+      // we don't assume success - only used to build a "view it" link once
       // the write is confirmed to have actually landed, never shown as fact
       // before that.
       if (countBefore !== null) setNewSubmissionId(countBefore);
@@ -115,16 +173,7 @@ function SubmitForm() {
             </div>
           </div>
 
-          <div className="flex items-start gap-2 rounded-md border border-line bg-bg-raised p-3 text-xs text-ink-soft">
-            <Search size={14} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
-            <p>
-              This form can&apos;t check your draft against the on-chain corpus before you
-              submit — the contract&apos;s embedding step only runs once your text is stored.
-              Once it&apos;s posted, use <strong className="text-ink">preview nearest neighbor</strong> on
-              the submission page to see what a challenge would compare it against, before
-              anyone spends GEN opening one.
-            </p>
-          </div>
+          <LiveSimilaritySearch text={text} />
 
           <div>
             <label htmlFor="amount" className="mb-1.5 block text-sm font-medium text-ink">
@@ -139,7 +188,7 @@ function SubmitForm() {
               className="w-full rounded-md border border-line bg-bg-raised px-3 py-2 text-sm text-ink"
             />
             <p className="mt-1 text-xs text-ink-soft">
-              A challenger must post exactly this amount as their counter-bond — set it to
+              A challenger must post exactly this amount as their counter-bond - set it to
               something you&apos;d be comfortable losing if a challenge succeeds.
             </p>
           </div>

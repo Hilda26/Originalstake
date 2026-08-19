@@ -1,6 +1,6 @@
 // Types and helpers that mirror project-2/contract/originalstake.py exactly.
 // Field names below match Submission/Challenge's _to_view() methods in the
-// contract — do not rename without updating the contract too.
+// contract - do not rename without updating the contract too.
 
 export type SubmissionStatus = "OPEN" | "CHALLENGED" | "FLAGGED";
 export type ChallengeStatus = "OPEN" | "RESOLVED";
@@ -15,6 +15,24 @@ export interface Submission {
   created_at: string; // UTC ISO, "Z"-suffixed
   updated_at: string;
   challenge_count: number;
+  bounty_pool: number;
+  bounty_total: number;
+}
+
+export interface SearchResult {
+  submission_id: number;
+  text: string;
+  submitter: string;
+  status: SubmissionStatus;
+}
+
+export interface TrackRecord {
+  address: string;
+  submissions_made: number;
+  times_flagged: number;
+  challenges_opened: number;
+  challenges_won: number;
+  challenges_lost: number;
 }
 
 export interface Challenge {
@@ -52,7 +70,46 @@ export function normalizeSubmission(raw: unknown): Submission {
     created_at: String(r.created_at ?? ""),
     updated_at: String(r.updated_at ?? ""),
     challenge_count: Number(r.challenge_count ?? 0),
+    bounty_pool: Number(r.bounty_pool ?? 0),
+    bounty_total: Number(r.bounty_total ?? 0),
   };
+}
+
+export function normalizeSearchResult(raw: unknown): SearchResult {
+  const r = raw as Record<string, unknown>;
+  return {
+    submission_id: Number(r.submission_id ?? 0),
+    text: String(r.text ?? ""),
+    submitter: String(r.submitter ?? ""),
+    status: String(r.status ?? "OPEN") as SubmissionStatus,
+  };
+}
+
+export function normalizeTrackRecord(raw: unknown): TrackRecord {
+  const r = raw as Record<string, unknown>;
+  return {
+    address: String(r.address ?? ""),
+    submissions_made: Number(r.submissions_made ?? 0),
+    times_flagged: Number(r.times_flagged ?? 0),
+    challenges_opened: Number(r.challenges_opened ?? 0),
+    challenges_won: Number(r.challenges_won ?? 0),
+    challenges_lost: Number(r.challenges_lost ?? 0),
+  };
+}
+
+// A challenge left OPEN longer than this (seconds) is "stale" and eligible
+// for permissionless expire_stale_challenge - mirrors the contract's
+// MAX_CHALLENGE_AGE_SECONDS (3 days) exactly; keep these in sync.
+export const MAX_CHALLENGE_AGE_SECONDS = 3 * 24 * 3600;
+
+export function challengeAgeSeconds(createdAtIso: string, nowMs: number = Date.now()): number {
+  const created = Date.parse(createdAtIso);
+  if (Number.isNaN(created)) return 0;
+  return Math.max(0, Math.floor((nowMs - created) / 1000));
+}
+
+export function isChallengeStale(createdAtIso: string, nowMs: number = Date.now()): boolean {
+  return challengeAgeSeconds(createdAtIso, nowMs) > MAX_CHALLENGE_AGE_SECONDS;
 }
 
 export function normalizeChallenge(raw: unknown): Challenge {
@@ -104,11 +161,11 @@ export function roleFor(sub: Submission, address: string | null): SubmissionRole
 export function statusLabel(status: SubmissionStatus): string {
   switch (status) {
     case "OPEN":
-      return "Open — challengeable";
+      return "Open - challengeable";
     case "CHALLENGED":
       return "Challenge in progress";
     case "FLAGGED":
-      return "Flagged — bond forfeited";
+      return "Flagged - bond forfeited";
   }
 }
 
@@ -117,20 +174,20 @@ export function challengeStatusLabel(status: ChallengeStatus): string {
 }
 
 // Both SUBSTANTIALLY_SAME and DERIVATIVE mean "challenger wins" per the
-// contract's CHALLENGER_WINS_BANDS — kept distinct only for transparency,
+// contract's CHALLENGER_WINS_BANDS - kept distinct only for transparency,
 // see CONTRACT_STATUS.md and originalstake.py's module docstring.
 export const CHALLENGER_WINS_BANDS: Band[] = ["SUBSTANTIALLY_SAME", "DERIVATIVE"];
 
 export function bandLabel(band: Band): string {
   switch (band) {
     case "SUBSTANTIALLY_SAME":
-      return "Substantially the same — challenger wins";
+      return "Substantially the same - challenger wins";
     case "DERIVATIVE":
-      return "Derivative — challenger wins";
+      return "Derivative - challenger wins";
     case "DISTINCT":
-      return "Distinct — submitter wins";
+      return "Distinct - submitter wins";
     case "INCONCLUSIVE":
-      return "Inconclusive — both bonds returned";
+      return "Inconclusive - both bonds returned";
     default:
       return "Unresolved";
   }
@@ -145,7 +202,7 @@ export function bandDescription(band: Band): string {
     case "DISTINCT":
       return "The model found the challenged text independently written. The challenger's counter-bond moves to the submitter; the submitter's own bond is returned to them.";
     case "INCONCLUSIVE":
-      return "The model could not confidently place this pair in any band (or there was no other submission to compare against). Both bonds are returned untouched — neither side is penalized, and the submission stays open to future challenges.";
+      return "The model could not confidently place this pair in any band (or there was no other submission to compare against). Both bonds are returned untouched - neither side is penalized, and the submission stays open to future challenges.";
     default:
       return "";
   }

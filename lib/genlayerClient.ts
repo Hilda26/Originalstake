@@ -1,6 +1,6 @@
 "use client";
 
-// Thin wrapper around genlayer-js's createClient — every call site in the
+// Thin wrapper around genlayer-js's createClient - every call site in the
 // app goes through here so there is exactly one place that decides which
 // identity is used for reads and writes.
 

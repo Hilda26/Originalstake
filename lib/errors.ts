@@ -1,6 +1,6 @@
 // The contract raises gl.vm.UserError with a leading prefix:
 // EXPECTED / EXTERNAL / TRANSIENT / LLM_ERROR (see contract/originalstake.py
-// — grep for `gl.vm.UserError` there for the exact strings used). The RPC
+// - grep for `gl.vm.UserError` there for the exact strings used). The RPC
 // error message carries that prefix through to the frontend. Map each to a
 // distinct, actionable message rather than one generic failure.
 //

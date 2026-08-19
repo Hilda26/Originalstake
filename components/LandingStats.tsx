@@ -11,8 +11,7 @@ interface Stats {
   resolved: number;
 }
 
-// Read-only browsing without any wallet connected, per the design spec —
-// a visitor should be able to see real on-chain state before connecting.
+// Read-only browsing without any wallet connected, per the design spec - // a visitor should be able to see real on-chain state before connecting.
 export function LandingStats() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -38,8 +37,7 @@ export function LandingStats() {
   if (!isContractConfigured) {
     return (
       <p className="text-sm text-ink-soft">
-        No contract is configured for <strong className="text-ink">{chainName}</strong> yet —
-        stats will appear here once one is deployed and set in the environment.
+        No contract is configured for <strong className="text-ink">{chainName}</strong> yet - stats will appear here once one is deployed and set in the environment.
       </p>
     );
   }

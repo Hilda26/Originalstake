@@ -5,16 +5,16 @@ GenLayer uses decentralized AI-validator consensus to resolve contracts that req
 
 Intelligent Contracts interpret language, process unstructured data, and pull live web inputs. No oracles, no intermediaries.
 
-- **Bitcoin** — Trustless Money
-- **Ethereum** — Trustless Computation
-- **GenLayer** — Trustless Adjudication
+- **Bitcoin** - Trustless Money
+- **Ethereum** - Trustless Computation
+- **GenLayer** - Trustless Adjudication
 
-The agentic-commerce stack is being built in public — Coinbase's [x402](https://www.x402.org/) for payments, Ethereum's [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) for trustless agent identity, the Linux Foundation's [A2A](https://a2a-protocol.org) for agent interoperability, plus Stripe/OpenAI's ACP, Visa's Trusted Agent Protocol, Google's AP2, and Mastercard's Agent Pay. Every layer engineers the happy path. None ships dispute resolution. GenLayer fills that gap.
+The agentic-commerce stack is being built in public - Coinbase's [x402](https://www.x402.org/) for payments, Ethereum's [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) for trustless agent identity, the Linux Foundation's [A2A](https://a2a-protocol.org) for agent interoperability, plus Stripe/OpenAI's ACP, Visa's Trusted Agent Protocol, Google's AP2, and Mastercard's Agent Pay. Every layer engineers the happy path. None ships dispute resolution. GenLayer fills that gap.
 
 Explore [use cases](/understand-genlayer-protocol/typical-use-cases) or jump straight into building.
 
 > **Note:**
-> **Start with Skills 🤖** — The fastest way to build a contract or run a validator is the [GenLayer Skills](https://skills.genlayer.com/) plugin for Claude Code. One command scaffolds, deploys, and operates — no manual setup.
+> **Start with Skills 🤖** - The fastest way to build a contract or run a validator is the [GenLayer Skills](https://skills.genlayer.com/) plugin for Claude Code. One command scaffolds, deploys, and operates - no manual setup.
 >
 > ```bash
 > claude /plugin marketplace add genlayerlabs/skills
@@ -31,17 +31,17 @@ Explore [use cases](/understand-genlayer-protocol/typical-use-cases) or jump str
 
 Join the community on [Discord](https://discord.gg/8Jm4v89VAu) or [Telegram](https://t.me/genlayer) to ask questions, share feedback, and showcase your builds.
 
-We're hiring — [see open roles](https://x.com/GenLayer/jobs).
+We're hiring - [see open roles](https://x.com/GenLayer/jobs).
 
 ---
 
 ## What is GenLayer? 
 
-GenLayer is the first AI-native blockchain built for AI-powered smart contracts—called Intelligent Contracts—capable of reasoning and adapting to real-world data. Its foundation is the Optimistic Democracy consensus mechanism, an enhanced Delegated Proof of Stake (dPoS) model where validators connect directly to Large Language Models (LLMs). This setup allows for non-deterministic operations—such as processing text prompts, fetching live web data, and executing AI-based decision-making—while preserving the reliability and security of a traditional blockchain.
+GenLayer is the first AI-native blockchain built for AI-powered smart contracts - called Intelligent Contracts - capable of reasoning and adapting to real-world data. Its foundation is the Optimistic Democracy consensus mechanism, an enhanced Delegated Proof of Stake (dPoS) model where validators connect directly to Large Language Models (LLMs). This setup allows for non-deterministic operations - such as processing text prompts, fetching live web data, and executing AI-based decision-making - while preserving the reliability and security of a traditional blockchain.
 
 ## Core Technology
 
-At the heart of GenLayer lies Optimistic Democracy—an enhanced Delegated Proof of Stake (dPoS) consensus mechanism that integrates AI models directly into validator operations. This synergy delivers three capabilities traditional blockchains cannot match:
+At the heart of GenLayer lies Optimistic Democracy - an enhanced Delegated Proof of Stake (dPoS) consensus mechanism that integrates AI models directly into validator operations. This synergy delivers three capabilities traditional blockchains cannot match:
 
 1. **On-Chain AI Processing**
 
@@ -49,7 +49,7 @@ Validators connect to leading AI models (GPT, LLaMA, Meta, etc.) to execute comp
 
 2. **Consensus-Backed Security**
 
-Multiple validators vote on outcomes, ensuring collective agreement and robust reliability for every transaction—even those involving non-deterministic AI outputs.
+Multiple validators vote on outcomes, ensuring collective agreement and robust reliability for every transaction - even those involving non-deterministic AI outputs.
 
 3. **Intelligent Contracts**
 
@@ -113,15 +113,15 @@ GenLayer uses decentralized AI-validator consensus to resolve contracts that req
 
 Intelligent Contracts interpret language, process unstructured data, and pull live web inputs. No oracles, no intermediaries.
 
-- **Bitcoin** — Trustless Money
-- **Ethereum** — Trustless Computation
-- **GenLayer** — Trustless Adjudication
+- **Bitcoin** - Trustless Money
+- **Ethereum** - Trustless Computation
+- **GenLayer** - Trustless Adjudication
 
 Where Bitcoin reached consensus on the *order* of transactions and Ethereum on the *execution* of code, GenLayer reaches consensus on the **meaning** of transactions. The technical primitive that makes this possible is the [Equivalence Principle](/developers/intelligent-contracts/features/non-determinism): two answers can be different in form yet equivalent in meaning, and a network of independent AI validators can agree on that.
 
 ## The Missing Layer
 
-The agentic-commerce stack is being built in the open — and every layer of it stops at the happy path.
+The agentic-commerce stack is being built in the open - and every layer of it stops at the happy path.
 
 | Layer | Standard | What it handles | Dispute resolution |
 |---|---|---|---|
@@ -129,7 +129,7 @@ The agentic-commerce stack is being built in the open — and every layer of it 
 | Identity & reputation | [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) (Ethereum) | Trustless agent identity | Delegated to external validation protocols |
 | Agent interoperability | [A2A](https://a2a-protocol.org) (Linux Foundation / Google) | How agents discover each other and exchange tasks | Not defined within the protocol |
 
-Other players are stacking in alongside them — Stripe + OpenAI's ACP (already powering ChatGPT checkout), Visa's Trusted Agent Protocol, Google's AP2, Mastercard's Agent Pay + BVNK, and Tempo (Stripe / Paradigm L1). The shape is the same in every case: the payment goes through, the job is accepted, the reputation is updated — and the moment a single material dispute appears, the stack reaches for a function it does not have.
+Other players are stacking in alongside them - Stripe + OpenAI's ACP (already powering ChatGPT checkout), Visa's Trusted Agent Protocol, Google's AP2, Mastercard's Agent Pay + BVNK, and Tempo (Stripe / Paradigm L1). The shape is the same in every case: the payment goes through, the job is accepted, the reputation is updated - and the moment a single material dispute appears, the stack reaches for a function it does not have.
 
 That function is **adjudication**. Not a sovereign court. A credible, machine-speed mechanism for evaluating contested commitments, weighing evidence, interpreting language, reaching a verdict, and attaching consequences to it.
 
@@ -138,7 +138,7 @@ GenLayer is that layer.
 ## What Intelligent Contracts Can Do
 
 ### Subjective Decisions
-Evaluate context and nuance. Turn judgment calls into enforceable on-chain outcomes — content moderation, claim assessment, quality evaluation.
+Evaluate context and nuance. Turn judgment calls into enforceable on-chain outcomes - content moderation, claim assessment, quality evaluation.
 
 ### Internet Access
 Fetch live web data directly on-chain. Contracts can read websites, call APIs, and verify real-world information without oracles or intermediaries.
@@ -147,7 +147,7 @@ Fetch live web data directly on-chain. Contracts can read websites, call APIs, a
 Interpret human-readable inputs via LLMs. Contracts can analyze text, extract meaning, and make decisions based on qualitative criteria.
 
 ### Image & Visual Processing
-Pass images to LLMs for analysis — screenshot a webpage and verify its content, check visual evidence for claims, analyze receipts or documents. Contracts can capture screenshots via `gl.nondet.web.render()` and send them to LLMs via `gl.nondet.exec_prompt(images=[...])`.
+Pass images to LLMs for analysis - screenshot a webpage and verify its content, check visual evidence for claims, analyze receipts or documents. Contracts can capture screenshots via `gl.nondet.web.render()` and send them to LLMs via `gl.nondet.exec_prompt(images=[...])`.
 
 ### Unstructured Data
 Process text, images, audio transcripts, and qualitative evidence. Handle real-world complexity that traditional smart contracts cannot.
@@ -166,9 +166,9 @@ Process text, images, audio transcripts, and qualitative evidence. Handle real-w
 
 GenLayer operates as two integrated layers:
 
-**GenLayer Chain** — an EVM-compatible L2 (zkSync Elastic Chain). Holds account balances via ghost contracts, handles standard Ethereum operations (`eth_*` methods), and anchors to Ethereum's security model.
+**GenLayer Chain** - an EVM-compatible L2 (zkSync Elastic Chain). Holds account balances via ghost contracts, handles standard Ethereum operations (`eth_*` methods), and anchors to Ethereum's security model.
 
-**GenVM** — the execution environment for Intelligent Contracts. A WebAssembly-based VM (built on [Wasmtime](https://wasmtime.dev)) that runs a Python interpreter with native access to LLMs, web data, and non-deterministic operations. Can also execute compiled native code.
+**GenVM** - the execution environment for Intelligent Contracts. A WebAssembly-based VM (built on [Wasmtime](https://wasmtime.dev)) that runs a Python interpreter with native access to LLMs, web data, and non-deterministic operations. Can also execute compiled native code.
 
 Every Intelligent Contract has a corresponding **ghost contract** on the chain layer at the same address. Ghost contracts hold the contract's GEN balance, relay transactions to consensus, and execute external messages. See [Messages](/developers/intelligent-contracts/features/messages#ghost-contracts) for details.
 
@@ -232,7 +232,7 @@ GenLayer works through **Optimistic Democracy**, a consensus mechanism where val
 
 ## Optimistic Democracy
 
-GenLayer uses **Optimistic Democracy** for consensus — a mechanism where validators running diverse AI models independently evaluate transactions and vote on outcomes. It applies [Condorcet's Jury Theorem](https://en.wikipedia.org/wiki/Condorcet%27s_jury_theorem): a group of independent reasoners is more likely to reach the correct answer than any individual. This is what lets GenLayer act as an **adjudication layer** for the agentic economy — judgments emerge from a diverse validator set rather than from any one model, operator, or jurisdiction.
+GenLayer uses **Optimistic Democracy** for consensus - a mechanism where validators running diverse AI models independently evaluate transactions and vote on outcomes. It applies [Condorcet's Jury Theorem](https://en.wikipedia.org/wiki/Condorcet%27s_jury_theorem): a group of independent reasoners is more likely to reach the correct answer than any individual. This is what lets GenLayer act as an **adjudication layer** for the agentic economy - judgments emerge from a diverse validator set rather than from any one model, operator, or jurisdiction.
 
 Transactions are accepted if a majority of validators agree. Anyone can appeal an accepted result, triggering re-evaluation by a new, larger validator set. This process can escalate through multiple rounds until a final decision is reached.
 
@@ -240,13 +240,13 @@ Transactions are accepted if a majority of validators agree. Anyone can appeal a
 
 Every transaction moves through these stages:
 
-1. **Pending** — queued, waiting to be picked up
-2. **Proposing** — a leader validator executes the contract and proposes a result
-3. **Committing** — other validators execute independently and submit encrypted votes
-4. **Leader Revealing** — the leader reveals execution data and decryption keys
-5. **Revealing** — validators reveal their votes
-6. **Accepted** — majority consensus reached; transaction enters the appeal window
-7. **Finalized** — appeal window closed, result is permanent and irreversible
+1. **Pending** - queued, waiting to be picked up
+2. **Proposing** - a leader validator executes the contract and proposes a result
+3. **Committing** - other validators execute independently and submit encrypted votes
+4. **Leader Revealing** - the leader reveals execution data and decryption keys
+5. **Revealing** - validators reveal their votes
+6. **Accepted** - majority consensus reached; transaction enters the appeal window
+7. **Finalized** - appeal window closed, result is permanent and irreversible
 
 If consensus is not reached, the transaction may be marked **Undetermined** or rotate to a new leader.
 
@@ -256,9 +256,9 @@ See [Transaction Execution](/understand-genlayer-protocol/core-concepts/transact
 
 Because Intelligent Contracts use LLMs and web data, validators may produce different outputs for the same input. GenLayer provides several strategies for reaching consensus on non-deterministic results:
 
-- **Strict equality** — all validators must produce the exact same output (for deterministic operations)
-- **LLM-based comparison** — an LLM compares validator outputs against developer-defined criteria
-- **Custom validation** — developers write explicit leader/validator function pairs with full control over consensus logic
+- **Strict equality** - all validators must produce the exact same output (for deterministic operations)
+- **LLM-based comparison** - an LLM compares validator outputs against developer-defined criteria
+- **Custom validation** - developers write explicit leader/validator function pairs with full control over consensus logic
 
 See [Non-determinism](/developers/intelligent-contracts/features/non-determinism) for implementation details.
 
@@ -270,7 +270,7 @@ After a transaction is accepted, it enters a **finality window** during which an
 - Appeals can escalate through multiple rounds
 - The final round's decision is binding
 
-Once the finality window closes without appeal (or after the final appeal round), the transaction is **finalized** — permanent and irreversible.
+Once the finality window closes without appeal (or after the final appeal round), the transaction is **finalized** - permanent and irreversible.
 
 See [Appeal Process](/understand-genlayer-protocol/core-concepts/optimistic-democracy/appeal-process) and [Finality](/understand-genlayer-protocol/core-concepts/optimistic-democracy/finality) for details.
 
@@ -287,7 +287,7 @@ The use cases below are grouped by where the need for adjudication is most acute
 
 ## 1. Performance & Milestone Adjudication
 
-Payments, rewards, or recognition that depend on whether some obligation was actually fulfilled under criteria that are partly measurable and partly interpretive. The money is already on-chain. The commitment is already written down. The dispute already happens — and today it is resolved by human bottlenecks that do not scale.
+Payments, rewards, or recognition that depend on whether some obligation was actually fulfilled under criteria that are partly measurable and partly interpretive. The money is already on-chain. The commitment is already written down. The dispute already happens - and today it is resolved by human bottlenecks that do not scale.
 
 - **Bounties** where payout depends on whether the work met the spec
 - **Grant milestones** where tranche release turns on contested deliverables
@@ -295,8 +295,8 @@ Payments, rewards, or recognition that depend on whether some obligation was act
 - **Creator economies** where AI-scored rewards generate disputes with no resolution layer
 - **Prediction markets** with subjective outcomes ([example contract](/developers/intelligent-contracts/examples/prediction))
 - **Contributor performance** tied to vesting or continued compensation
-- **Freelance and gig work** — was the deliverable satisfactory? AI consensus replaces subjective back-and-forth
-- **Chargebacks** — buyer/seller disputes resolved by analyzing shipping records, communication logs, and transaction history
+- **Freelance and gig work** - was the deliverable satisfactory? AI consensus replaces subjective back-and-forth
+- **Chargebacks** - buyer/seller disputes resolved by analyzing shipping records, communication logs, and transaction history
 
 GenLayer can support agreed dispute-resolution workflows, but it is not a court and does not automatically make a result legally binding. For legal or contractual use cases, parties still need the appropriate agreements, jurisdiction, and escalation process around the Intelligent Contract.
 
@@ -304,16 +304,16 @@ GenLayer can support agreed dispute-resolution workflows, but it is not a court 
 
 GenLayer plugs into the infrastructure the industry is building right now: payment rails ([x402](https://www.x402.org/)), agent identity and reputation ([ERC-8004](https://eips.ethereum.org/EIPS/eip-8004)), agent-to-agent task exchange ([A2A](https://a2a-protocol.org)), plus Stripe/OpenAI's ACP, Visa's Trusted Agent Protocol, Google's AP2, and Mastercard's Agent Pay. Each standard ships the happy path and carves the moment of disagreement out as someone else's problem. GenLayer is that someone else.
 
-- **Agent-executed job disputes** — was the task delivered to spec?
-- **Escrow release on ambiguous completion** — agent counterparties needing neutral resolution
-- **SLA enforcement on agent work** — quality, latency, or scope claims
+- **Agent-executed job disputes** - was the task delivered to spec?
+- **Escrow release on ambiguous completion** - agent counterparties needing neutral resolution
+- **SLA enforcement on agent work** - quality, latency, or scope claims
 - **Reputation claims contested between counterparties** in ERC-8004-style identity systems
-- **Coverage claims on agent-to-agent commitments** — parametric and evidence-based
+- **Coverage claims on agent-to-agent commitments** - parametric and evidence-based
 - **Multi-agent workflows** where responsibility for failure has to be assigned across participants
 
 ## 3. Rule & Constitution Verification
 
-Check whether something meets a set of criteria defined in natural language — a foundational primitive that many applications reduce to.
+Check whether something meets a set of criteria defined in natural language - a foundational primitive that many applications reduce to.
 
 - Does a new prediction market meet listing guidelines?
 - Does a DAO proposal comply with the organization's charter?
@@ -324,12 +324,12 @@ Check whether something meets a set of criteria defined in natural language — 
 
 The same primitive shows up across digital commerce:
 
-- **Insurance** — parametric and evidence-based claims evaluated by AI validators. Contracts fetch weather data, flight statuses, or photographic evidence to assess claims and trigger payouts automatically — no adjusters, no weeks of waiting.
-- **Social content verification** — AI validators assess quality, detect plagiarism, and distribute rewards based on originality and engagement. Replaces centralized moderation with consensus-driven evaluation.
-- **Code & work quality assurance** — staked submissions where reviewers are economically incentivized to find issues; AI validators assess deliverable completeness or compliance with specifications.
-- **AI-governed organizations** — DAOs where proposals are written in natural language, evaluated against real-time data, and executed automatically when conditions align.
-- **Compliance automation** — real-time screening against sanctions lists, KYC/AML requirements, and changing regulations. Contracts read authoritative sources directly — no manual updates needed.
-- **Argumentation and debate markets** — structured debates where participants stake positions and AI consensus determines outcomes, a new primitive for information markets.
+- **Insurance** - parametric and evidence-based claims evaluated by AI validators. Contracts fetch weather data, flight statuses, or photographic evidence to assess claims and trigger payouts automatically - no adjusters, no weeks of waiting.
+- **Social content verification** - AI validators assess quality, detect plagiarism, and distribute rewards based on originality and engagement. Replaces centralized moderation with consensus-driven evaluation.
+- **Code & work quality assurance** - staked submissions where reviewers are economically incentivized to find issues; AI validators assess deliverable completeness or compliance with specifications.
+- **AI-governed organizations** - DAOs where proposals are written in natural language, evaluated against real-time data, and executed automatically when conditions align.
+- **Compliance automation** - real-time screening against sanctions lists, KYC/AML requirements, and changing regulations. Contracts read authoritative sources directly - no manual updates needed.
+- **Argumentation and debate markets** - structured debates where participants stake positions and AI consensus determines outcomes, a new primitive for information markets.
 
 ## What Makes These Possible
 
@@ -338,7 +338,7 @@ All of these share a common pattern: they require **judgment** that traditional 
 - Fetch and interpret live web data
 - Process natural language and unstructured inputs
 - Make subjective decisions through multi-validator AI consensus
-- Execute outcomes on-chain with full finality — justice in minutes, not months
+- Execute outcomes on-chain with full finality - justice in minutes, not months
 
 See [projects building on GenLayer](https://portal.genlayer.foundation/#/) for live examples.
 
@@ -611,7 +611,7 @@ Staking in GenLayer is the process where validators lock a specified amount of t
 
 ## Owner, Operator, and ValidatorWallet
 
-Every validator involves three distinct entities. Two of them are **keys** (regular externally owned accounts) and one is a **smart contract** — a distinction that matters when you plan key management:
+Every validator involves three distinct entities. Two of them are **keys** (regular externally owned accounts) and one is a **smart contract** - a distinction that matters when you plan key management:
 
 ```mermaid
 graph LR
@@ -624,19 +624,19 @@ graph LR
     VW -.->|"claimed funds<br/>paid to owner"| Owner
 ```
 
-**ValidatorWallet** — a smart contract, not a key. It is deployed automatically when `validatorJoin()` is called and becomes the validator's on-chain identity: stake is accounted against its address, rewards accrue to it, and all consensus actions are executed through it. There is no private key for the ValidatorWallet; it is controlled entirely by the owner and operator keys.
+**ValidatorWallet** - a smart contract, not a key. It is deployed automatically when `validatorJoin()` is called and becomes the validator's on-chain identity: stake is accounted against its address, rewards accrue to it, and all consensus actions are executed through it. There is no private key for the ValidatorWallet; it is controlled entirely by the owner and operator keys.
 
-**Owner key** — the wallet that calls `validatorJoin()` (the `msg.sender`) becomes the owner. This is an external wallet that you create and safeguard yourself — **the node never generates, stores, or needs it, and it cannot be extracted from a validator server**. The owner controls everything related to funds and administration:
+**Owner key** - the wallet that calls `validatorJoin()` (the `msg.sender`) becomes the owner. This is an external wallet that you create and safeguard yourself - **the node never generates, stores, or needs it, and it cannot be extracted from a validator server**. The owner controls everything related to funds and administration:
 
-- Exit stake (`validatorExit`) and claim rewards and withdrawals (`validatorClaim` — claimed funds are paid out to the owner address)
+- Exit stake (`validatorExit`) and claim rewards and withdrawals (`validatorClaim` - claimed funds are paid out to the owner address)
 - Change the operator (`setOperator`)
 - Set the validator's public identity (`setIdentity`)
 - Hand over ownership to a new owner (`transferOwnership`)
 
-**Operator key** — the hot key the node uses for day-to-day consensus duties: activating transactions, proposing receipts, committing and revealing votes. This is the only key that lives on the validator server. It is created or imported with `genlayernode account new` / `account import` and referenced as `operatorAddress` in the node configuration. If no operator is passed to `validatorJoin()`, it defaults to the owner, but a separate operator is strongly recommended: if the server is compromised, the staked funds (controlled by the owner) remain safe. An operator address cannot be the zero address and cannot be reused by another validator.
+**Operator key** - the hot key the node uses for day-to-day consensus duties: activating transactions, proposing receipts, committing and revealing votes. This is the only key that lives on the validator server. It is created or imported with `genlayernode account new` / `account import` and referenced as `operatorAddress` in the node configuration. If no operator is passed to `validatorJoin()`, it defaults to the owner, but a separate operator is strongly recommended: if the server is compromised, the staked funds (controlled by the owner) remain safe. An operator address cannot be the zero address and cannot be reused by another validator.
 
 > **Note:**
-> Heard the terms "node key" or "validator key"? Both refer to the operator key — the node manages exactly one key. There is also no separate "rewards key": rewards accrue to the ValidatorWallet contract and are claimed by the owner.
+> Heard the terms "node key" or "validator key"? Both refer to the operator key - the node manages exactly one key. There is also no separate "rewards key": rewards accrue to the ValidatorWallet contract and are claimed by the owner.
 
 ### Which key does what
 
@@ -646,24 +646,24 @@ graph LR
 | **Where it lives** | Cold wallet, offline | Node keystore on the server | On-chain |
 | **Created by** | You, before joining | `genlayernode account new` or the CLI wizard | Automatically on `validatorJoin()` |
 | **Used for** | Staking operations: join, deposit, exit, claim, change operator | Consensus operations: propose, commit, reveal | Holds stake and rewards; validator's on-chain identity |
-| **Receives funds** | Yes — all claims pay out here | No (only needs gas for consensus transactions) | Stake and rewards accrue here until claimed |
-| **If lost** | **Unrecoverable** — see below | Owner assigns a new operator | Not applicable |
+| **Receives funds** | Yes - all claims pay out here | No (only needs gas for consensus transactions) | Stake and rewards accrue here until claimed |
+| **If lost** | **Unrecoverable** - see below | Owner assigns a new operator | Not applicable |
 
 Topping up stake is the one exception to the owner-only rule: `validatorDeposit()` is permissionless, so any address can add stake to a validator.
 
 ### Key rotation and loss scenarios
 
-**Losing the operator key is an inconvenience.** The owner can replace the operator at any time with `setOperator(newOperator)`. Generate a new key on the server (`genlayernode account new`), call `setOperator` from the owner wallet, and update `operatorAddress` in the node config. For planned handovers (for example, migrating to a new server or service provider) there is also a two-step flow — `initiateOperatorTransfer(newOperator)` followed by `completeOperatorTransfer()` after a safety delay (48 hours by default), cancellable in between with `cancelOperatorTransfer()`. See [Set Operator](/api-references/genlayer-cli/staking/staking/set-operator) for the CLI command and [backing up your operator key](/validators/setup-guide#backing-up-your-operator-key) to avoid the situation entirely.
+**Losing the operator key is an inconvenience.** The owner can replace the operator at any time with `setOperator(newOperator)`. Generate a new key on the server (`genlayernode account new`), call `setOperator` from the owner wallet, and update `operatorAddress` in the node config. For planned handovers (for example, migrating to a new server or service provider) there is also a two-step flow - `initiateOperatorTransfer(newOperator)` followed by `completeOperatorTransfer()` after a safety delay (48 hours by default), cancellable in between with `cancelOperatorTransfer()`. See [Set Operator](/api-references/genlayer-cli/staking/staking/set-operator) for the CLI command and [backing up your operator key](/validators/setup-guide#backing-up-your-operator-key) to avoid the situation entirely.
 
-**Losing the owner key is unrecoverable.** Ownership can only be transferred by the current owner (`transferOwnership`); there is no admin override, no social recovery, and the operator key cannot stand in for it. Without the owner key you can no longer exit stake, claim rewards, or change the operator — the staked funds stay locked in the ValidatorWallet permanently.
+**Losing the owner key is unrecoverable.** Ownership can only be transferred by the current owner (`transferOwnership`); there is no admin override, no social recovery, and the operator key cannot stand in for it. Without the owner key you can no longer exit stake, claim rewards, or change the operator - the staked funds stay locked in the ValidatorWallet permanently.
 
 > **Warning:**
-> The node setup flow only ever creates the **operator** key. If you inherited a running validator from someone else, verify that you were also handed the **owner** wallet's private key or seed phrase — it is not on the server and cannot be derived from any of the node's keys. Treat it like the keys to the stake itself: keep it in cold storage, back it up, and document who holds it.
+> The node setup flow only ever creates the **operator** key. If you inherited a running validator from someone else, verify that you were also handed the **owner** wallet's private key or seed phrase - it is not on the server and cannot be derived from any of the node's keys. Treat it like the keys to the stake itself: keep it in cold storage, back it up, and document who holds it.
 
 ### How the pieces come together
 
 1. Create an owner wallet (cold) and an operator key on your server ([setup guide](/validators/setup-guide#understanding-validator-addresses)).
-2. From the owner wallet, call `validatorJoin(operator)` with your stake. The ValidatorWallet contract is deployed and its address is returned — save it.
+2. From the owner wallet, call `validatorJoin(operator)` with your stake. The ValidatorWallet contract is deployed and its address is returned - save it.
 3. Configure the node with `validatorWalletAddress` and `operatorAddress`. The node signs consensus duties with the operator key; the owner wallet stays offline.
 4. Rewards accrue to the ValidatorWallet. The owner exits and claims when needed (see [Unstaking and Withdrawing](#unstaking-and-withdrawing) below).
 
@@ -917,7 +917,7 @@ Delegators follow a similar process:
 
 **Important for delegators:**
 - Exit each validator separately if delegating to multiple validators
-- Claims are permissionless—anyone can trigger them on your behalf
+- Claims are permissionless - anyone can trigger them on your behalf
 - Tokens stop earning rewards immediately upon calling exit
 - Multiple exits create separate withdrawals that can be claimed together
 
@@ -1529,7 +1529,7 @@ claude /plugin marketplace add genlayerlabs/skills
 claude /plugin install genlayer-dev@genlayerlabs
 ```
 
-Then run `claude /genlayer-dev` (or just ask Claude what to do next). The skill bundles the same workflows documented on this site — it just runs them for you.
+Then run `claude /genlayer-dev` (or just ask Claude what to do next). The skill bundles the same workflows documented on this site - it just runs them for you.
 
 > **Note:**
 > Prefer to set things up manually or read the references first? The cards below cover every topic in depth, and the [Tooling Setup](/developers/intelligent-contracts/tooling-setup) page describes the manual install path.
@@ -1575,7 +1575,7 @@ GenLayer operates as two layers: the **GenLayer RPC** handles intelligent contra
 
 For the full RPC reference, see [GenLayer Node API](/api-references/genlayer-node).
 
-Your wallet connects to the **GenLayer RPC** — it handles both intelligent contract calls and standard Ethereum methods.
+Your wallet connects to the **GenLayer RPC** - it handles both intelligent contract calls and standard Ethereum methods.
 
 ---
 
@@ -1613,7 +1613,7 @@ Infrastructure and stress testing.
 
 ## Studionet
 
-Hosted development environment — no local setup required.
+Hosted development environment - no local setup required.
 
 | Setting | Value |
 |:--|:--|
@@ -1621,7 +1621,7 @@ Hosted development environment — no local setup required.
 | **Chain ID** | 61999 |
 | **Currency** | GEN |
 | **Explorer** | [explorer-studio.genlayer.com](https://explorer-studio.genlayer.com) |
-| **Faucet** | Built-in — use the 💧 button in the account selector |
+| **Faucet** | Built-in - use the 💧 button in the account selector |
 
 ---
 
@@ -1635,13 +1635,13 @@ Local development with full control. Requires [GenLayer Studio](/developers/inte
 | **Chain ID** | 61127 |
 | **Currency** | GEN |
 | **Explorer** | Bundled with Studio at `http://localhost:8080` |
-| **Faucet** | Built-in — use the 💧 button in the account selector |
+| **Faucet** | Built-in - use the 💧 button in the account selector |
 
 ---
 
 ## GenLayer Chain (L2)
 
-The underlying zkSync Elastic Chain that GenLayer runs on. You typically don't need to interact with this directly — the GenLayer RPC passes through all `eth_*` calls. But if you need direct L2 access (e.g., token transfers, contract debugging at the EVM level), you can add this chain to your wallet.
+The underlying zkSync Elastic Chain that GenLayer runs on. You typically don't need to interact with this directly - the GenLayer RPC passes through all `eth_*` calls. But if you need direct L2 access (e.g., token transfers, contract debugging at the EVM level), you can add this chain to your wallet.
 
 | Setting | Value |
 |:--|:--|
@@ -1657,16 +1657,16 @@ The underlying zkSync Elastic Chain that GenLayer runs on. You typically don't n
 | | Bradbury | Asimov | Studionet | Localnet |
 |---|---|---|---|---|
 | **Purpose** | Production-like testing | Infrastructure testing | Hosted dev | Local dev |
-| **Setup** | None — connect and go | None — connect and go | None — browser only | Docker or GLSim |
+| **Setup** | None - connect and go | None - connect and go | None - browser only | Docker or GLSim |
 | **Persistence** | Persistent | Persistent | Temporary | Local only |
 | **LLM execution** | Real models | Real models | Real models | Configurable |
 | **Faucet** | [Available](https://testnet-faucet.genlayer.foundation) | [Available](https://testnet-faucet.genlayer.foundation) | Built-in (💧 button) | Built-in (💧 button) |
 
 ## Recommended Flow
 
-1. **Start on Studionet** — zero setup, open [studio.genlayer.com](https://studio.genlayer.com)
-2. **Move to Localnet** — when you need full control and fast iteration
-3. **Deploy to Bradbury** — when ready for production-like testing with real AI workloads
+1. **Start on Studionet** - zero setup, open [studio.genlayer.com](https://studio.genlayer.com)
+2. **Move to Localnet** - when you need full control and fast iteration
+3. **Deploy to Bradbury** - when ready for production-like testing with real AI workloads
 
 ---
 
@@ -1751,9 +1751,9 @@ The platform supports the data structures needed to handle complex business logi
 
 Intelligent Contracts introduce non-determinism and external dependencies that traditional smart contracts avoid. Key considerations:
 
-- **Non-deterministic outputs** — LLM responses and web data vary across validators. The [Equivalence Principle](/developers/intelligent-contracts/features/non-determinism) lets you define how validators compare results to reach consensus.
-- **External data reliability** — Web sources can be inconsistent or unavailable. Multiple validators independently fetch and cross-validate data as part of [Optimistic Democracy](/understand-genlayer-protocol/optimistic-democracy-how-genlayer-works).
-- **Compute cost** — LLM calls and web requests add latency and cost compared to purely deterministic contracts. Design contracts to minimize non-deterministic calls where possible.
+- **Non-deterministic outputs** - LLM responses and web data vary across validators. The [Equivalence Principle](/developers/intelligent-contracts/features/non-determinism) lets you define how validators compare results to reach consensus.
+- **External data reliability** - Web sources can be inconsistent or unavailable. Multiple validators independently fetch and cross-validate data as part of [Optimistic Democracy](/understand-genlayer-protocol/optimistic-democracy-how-genlayer-works).
+- **Compute cost** - LLM calls and web requests add latency and cost compared to purely deterministic contracts. Design contracts to minimize non-deterministic calls where possible.
 
 ---
 
@@ -2126,21 +2126,21 @@ One approach is to classify errors by their nature, so validators can handle eac
 ```python
 def validator_fn(leaders_res: gl.vm.Result) -> bool:
     if not isinstance(leaders_res, gl.vm.Return):
-        # Leader errored — run the same logic to see if we error too
+        # Leader errored - run the same logic to see if we error too
         leader_msg = leaders_res.message if hasattr(leaders_res, 'message') else ''
         try:
             leader_fn()
-            return False  # Leader errored but we succeeded — disagree
+            return False  # Leader errored but we succeeded - disagree
         except gl.UserError as e:
             validator_msg = str(e)
-            # Both hit the same business logic error — agree
+            # Both hit the same business logic error - agree
             if validator_msg == leader_msg:
                 return True
             return False
         except Exception:
             return False
 
-    # Leader succeeded — validate the result
+    # Leader succeeded - validate the result
     validator_result = leader_fn()
     return compare_results(leaders_res.calldata, validator_result)
 ```
@@ -2165,7 +2165,7 @@ The system is built around the **Root Slot** (`gl.storage.Root`), which stores:
 ## How It Works
 
 1. At the start of a write transaction, GenVM reads the `upgraders` list
-2. If the sender **is** in the `upgraders` list, no slot restrictions apply — the sender can modify any slot, including `code`
+2. If the sender **is** in the `upgraders` list, no slot restrictions apply - the sender can modify any slot, including `code`
 3. If the sender is **not** in the `upgraders` list, GenVM reads `locked_slots` and prevents writes to them
 
 During deployment (`__init__`), after the constructor completes, the runtime automatically calls `root.lock_default()`, which locks four critical slots: the root slot, the code slot, the locked_slots slot, and the upgraders slot.
@@ -2215,7 +2215,7 @@ class UpgradableStorage(gl.Contract):
 
 ## Upgrading to a New Version
 
-The upgraded contract code must maintain the **same storage layout** for compatibility. Only the code changes — all storage data, the upgraders list, and locked slots persist across upgrades.
+The upgraded contract code must maintain the **same storage layout** for compatibility. Only the code changes - all storage data, the upgraders list, and locked slots persist across upgrades.
 
 ```python
 # v0.1.0
@@ -2264,15 +2264,15 @@ When an authorized upgrader calls the `upgrade` method with new code:
 | `upgraders` | **Persists** unchanged |
 
 This means:
-- **Upgrades are not one-shot** — since the upgraders list persists, the same addresses can push another upgrade later
-- **Storage must be compatible** — the new code must understand the existing storage layout. There is no automatic migration mechanism
-- **New methods can be added** — but existing storage field positions must not change
-- **Upgraders can be modified** — an upgrader can add or remove addresses from the upgraders list
+- **Upgrades are not one-shot** - since the upgraders list persists, the same addresses can push another upgrade later
+- **Storage must be compatible** - the new code must understand the existing storage layout. There is no automatic migration mechanism
+- **New methods can be added** - but existing storage field positions must not change
+- **Upgraders can be modified** - an upgrader can add or remove addresses from the upgraders list
 
 ## Freezing a Contract
 
 To make a contract permanently non-upgradable, either:
-- Call `root.lock_default()` without adding any addresses to `upgraders` — the code and critical slots are locked and nobody can unlock them
+- Call `root.lock_default()` without adding any addresses to `upgraders` - the code and critical slots are locked and nobody can unlock them
 - Remove all addresses from the `upgraders` list after locking
 
 > **Warning:**
@@ -2401,7 +2401,7 @@ class Faucet(gl.Contract):
 ```
 
 > **Note:**
-> The syntax for sending to an EOA uses the EVM contract interface even though the recipient is not a contract. This is because EOAs live on the chain layer, making this an external message — the same mechanism used for calling EVM contracts. This will be simplified in a future version.
+> The syntax for sending to an EOA uses the EVM contract interface even though the recipient is not a contract. This is because EOAs live on the chain layer, making this an external message - the same mechanism used for calling EVM contracts. This will be simplified in a future version.
 
 ## Reading Balances
 
@@ -2472,8 +2472,8 @@ graph TD
 
 | Environment | How to fund |
 |---|---|
-| Studio (Localnet) | Built-in faucet — 💧 button in the account selector |
-| Studionet | Built-in faucet — 💧 button in the account selector |
+| Studio (Localnet) | Built-in faucet - 💧 button in the account selector |
+| Studionet | Built-in faucet - 💧 button in the account selector |
 | Testnet Asimov | [testnet-faucet.genlayer.foundation](https://testnet-faucet.genlayer.foundation/) |
 | Testnet Bradbury | [testnet-faucet.genlayer.foundation](https://testnet-faucet.genlayer.foundation/) |
 
@@ -2507,14 +2507,14 @@ Source: https://docs.genlayer.com/developers/intelligent-contracts/features/tran
 
 Transaction Context is the GenVM execution metadata available to every Intelligent Contract execution, including caller addresses, value, chain ID, and the transaction **timestamp** (datetime). This page explains how to read the current transaction time, derive a Unix timestamp, access caller and transaction metadata, and understand what is *not* exposed, including block number, gas, and host wall-clock time.
 
-## `gl.message` — typed accessors
+## `gl.message` - typed accessors
 
 The most common fields are exposed as a typed `NamedTuple`:
 
 | Field | Type | Description |
 |---|---|---|
-| `sender_address` | `Address` | Immediate caller — EOA, EVM contract, or IC depending on how the call was initiated |
-| `origin_address` | `Address` | Original transaction submitter — preserved through internal message chains |
+| `sender_address` | `Address` | Immediate caller - EOA, EVM contract, or IC depending on how the call was initiated |
+| `origin_address` | `Address` | Original transaction submitter - preserved through internal message chains |
 | `contract_address` | `Address` | The current contract's own address |
 | `value` | `u256` | GEN sent with the call (only in `@gl.public.write.payable` methods) |
 | `chain_id` | `u256` | Current chain ID |
@@ -2527,7 +2527,7 @@ def deposit(self):
 
 For the difference between `sender_address` and `origin_address` across internal message chains, see [Messages](/developers/intelligent-contracts/features/messages).
 
-## `gl.message_raw` — full message dict
+## `gl.message_raw` - full message dict
 
 `gl.message_raw` is a `TypedDict` with everything the bootloader receives. It includes all `gl.message` fields plus:
 
@@ -2538,7 +2538,7 @@ For the difference between `sender_address` and `origin_address` across internal
 | `stack` | `list[Address]` | Stack of view-method callers, excluding the current contract |
 | `entry_kind` | `int` | `0` = MAIN, `1` = SANDBOX, `2` = CONSENSUS_STAGE |
 | `entry_data` | `bytes` | Raw entry payload |
-| `entry_stage_data` | — | Consensus-stage-specific data |
+| `entry_stage_data` | - | Consensus-stage-specific data |
 
 ```python
 # Detect whether the current execution is a deploy
@@ -2547,13 +2547,13 @@ if gl.message_raw['is_init']:
 ```
 
 > **Note:**
-> Prefer `gl.message` for the common fields — it gives you autocompletion and type checking. Reach for `gl.message_raw` only when you need one of the extra fields.
+> Prefer `gl.message` for the common fields - it gives you autocompletion and type checking. Reach for `gl.message_raw` only when you need one of the extra fields.
 
 ## Time and Timestamps
 
 Time inside the GenVM is **deterministic and pinned to the transaction's timestamp**. Every validator re-executing the transaction sees the same value, so you can use it for storage, comparisons, and prompt context without breaking equivalence.
 
-The Python standard library's clock is wired to the transaction datetime — `datetime.now()`, `datetime.now(tz)`, and `time.time()` all return the same value across validators.
+The Python standard library's clock is wired to the transaction datetime - `datetime.now()`, `datetime.now(tz)`, and `time.time()` all return the same value across validators.
 
 ### Transaction Timestamp
 
@@ -2562,7 +2562,7 @@ The transaction timestamp is exposed three ways. Use whichever fits:
 | Form | How | Use for |
 |---|---|---|
 | Unix seconds | `int(datetime.now(timezone.utc).timestamp())` | Arithmetic, expiries, deltas |
-| Unix seconds (alt) | `int(time.time())` | Same — shorter |
+| Unix seconds (alt) | `int(time.time())` | Same - shorter |
 | `datetime` object | `datetime.now(timezone.utc)` | Comparisons, formatting |
 | ISO 8601 string | `datetime.now(timezone.utc).isoformat()` *or* `gl.message_raw['datetime']` | Storage, audit trails, prompts |
 
@@ -2609,13 +2609,13 @@ ts: str = gl.message_raw['datetime']
 ```
 
 > **Warning:**
-> The clock returns the **transaction datetime**, not host wall-clock time. Do not call `datetime.now()` expecting current real-world time — by the time validators re-execute, the transaction may be minutes or hours old. Use it for relative arithmetic ("expires 24h after the tx") and timestamping, not for "is it past 5pm right now".
+> The clock returns the **transaction datetime**, not host wall-clock time. Do not call `datetime.now()` expecting current real-world time - by the time validators re-execute, the transaction may be minutes or hours old. Use it for relative arithmetic ("expires 24h after the tx") and timestamping, not for "is it past 5pm right now".
 
 ## What is *not* in the context
 
 - **No block number, no block hash.** The transaction context does not carry block-level metadata. If your contract needs block height, fetch it via [Web Access](/developers/intelligent-contracts/features/web-access) against an RPC inside a non-deterministic block.
 - **No gas price, no nonce.** Transaction metadata beyond what is listed above is not exposed to the contract.
-- **No host wall-clock time.** As above — the clock is the transaction datetime, not the validator's current time.
+- **No host wall-clock time.** As above - the clock is the transaction datetime, not the validator's current time.
 
 ---
 
@@ -2640,7 +2640,7 @@ The transaction enters the consensus pipeline: activation → proposal → commi
 
 ## Internal Messages (IC → IC)
 
-An internal message is an **asynchronous** call from one Intelligent Contract to another. It stays within the GenVM layer. During execution, `emit()` records the message as part of the execution result — the message is not sent immediately. The actual child transaction is only created when the parent transaction reaches the specified state (`on='accepted'` or `on='finalized'`). The child transaction then goes through consensus independently.
+An internal message is an **asynchronous** call from one Intelligent Contract to another. It stays within the GenVM layer. During execution, `emit()` records the message as part of the execution result - the message is not sent immediately. The actual child transaction is only created when the parent transaction reaches the specified state (`on='accepted'` or `on='finalized'`). The child transaction then goes through consensus independently.
 
 ```python
 other = gl.get_contract_at(addr)
@@ -2712,10 +2712,10 @@ Every Intelligent Contract has a corresponding **ghost contract** on GenLayer Ch
 
 ### What Ghost Contracts Do
 
-- **Hold the IC's GEN balance** — the native balance on the ghost contract on-chain is the source of truth for `self.balance`
-- **Relay transactions** — `addTransaction()` on the ghost forwards to ConsensusMain
-- **Execute external messages** — on finalization, `handleOp()` forwards calls to recipients so `msg.sender` is the IC's address
-- **Bridge the two layers** — ghost on EVM ↔ IC on GenVM, same address
+- **Hold the IC's GEN balance** - the native balance on the ghost contract on-chain is the source of truth for `self.balance`
+- **Relay transactions** - `addTransaction()` on the ghost forwards to ConsensusMain
+- **Execute external messages** - on finalization, `handleOp()` forwards calls to recipients so `msg.sender` is the IC's address
+- **Bridge the two layers** - ghost on EVM ↔ IC on GenVM, same address
 
 ### Lifecycle
 
@@ -2723,7 +2723,7 @@ Every Intelligent Contract has a corresponding **ghost contract** on GenLayer Ch
 2. GhostFactory deploys a ghost contract at address `0xABC` on GenLayer Chain
 3. Consensus processes the deployment
 4. If successful: IC deploys at the same address `0xABC` on GenVM
-5. If deployment is appealed and reverted: the ghost remains but has no IC behind it — it has no purpose or effect, but may be reused by consensus if deployment succeeds later
+5. If deployment is appealed and reverted: the ghost remains but has no IC behind it - it has no purpose or effect, but may be reused by consensus if deployment succeeds later
 
 > **Note:**
 > Ghost contract existence does **not** guarantee the IC is deployed. A reverted deployment leaves an empty ghost.
@@ -2749,8 +2749,8 @@ The message executes as soon as the parent transaction is accepted by initial co
 
 > **Warning:**
 > **Appeal risks with `on='accepted'`:**
-> - The re-execution may emit the message again — potentially multiple times across appeal rounds.
-> - If the appeal changes the outcome, the message may be "invalid" (would not have been emitted with the final outcome), but **it cannot be taken back** — it was already sent and executed.
+> - The re-execution may emit the message again - potentially multiple times across appeal rounds.
+> - If the appeal changes the outcome, the message may be "invalid" (would not have been emitted with the final outcome), but **it cannot be taken back** - it was already sent and executed.
 > - The receiving contract must be **idempotent** and must handle duplicate or unexpected messages gracefully.
 > - Contract design must account for the possibility that accepted messages may not reflect the final state.
 
@@ -2775,7 +2775,7 @@ balance = token.view().balance_of(user)          # typed view call
 token.emit(on='finalized').transfer(to, amount)  # typed write call
 ```
 
-This is purely for type safety and IDE autocompletion — at runtime it behaves identically to `gl.get_contract_at()`. No overhead.
+This is purely for type safety and IDE autocompletion - at runtime it behaves identically to `gl.get_contract_at()`. No overhead.
 
 ### EVM Interfaces (`@gl.evm.contract_interface`)
 
@@ -2868,25 +2868,25 @@ child_address = gl.deploy_contract(code=contract_code, salt=salt)
 
 ## View vs Emit
 
-- **`view()`** is synchronous — it reads state from another contract and returns the result immediately. The target contract's state is read as of the current block.
-- **`emit()`** is asynchronous — it queues a write call that executes *after* the current transaction completes. The call is not blocking.
+- **`view()`** is synchronous - it reads state from another contract and returns the result immediately. The target contract's state is read as of the current block.
+- **`emit()`** is asynchronous - it queues a write call that executes *after* the current transaction completes. The call is not blocking.
 
 ### Accepted vs Finalized
 
 ```python
-# Fast — executes after the transaction is accepted by initial consensus
+# Fast - executes after the transaction is accepted by initial consensus
 other.emit(on='accepted').do_something()
 
-# Safe — waits until the transaction is fully finalized (after appeal window)
+# Safe - waits until the transaction is fully finalized (after appeal window)
 other.emit(on='finalized').do_something()
 ```
 
 **`on='accepted'` has important implications.** If the emitting transaction is appealed, two things can happen:
 
-1. The appeal changes the contract state such that the message should not have been emitted — but it was already sent and cannot be recalled.
-2. The transaction is re-executed during the appeal, and the message (or a similar one) is emitted again. This can repeat across multiple appeal rounds — up to ~6 times depending on the validator set size.
+1. The appeal changes the contract state such that the message should not have been emitted - but it was already sent and cannot be recalled.
+2. The transaction is re-executed during the appeal, and the message (or a similar one) is emitted again. This can repeat across multiple appeal rounds - up to ~6 times depending on the validator set size.
 
-The receiving contract must be **idempotent** — it must handle duplicate or unexpected messages gracefully. If the receiving logic cannot tolerate duplicates or messages that "shouldn't have been sent" based on the final state, use `on='finalized'` instead.
+The receiving contract must be **idempotent** - it must handle duplicate or unexpected messages gracefully. If the receiving logic cannot tolerate duplicates or messages that "shouldn't have been sent" based on the final state, use `on='finalized'` instead.
 
 ## Factory Pattern
 
@@ -2916,7 +2916,7 @@ Source: https://docs.genlayer.com/developers/intelligent-contracts/features/inte
 
 Interacting with EVM Contracts lets Intelligent Contracts define EVM contract interfaces, read EVM contract data and balances, and emit messages to EVM contracts.
 
-> These are external messages — they cross from the GenVM layer back to the GenLayer Chain via [ghost contracts](/developers/intelligent-contracts/features/messages#ghost-contracts). See [Messages](/developers/intelligent-contracts/features/messages) for the conceptual model.
+> These are external messages - they cross from the GenVM layer back to the GenLayer Chain via [ghost contracts](/developers/intelligent-contracts/features/messages#ghost-contracts). See [Messages](/developers/intelligent-contracts/features/messages) for the conceptual model.
 
 ## Contract Interface Definition
 
@@ -3205,7 +3205,7 @@ Non-deterministic blocks (`leader_fn`, `validator_fn`, functions passed to `stri
 
 ### Must be INSIDE nondet blocks
 
-All `gl.nondet.*` calls — web requests, LLM prompts — must be inside a nondet block. They cannot run in regular contract code.
+All `gl.nondet.*` calls - web requests, LLM prompts - must be inside a nondet block. They cannot run in regular contract code.
 
 ```python
 @gl.public.write
@@ -3221,7 +3221,7 @@ def fetch_price(self):
 
 ### Must be OUTSIDE nondet blocks
 
-Several operations must happen in the deterministic context — after the nondet block returns:
+Several operations must happen in the deterministic context - after the nondet block returns:
 
 | Operation | Why |
 |-----------|-----|
@@ -3255,11 +3255,11 @@ def update_price(self, pair: str):
 ```
 
 > **Note:**
-> The [GenVM linter](/developers/intelligent-contracts/tooling-setup) catches all of these violations statically — run `genvm-lint check` before deploying to avoid runtime errors.
+> The [GenVM linter](/developers/intelligent-contracts/tooling-setup) catches all of these violations statically - run `genvm-lint check` before deploying to avoid runtime errors.
 
 ### Why these rules exist
 
-The leader and validators execute nondet blocks **independently** — each node runs its own `leader_fn` or `validator_fn`. If you wrote to storage inside a nondet block, each node would write a different value before consensus decides which one is correct. The same applies to contract calls and message emission: these must happen once, after consensus, using the agreed-upon result.
+The leader and validators execute nondet blocks **independently** - each node runs its own `leader_fn` or `validator_fn`. If you wrote to storage inside a nondet block, each node would write a different value before consensus decides which one is correct. The same applies to contract calls and message emission: these must happen once, after consensus, using the agreed-upon result.
 
 ## Equivalence Principle
 
@@ -3267,7 +3267,7 @@ GenLayer provides `strict_eq` for exact-match consensus and custom validator fun
 
 ### Strict Equality
 
-Requires exact matches between validator outputs. Use when all nodes can converge on the same normalized value — e.g., fetching objective data from an API and extracting a structured result:
+Requires exact matches between validator outputs. Use when all nodes can converge on the same normalized value - e.g., fetching objective data from an API and extracting a structured result:
 
 ```python
 def fetch_current_block():
@@ -3414,7 +3414,7 @@ def validate_structured(leader_result) -> bool:
     if not isinstance(leader_result, gl.vm.Return):
         return False
     data = leader_result.calldata
-    # Validate structure rather than exact match — LLM outputs are non-deterministic
+    # Validate structure rather than exact match - LLM outputs are non-deterministic
     return (
         isinstance(data, dict)
         and isinstance(data.get("score"), int)
@@ -3506,7 +3506,7 @@ def parse_score(response: dict) -> int:
     if raw is None:
         raise gl.UserError(f"Missing 'score' key. Got keys: {list(response.keys())}")
 
-    # Coerce to int — handles "3", "3.5", floats, whitespace
+    # Coerce to int - handles "3", "3.5", floats, whitespace
     try:
         return max(0, int(round(float(str(raw).strip()))))
     except (ValueError, TypeError):
@@ -3538,11 +3538,11 @@ def clean_llm_json(text: str) -> dict:
 result = gl.nondet.exec_prompt(task, response_format="json")
 ```
 
-This instructs the LLM to return JSON. It significantly improves reliability, but you should still validate and clean the output — LLMs don't always comply.
+This instructs the LLM to return JSON. It significantly improves reliability, but you should still validate and clean the output - LLMs don't always comply.
 
 ## Error Handling in LLM Calls
 
-When using LLMs inside `run_nondet_unsafe`, consider how errors affect consensus. If the LLM returns garbage, you generally want the validator to *disagree* (return `False`) rather than agree on broken output — this forces a rotation to a new leader:
+When using LLMs inside `run_nondet_unsafe`, consider how errors affect consensus. If the LLM returns garbage, you generally want the validator to *disagree* (return `False`) rather than agree on broken output - this forces a rotation to a new leader:
 
 ```python
 def leader_fn():
@@ -3617,14 +3617,14 @@ result = gl.eq_principle.strict_eq(check_website_status)
 
 ## Use Cases
 
-- **Visual evidence verification** — insurance claims with photo proof, damage assessment
-- **Document analysis** — receipts, invoices, certificates
-- **Web monitoring** — screenshot a page and verify its content matches expectations
-- **Brand & content compliance** — check if visual content meets guidelines
-- **UI verification** — screenshot an app and verify it renders correctly
+- **Visual evidence verification** - insurance claims with photo proof, damage assessment
+- **Document analysis** - receipts, invoices, certificates
+- **Web monitoring** - screenshot a page and verify its content matches expectations
+- **Brand & content compliance** - check if visual content meets guidelines
+- **UI verification** - screenshot an app and verify it renders correctly
 
 > **Note:**
-> Image processing requires vision-capable LLM models. On the GenLayer network, validators handle model selection — your contract just sends images. In Studio running locally, ensure your configured validators use a model that supports image inputs (e.g., GPT-5, Claude Sonnet).
+> Image processing requires vision-capable LLM models. On the GenLayer network, validators handle model selection - your contract just sends images. In Studio running locally, ensure your configured validators use a model that supports image inputs (e.g., GPT-5, Claude Sonnet).
 
 ---
 
@@ -3694,7 +3694,7 @@ def fetch_data():
 
 ## Consensus-Friendly Web Requests
 
-When using web data in non-deterministic blocks, remember that the leader and validators make **independent requests**. External APIs may return different data between calls — timestamps change, counts update, caches vary.
+When using web data in non-deterministic blocks, remember that the leader and validators make **independent requests**. External APIs may return different data between calls - timestamps change, counts update, caches vary.
 
 ### Extract Stable Fields
 
@@ -3735,28 +3735,28 @@ See the [Equivalence Principle](/developers/intelligent-contracts/equivalence-pr
 # Development Setup
 Source: https://docs.genlayer.com/developers/intelligent-contracts/tooling-setup
 
-This guide covers everything you need to develop, test, and deploy Intelligent Contracts — from zero-setup exploration to a full local development environment with linting, testing, and agent-assisted workflows.
+This guide covers everything you need to develop, test, and deploy Intelligent Contracts - from zero-setup exploration to a full local development environment with linting, testing, and agent-assisted workflows.
 
 ## Recommended: GenLayer Skills
 
-The [GenLayer Skills](https://skills.genlayer.com/) plugin for Claude Code is the fastest path to a working development environment. The `genlayer-dev` skill scaffolds a project, installs prerequisites, runs the linter and direct-mode tests, and walks you through deployment — interactively.
+The [GenLayer Skills](https://skills.genlayer.com/) plugin for Claude Code is the fastest path to a working development environment. The `genlayer-dev` skill scaffolds a project, installs prerequisites, runs the linter and direct-mode tests, and walks you through deployment - interactively.
 
 ```bash copy
 claude /plugin marketplace add genlayerlabs/skills
 claude /plugin install genlayer-dev@genlayerlabs
 ```
 
-Then run `claude /genlayer-dev` and follow the prompts. The skill bundles the same workflows documented in the rest of this page — it just runs them for you.
+Then run `claude /genlayer-dev` and follow the prompts. The skill bundles the same workflows documented in the rest of this page - it just runs them for you.
 
 The rest of this guide describes the manual setup, the reference path for anyone who wants fine-grained control or is integrating with existing tooling.
 
 ## Quick Start: GenLayer Studio
 
-The fastest way to start is [studio.genlayer.com](https://studio.genlayer.com) — a web-based IDE where you can write, deploy, and interact with Intelligent Contracts with zero setup.
+The fastest way to start is [studio.genlayer.com](https://studio.genlayer.com) - a web-based IDE where you can write, deploy, and interact with Intelligent Contracts with zero setup.
 
-You can also import any deployed contract by address to interact with it directly in the Studio — useful for debugging or testing contracts you've deployed from your local environment.
+You can also import any deployed contract by address to interact with it directly in the Studio - useful for debugging or testing contracts you've deployed from your local environment.
 
-For anything beyond exploration — local testing, CI, agent-assisted development — set up a local environment below.
+For anything beyond exploration - local testing, CI, agent-assisted development - set up a local environment below.
 
 ## Local Environment Setup
 
@@ -3785,8 +3785,8 @@ pip install -r requirements.txt
 ```
 
 This installs:
-- **`genlayer-test`** — testing framework with direct mode, GLSim, and integration test support
-- **`genvm-linter`** — static analysis for contract safety and correctness
+- **`genlayer-test`** - testing framework with direct mode, GLSim, and integration test support
+- **`genvm-linter`** - static analysis for contract safety and correctness
 
 ### Project Structure
 
@@ -3835,16 +3835,16 @@ genvm-lint check contracts/my_contract.py
 ```
 
 `check` runs both fast AST-based safety checks and SDK-based semantic validation. It catches:
-- **Forbidden imports** — `os`, `sys`, `subprocess`, etc.
+- **Forbidden imports** - `os`, `sys`, `subprocess`, etc.
 - **Non-deterministic calls** outside equivalence principle blocks
-- **Invalid storage types** — must use `TreeMap`/`DynArray`, not `dict`/`list`
+- **Invalid storage types** - must use `TreeMap`/`DynArray`, not `dict`/`list`
 - **Missing decorators** and return type annotations
 
 Use `--json` for machine-readable output (useful for CI and agent workflows).
 
 ### 3. Direct Mode Tests
 
-The fastest feedback loop — runs contracts in-memory without any server:
+The fastest feedback loop - runs contracts in-memory without any server:
 
 ```bash
 pytest tests/direct/ -v
@@ -3949,7 +3949,7 @@ These are the backends you can develop against. Your frontend, integration tests
 
 A lightweight simulator that implements the GenLayer JSON-RPC protocol. Starts in ~1 second, no Docker required. You can point your frontend and integration tests at it for fast iteration.
 
-GLSim runs the Python runner natively — **not inside GenVM** — so there can be minor incompatibilities with the full runtime. Use it for fast development cycles, then validate against Studio before deploying.
+GLSim runs the Python runner natively - **not inside GenVM** - so there can be minor incompatibilities with the full runtime. Use it for fast development cycles, then validate against Studio before deploying.
 
 ```bash
 # Start the simulator
@@ -3981,22 +3981,22 @@ gltest tests/integration/ -v -s --network localnet
 CLI options for `genlayer init` and `genlayer up`
 
 **`genlayer init`** options:
-- `--numValidators <number>` — number of validators (default: 5)
-- `--headless` — run without Studio UI
-- `--reset-db` — start with a clean database
-- `--localnet-version <version>` — pin a specific localnet version
+- `--numValidators <number>` - number of validators (default: 5)
+- `--headless` - run without Studio UI
+- `--reset-db` - start with a clean database
+- `--localnet-version <version>` - pin a specific localnet version
 
 **`genlayer up`** options:
-- `--reset-validators` — recreate all validators
-- `--numValidators <number>` — number of validators
-- `--headless` — run without Studio UI
-- `--reset-db` — clean database
+- `--reset-validators` - recreate all validators
+- `--numValidators <number>` - number of validators
+- `--headless` - run without Studio UI
+- `--reset-db` - clean database
 
 ### studio.genlayer.com
 
 **Setup:** none
 
-Hosted Studio — convenient when you don't want to run Docker locally. Rate limited compared to a local instance. You can also import any deployed contract by address to interact with it directly in the browser.
+Hosted Studio - convenient when you don't want to run Docker locally. Rate limited compared to a local instance. You can also import any deployed contract by address to interact with it directly in the browser.
 
 ```bash
 gltest tests/integration/ -v -s --network studionet
@@ -4006,7 +4006,7 @@ gltest tests/integration/ -v -s --network studionet
 
 **Setup:** account with private keys
 
-The most realistic environment — the actual GenLayer testnet with real validators. You don't get full validator logs like you do with local Studio, so this is best for final pre-production validation rather than active debugging.
+The most realistic environment - the actual GenLayer testnet with real validators. You don't get full validator logs like you do with local Studio, so this is best for final pre-production validation rather than active debugging.
 
 ```bash
 gltest tests/integration/ -v -s --network testnet_bradbury
@@ -4030,7 +4030,7 @@ The [GenLayer VS Code Extension](https://marketplace.visualstudio.com/items?item
 
 The boilerplate is designed to work well with AI coding agents. The linter and direct mode tests provide a fast feedback loop that agents can use without spinning up infrastructure.
 
-For Claude Code, install the [GenLayer Skills](https://skills.genlayer.com/) marketplace (covered at the top of this page) — it bundles the workflows below behind interactive commands.
+For Claude Code, install the [GenLayer Skills](https://skills.genlayer.com/) marketplace (covered at the top of this page) - it bundles the workflows below behind interactive commands.
 
 For other IDEs and clients, the GenLayer MCP servers provide the same capabilities via the Model Context Protocol:
 
@@ -4041,16 +4041,16 @@ The [GenLayer MCP Server](https://www.npmjs.com/package/genlayer-mcp) provides c
 claude mcp add genlayer npx -- -y genlayer-mcp
 ```
 
-The **GenLayer Docs MCP Server** gives your AI agent searchable access to the full GenLayer documentation and SDK reference — so it can look up APIs, patterns, and examples while writing code:
+The **GenLayer Docs MCP Server** gives your AI agent searchable access to the full GenLayer documentation and SDK reference - so it can look up APIs, patterns, and examples while writing code:
 
 ```bash
 # Add to Claude Code
 claude mcp add genlayer-docs --transport sse https://docs-mcp.genlayer.com/sse
 ```
 
-This is a hosted service — no local setup required. It provides a `search_docs` tool that searches across both the [GenLayer documentation](https://docs.genlayer.com) and the [GenLayer SDK reference](https://sdk.genlayer.com). Compatible with any MCP client (Claude Code, Cursor, Windsurf, etc.).
+This is a hosted service - no local setup required. It provides a `search_docs` tool that searches across both the [GenLayer documentation](https://docs.genlayer.com) and the [GenLayer SDK reference](https://sdk.genlayer.com). Compatible with any MCP client (Claude Code, Cursor, Windsurf, etc.).
 
-The boilerplate also includes a `CLAUDE.md` file pre-configured with commands, architecture context, and testing patterns — so agents understand the project structure immediately.
+The boilerplate also includes a `CLAUDE.md` file pre-configured with commands, architecture context, and testing patterns - so agents understand the project structure immediately.
 
 ## Frontend Development
 
@@ -5061,7 +5061,7 @@ def validator_fn(leader_result) -> bool:
     return is_acceptable
 ```
 
-The leader's result is only accepted if a majority of validators agree. If the majority rejects, the network rotates to a different leader and retries. If consensus still can't be reached, the transaction goes **undetermined** — it does not modify contract state.
+The leader's result is only accepted if a majority of validators agree. If the majority rejects, the network rotates to a different leader and retries. If consensus still can't be reached, the transaction goes **undetermined** - it does not modify contract state.
 
 > **Note:**
 > **What gets stored?** The accepted leader result is the value your contract receives and can store. Validators verify or reject that leader result; their independent intermediate answers are not automatically persisted on-chain. If your application needs to expose multiple perspectives, make those perspectives explicit fields in the leader result and write validator logic that checks them.
@@ -5083,7 +5083,7 @@ graph TD
 The typical validator pattern is: **re-run the leader function independently, then compare the results**. How you compare determines which validation pattern you're using.
 
 > **Note:**
-> **Always extract before comparing.** Raw web data varies between nodes (caching, cookies, dynamic content) and is expensive to write to the GenLayer chain — whatever data the leader returns has to be stored on-chain. The typical pattern is: **fetch web data → LLM extraction → return structured data**, all within the same non-deterministic block.
+> **Always extract before comparing.** Raw web data varies between nodes (caching, cookies, dynamic content) and is expensive to write to the GenLayer chain - whatever data the leader returns has to be stored on-chain. The typical pattern is: **fetch web data → LLM extraction → return structured data**, all within the same non-deterministic block.
 
 ## Validation Patterns
 
@@ -5117,7 +5117,7 @@ def resolve_match(self, match_id: str):
             return False
         validator_data = leader_fn()
         leader_data = leader_result.calldata
-        # Only compare the decision fields — analysis text will differ
+        # Only compare the decision fields - analysis text will differ
         return (
             leader_data["winner"] == validator_data["winner"]
             and leader_data["score"] == validator_data["score"]
@@ -5132,10 +5132,10 @@ def resolve_match(self, match_id: str):
     self.matches[match_id].analysis = result["analysis"]
 ```
 
-The `analysis` field is stored but not compared — two LLMs will word their reasoning differently. The `winner` and `score` fields are the decision and must match exactly.
+The `analysis` field is stored but not compared - two LLMs will word their reasoning differently. The `winner` and `score` fields are the decision and must match exactly.
 
 > **Note:**
-> If you only need the decision fields (not the analysis), you can use `strict_eq` instead — see [Convenience Functions](#strict-equality-strict_eq).
+> If you only need the decision fields (not the analysis), you can use `strict_eq` instead - see [Convenience Functions](#strict-equality-strict_eq).
 
 ### Pattern 2: Numeric Tolerance
 
@@ -5145,7 +5145,7 @@ When results are numeric but may vary slightly between nodes, compare within a t
 
 #### Price Oracle
 
-The most common use case — fetching a price that may drift between when the leader and validator execute:
+The most common use case - fetching a price that may drift between when the leader and validator execute:
 
 ```python
 @gl.public.write
@@ -5162,7 +5162,7 @@ def update_price(self, pair: str):
             return False
         validator_price = leader_fn()
         leader_price = leader_result.calldata
-        # 2% tolerance — price may drift between leader and validator execution
+        # 2% tolerance - price may drift between leader and validator execution
         if leader_price == 0:
             return validator_price == 0
         return abs(leader_price - validator_price) / abs(leader_price) <= 0.02
@@ -5172,7 +5172,7 @@ def update_price(self, pair: str):
 
 #### Quality Scoring
 
-For LLM-generated scores, use absolute tolerance — two LLMs rating the same content rarely give identical scores:
+For LLM-generated scores, use absolute tolerance - two LLMs rating the same content rarely give identical scores:
 
 ```python
 @gl.public.write
@@ -5207,7 +5207,7 @@ def evaluate_submission(self, submission_id: str):
     self.submissions[submission_id].analysis = result["analysis"]
 ```
 
-The gate check (score 0) ensures that if one node thinks the content should be rejected outright, both must agree — you don't want a ±1 tolerance to turn a rejection into an acceptance.
+The gate check (score 0) ensures that if one node thinks the content should be rejected outright, both must agree - you don't want a ±1 tolerance to turn a rejection into an acceptance.
 
 ### Pattern 3: LLM Comparison (Comparative)
 
@@ -5222,7 +5222,7 @@ result = gl.eq_principle.prompt_comparative(
 )
 ```
 
-This uses a special `EqComparative` prompt template — not a regular `gl.nondet.exec_prompt` call. Node operators can customize these templates to tune how their validators evaluate equivalence, improving judgment quality over time. This is a key advantage over writing your own comparison prompts.
+This uses a special `EqComparative` prompt template - not a regular `gl.nondet.exec_prompt` call. Node operators can customize these templates to tune how their validators evaluate equivalence, improving judgment quality over time. This is a key advantage over writing your own comparison prompts.
 
 For more control while keeping this benefit, use the template directly in a custom `run_nondet_unsafe` validator. This lets you combine LLM-based comparison with programmatic checks:
 
@@ -5257,7 +5257,7 @@ def analyze_event(self, event_id: str):
             return False
         validator_data = leader_fn()
 
-        # Use the EqComparative template — node operators can customize this
+        # Use the EqComparative template - node operators can customize this
         verdict = gl_call.gl_call_generic(
             {
                 'ExecPromptTemplate': {
@@ -5277,12 +5277,12 @@ def analyze_event(self, event_id: str):
     self.events[event_id].analysis = result["reasoning"]
 ```
 
-The `EqComparative` template sends both answers and your principle to the validator's LLM, which returns `true`/`false`. Because this goes through the template system, node operators can fine-tune the comparison prompt for their specific LLM — getting better judgment over time without any contract changes.
+The `EqComparative` template sends both answers and your principle to the validator's LLM, which returns `true`/`false`. Because this goes through the template system, node operators can fine-tune the comparison prompt for their specific LLM - getting better judgment over time without any contract changes.
 
-**When to use:** Results are rich (text + structured data) and you need natural-language equivalence judgment — "outcomes must match", "key facts must agree", "sentiments must be the same".
+**When to use:** Results are rich (text + structured data) and you need natural-language equivalence judgment - "outcomes must match", "key facts must agree", "sentiments must be the same".
 
 > **Note:**
-> If comparative LLM comparison is too loose or too strict, consider whether you can reduce the problem to [partial field matching](#pattern-1-partial-field-matching) or [numeric tolerance](#pattern-2-numeric-tolerance) — those give you deterministic, programmatic control.
+> If comparative LLM comparison is too loose or too strict, consider whether you can reduce the problem to [partial field matching](#pattern-1-partial-field-matching) or [numeric tolerance](#pattern-2-numeric-tolerance) - those give you deterministic, programmatic control.
 
 ### Pattern 4: Source-Grounded Non-Comparative Validation
 
@@ -5386,10 +5386,10 @@ def summarize_article(self, url: str):
     self.summaries[url] = gl.vm.run_nondet_unsafe(leader_fn, validator_fn)
 ```
 
-The validator never writes its own summary — it only judges whether the leader's summary is faithful to the source. And because it uses the `EqNonComparativeValidator` template, node operators can tune the judgment prompt for their LLM.
+The validator never writes its own summary - it only judges whether the leader's summary is faithful to the source. And because it uses the `EqNonComparativeValidator` template, node operators can tune the judgment prompt for their LLM.
 
 > **Note:**
-> Non-comparative validation is rare in practice. Most use cases are better served by patterns 1-3 where the validator independently reproduces the result. Non-comparative is most useful when the output is open-ended and there's no meaningful way to compare two independent results — e.g., summarization, where two valid summaries can be completely different yet both correct.
+> Non-comparative validation is rare in practice. Most use cases are better served by patterns 1-3 where the validator independently reproduces the result. Non-comparative is most useful when the output is open-ended and there's no meaningful way to compare two independent results - e.g., summarization, where two valid summaries can be completely different yet both correct.
 
 > **Warning:**
 > Do not use non-comparative validation as a schema check. A validator that only accepts `authentic`, `suspicious`, or `inconclusive`; checks that `confidence` is between 0 and 100; and requires a non-empty summary is still trusting the leader's decision. For classification, scoring, extraction, authenticity, safety, ranking, and settlement logic, validators should almost always re-run or independently derive the answer, then compare the decision field, extracted fields, score bucket, or derived status.
@@ -5398,13 +5398,13 @@ The validator never writes its own summary — it only judges whether the leader
 
 GenLayer provides two variants for custom leader/validator logic. The difference is **who handles validator errors**.
 
-When writing custom leader/validator patterns, **use `run_nondet_unsafe`** and handle errors yourself inside the validator. This is what production contracts do — it gives you full control over error classification and comparison logic. If the validator throws an unhandled exception, it counts as `Disagree` (same as returning `False`).
+When writing custom leader/validator patterns, **use `run_nondet_unsafe`** and handle errors yourself inside the validator. This is what production contracts do - it gives you full control over error classification and comparison logic. If the validator throws an unhandled exception, it counts as `Disagree` (same as returning `False`).
 
 ```python
 result = gl.vm.run_nondet_unsafe(leader_fn, validator_fn)
 ```
 
-**`gl.vm.run_nondet`** is primarily used internally by the [convenience functions](#convenience-functions). It wraps the validator in a sandbox — if the validator throws, the sandbox catches it and compares the error against the leader's error using configurable comparison functions:
+**`gl.vm.run_nondet`** is primarily used internally by the [convenience functions](#convenience-functions). It wraps the validator in a sandbox - if the validator throws, the sandbox catches it and compares the error against the leader's error using configurable comparison functions:
 
 ```python
 result = gl.vm.run_nondet(
@@ -5437,7 +5437,7 @@ def _handle_leader_error(leaders_res, leader_fn) -> bool:
     leader_msg = leaders_res.message if hasattr(leaders_res, 'message') else ''
     try:
         leader_fn()
-        return False  # Leader errored but validator succeeded — disagree
+        return False  # Leader errored but validator succeeded - disagree
     except gl.vm.UserError as e:
         validator_msg = e.message if hasattr(e, 'message') else str(e)
         # Deterministic errors: must match exactly
@@ -5465,14 +5465,14 @@ def validator_fn(leaders_res) -> bool:
 This gives fine-grained control:
 - **Expected/external errors** (e.g., "issue not found"): must match exactly
 - **Transient errors** (e.g., API timeout): if both nodes fail transiently, agree
-- **LLM errors**: always disagree — force retry with different validators
+- **LLM errors**: always disagree - force retry with different validators
 
 ### The Validator's Result Parameter
 
 The validator function receives a `gl.vm.Result` which can be one of:
-- **`gl.vm.Return[T]`** — leader succeeded; access the value via `.calldata`
-- **`gl.vm.UserError`** — leader raised an application error
-- **`gl.vm.VMError`** — leader hit a VM-level error (e.g., out of memory)
+- **`gl.vm.Return[T]`** - leader succeeded; access the value via `.calldata`
+- **`gl.vm.UserError`** - leader raised an application error
+- **`gl.vm.VMError`** - leader hit a VM-level error (e.g., out of memory)
 
 Always check the type before accessing the result:
 
@@ -5506,10 +5506,10 @@ def fetch_match_result():
 result = json.loads(gl.eq_principle.strict_eq(fetch_match_result))
 ```
 
-**Use when:** results are objective and should be identical — API data, boolean decisions, structured data where you don't need separate analysis text.
+**Use when:** results are objective and should be identical - API data, boolean decisions, structured data where you don't need separate analysis text.
 
 > **Note:**
-> Note the `sort_keys=True` — JSON key ordering can vary between nodes. Sorting ensures exact string comparison works. If you need to compare only some fields or allow tolerance, use a custom leader/validator pattern instead.
+> Note the `sort_keys=True` - JSON key ordering can vary between nodes. Sorting ensures exact string comparison works. If you need to compare only some fields or allow tolerance, use a custom leader/validator pattern instead.
 
 ### Comparative (`prompt_comparative`)
 
@@ -5524,11 +5524,11 @@ result = gl.eq_principle.prompt_comparative(
 
 The comparison uses a built-in `EqComparative` prompt template that node operators can customize. The LLM receives the leader's answer, the validator's answer, and your principle, then returns true/false.
 
-**Use when:** results are complex (text + data) and you need natural-language equivalence criteria — "key facts must match", "conclusions must agree", "numerical values within 10%".
+**Use when:** results are complex (text + data) and you need natural-language equivalence criteria - "key facts must match", "conclusions must agree", "numerical values within 10%".
 
 ### Non-Comparative (`prompt_non_comparative`)
 
-The leader performs a task, and validators evaluate the leader's output against criteria — **without repeating the task themselves**. Uses `run_nondet` under the hood.
+The leader performs a task, and validators evaluate the leader's output against criteria - **without repeating the task themselves**. Uses `run_nondet` under the hood.
 
 ```python
 result = gl.eq_principle.prompt_non_comparative(
@@ -5543,23 +5543,23 @@ result = gl.eq_principle.prompt_non_comparative(
 ```
 
 Parameters:
-- **`fn`** — function that provides the input data (runs on both leader and validator)
-- **`task`** — instruction for the leader's LLM
-- **`criteria`** — rules the validator's LLM uses to judge the leader's output against the input data
+- **`fn`** - function that provides the input data (runs on both leader and validator)
+- **`task`** - instruction for the leader's LLM
+- **`criteria`** - rules the validator's LLM uses to judge the leader's output against the input data
 
 **Use when:** the output is open-ended and validity can be judged against the input/source data without producing a second candidate output. Summaries are the clearest example: many different summaries can be valid, but the validator can still check faithfulness, coverage, hallucinations, and constraints. For classification, scoring, extraction, authenticity, safety, ranking, or settlement decisions, prefer comparative validation unless you can clearly explain how the validator independently verifies the decision from source data.
 
 ## Writing Secure Validators
 
-The validator's job is to **prevent malicious or incorrect data** from being accepted. A validator that always returns `True` defeats the entire consensus mechanism — it would let a single malicious node set any result.
+The validator's job is to **prevent malicious or incorrect data** from being accepted. A validator that always returns `True` defeats the entire consensus mechanism - it would let a single malicious node set any result.
 
-**Bad — accepts anything:**
+**Bad - accepts anything:**
 ```python
 def validator(leader_result):
     return True  # Insecure! Leader can return arbitrary data
 ```
 
-**Bad — validates only the leader's formatting:**
+**Bad - validates only the leader's formatting:**
 ```python
 def validator(leader_result):
     if not isinstance(leader_result, gl.vm.Return):
@@ -5576,7 +5576,7 @@ def validator(leader_result):
 
 This validator checks that the output looks valid, but it never verifies whether the decision follows from the source data. The leader still decides alone.
 
-**Good — independent verification:**
+**Good - independent verification:**
 ```python
 def validator(leader_result):
     if not isinstance(leader_result, gl.vm.Return):
@@ -5586,10 +5586,10 @@ def validator(leader_result):
 ```
 
 Guidelines:
-1. **Never trust the leader** — verify against source data or an independently computed result
-2. **Tolerate nondeterminism** — use thresholds for scores, percentage tolerance for prices, field-level comparison for structured data
-3. **Check error types** — handle `UserError` and `VMError` before accessing `.calldata`
-4. **Reject when in doubt** — security first
+1. **Never trust the leader** - verify against source data or an independently computed result
+2. **Tolerate nondeterminism** - use thresholds for scores, percentage tolerance for prices, field-level comparison for structured data
+3. **Check error types** - handle `UserError` and `VMError` before accessing `.calldata`
+4. **Reject when in doubt** - security first
 
 ---
 
@@ -6623,7 +6623,7 @@ Without `response_format="json"`, LLMs may wrap output in markdown code fences, 
 
 ## Extract Stable Fields from Web Data
 
-When fetching external data for consensus, the leader and validators make **independent requests**. API responses often contain fields that change between calls — timestamps, view counts, caching headers. Extract only the fields that matter:
+When fetching external data for consensus, the leader and validators make **independent requests**. API responses often contain fields that change between calls - timestamps, view counts, caching headers. Extract only the fields that matter:
 
 ```python
 def leader_fn():
@@ -6648,7 +6648,7 @@ This is the #1 cause of failed consensus for new developers. If your contract fe
 
 ## Compare Derived Status, Not Raw Data
 
-Sometimes even stable fields can differ between calls — a new CI check run starts, a comment is added. Instead of comparing raw arrays, derive a summary and compare that:
+Sometimes even stable fields can differ between calls - a new CI check run starts, a comment is added. Instead of comparing raw arrays, derive a summary and compare that:
 
 ```python
 def _check_ci_status(self, repo: str, commit_hash: str) -> str:
@@ -6691,7 +6691,7 @@ def _check_ci_status(self, repo: str, commit_hash: str) -> str:
     return "success"
 ```
 
-The key insight: consensus doesn't require identical data — it requires agreement on the **decision**.
+The key insight: consensus doesn't require identical data - it requires agreement on the **decision**.
 
 ## Ground LLM Judgments with Programmatic Facts
 
@@ -6716,7 +6716,7 @@ def _generate_rule_checks(self, rules: str) -> list:
 
 # Example output for rules "no em dashes, must mention @BOTCHA, must include botcha.xyz":
 # [
-#   {"rule": "no em dashes",    "expression": "'—' not in text",      ...},
+#   {"rule": "no em dashes",    "expression": "' - ' not in text",      ...},
 #   {"rule": "mention @BOTCHA", "expression": "'@BOTCHA' in text",    ...},
 #   {"rule": "include link",    "expression": "'botcha.xyz' in text", ...},
 # ]
@@ -6724,7 +6724,7 @@ def _generate_rule_checks(self, rules: str) -> list:
 
 ### Step 2: Eval in a Sandbox
 
-Run the generated expressions deterministically — no hallucination possible:
+Run the generated expressions deterministically - no hallucination possible:
 
 ```python
 def _eval_rule_checks(self, checks: list, tweet_text: str) -> list:
@@ -6760,7 +6760,7 @@ Evaluate this submission for compliance with the campaign rules.
 
 Submission: {tweet_text}
 
-IMPORTANT — PROGRAMMATIC VERIFICATION RESULTS:
+IMPORTANT - PROGRAMMATIC VERIFICATION RESULTS:
 These results are GROUND TRUTH from running code on the raw text.
 Do NOT override them with your own character-level analysis.
 
@@ -6776,7 +6776,7 @@ Respond as JSON: {{"compliant": true/false, "violations": ["..."]}}
 result = gl.nondet.exec_prompt(compliance_prompt, response_format="json")
 ```
 
-This three-step pattern — **generate checks → eval deterministically → inject as ground truth** — eliminates an entire class of LLM errors. Use it whenever your contract needs to verify concrete, checkable facts.
+This three-step pattern - **generate checks → eval deterministically → inject as ground truth** - eliminates an entire class of LLM errors. Use it whenever your contract needs to verify concrete, checkable facts.
 
 ## Classify Errors
 
@@ -6794,7 +6794,7 @@ if response.status != 200:
     raise ValueError(f"{ERROR_EXTERNAL} GitHub API returned {response.status}")
 ```
 
-`[EXPECTED]` errors mean the transaction should fail consistently across all nodes. `[EXTERNAL]` errors mean the external service had a problem — the transaction may succeed on retry.
+`[EXPECTED]` errors mean the transaction should fail consistently across all nodes. `[EXTERNAL]` errors mean the external service had a problem - the transaction may succeed on retry.
 
 > **Note:**
 > For a comprehensive guide on prompt engineering, see the [Prompt Engineering Guide from Anthropic](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview).
@@ -6975,7 +6975,7 @@ This UserStorage contract provides a simple example of how user-specific data ca
 # LlmHelloWorld Contract
 Source: https://docs.genlayer.com/developers/intelligent-contracts/examples/llm-hello-world
 
-The `LlmHelloWorld` contract is the simplest example of calling an LLM from a Python Intelligent Contract. The leader validator asks an LLM to generate a short salute, and the other validators use the [non-comparative Equivalence Principle](/developers/intelligent-contracts/equivalence-principle#pattern-4-source-grounded-non-comparative-validation) to judge whether the leader's response actually is a salute — without each validator generating its own. This is how GenLayer reaches consensus on open-ended LLM output that would never match word-for-word across validators.
+The `LlmHelloWorld` contract is the simplest example of calling an LLM from a Python Intelligent Contract. The leader validator asks an LLM to generate a short salute, and the other validators use the [non-comparative Equivalence Principle](/developers/intelligent-contracts/equivalence-principle#pattern-4-source-grounded-non-comparative-validation) to judge whether the leader's response actually is a salute - without each validator generating its own. This is how GenLayer reaches consensus on open-ended LLM output that would never match word-for-word across validators.
 
 ```python
 # { "Depends": "py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6" }
@@ -7070,7 +7070,7 @@ This contract demonstrates several important concepts:
 ## Important Notes
 
 1. This is a minimal example of LLM integration in an Intelligent Contract; the prompt and criteria are intentionally simple.
-2. Never use `gl.eq_principle.strict_eq()` for LLM calls — LLM output is non-deterministic, so exact-match consensus fails. Use criteria-based validation like this example, or a [custom validator function](/developers/intelligent-contracts/equivalence-principle#validation-patterns) for full control.
+2. Never use `gl.eq_principle.strict_eq()` for LLM calls - LLM output is non-deterministic, so exact-match consensus fails. Use criteria-based validation like this example, or a [custom validator function](/developers/intelligent-contracts/equivalence-principle#validation-patterns) for full control.
 3. For a variant where validators check the response against task criteria with explicit parameters, see [LlmHelloWorldNonComparative](/developers/intelligent-contracts/examples/llm-hello-world-non-comparative).
 
 You can monitor the contract's behavior through transaction logs, which will show the LLM responses and state updates as they occur.
@@ -9544,10 +9544,10 @@ const client = createClient({
   account: walletAddress as `0x${string}`,
 });
 
-// Switch the wallet to the correct network — must be called before writing
+// Switch the wallet to the correct network - must be called before writing
 await client.connect("studionet");
 
-// Now write as usual — MetaMask will prompt for signing
+// Now write as usual - MetaMask will prompt for signing
 const txHash = await client.writeContract({
   address: contractAddress,
   functionName: "create_profile",
@@ -10385,7 +10385,7 @@ GPU not required unless running LLMs locally. See [detailed requirements](/valid
 
 ## Choose Your Setup Method
 
-GenLayer offers two ways to set up your validator node. Both methods result in the same configuration—choose the one that fits your workflow.
+GenLayer offers two ways to set up your validator node. Both methods result in the same configuration - choose the one that fits your workflow.
 
 | Method | Best For |
 |--------|----------|
@@ -10434,7 +10434,7 @@ That's it. The wizard will ask questions and guide you through everything.
 > **Note:**
 > The AI wizard uses the same underlying steps as the manual setup below. You can switch between methods at any point or use the manual guide as a reference.
 
-Browse all available skills at [skills.genlayer.com](https://skills.genlayer.com/) — the marketplace also includes the `genlayer-dev` skill for contract development.
+Browse all available skills at [skills.genlayer.com](https://skills.genlayer.com/) - the marketplace also includes the `genlayer-dev` skill for contract development.
 
 ---
 
@@ -10443,8 +10443,8 @@ Browse all available skills at [skills.genlayer.com](https://skills.genlayer.com
 If you prefer to run commands manually, need fine-grained control over each step, or are integrating with existing automation pipelines, follow the detailed instructions in the sections below.
 
 The manual setup covers:
-1. **Create the Validator Wallet** — Set up your wallet and stake GEN tokens
-2. **Set Up the Validator Node** — Download, configure, and run the node software
+1. **Create the Validator Wallet** - Set up your wallet and stake GEN tokens
+2. **Set Up the Validator Node** - Download, configure, and run the node software
 
 ---
 
@@ -10465,7 +10465,7 @@ Before setting up your validator node, you need to create your validator wallet 
 >
 > The wizard outputs all three addresses at the end. Save them - you'll need the Validator Wallet and Operator addresses for your node configuration.
 >
-> **Back up the owner wallet's private key or seed phrase.** The wizard's keystore export only covers the operator key — the owner key never touches your server and cannot be recovered from the node. If it is lost, staked funds can no longer be exited or claimed. See [Owner, Operator, and ValidatorWallet](/understand-genlayer-protocol/core-concepts/optimistic-democracy/staking#owner-operator-and-validatorwallet) for how the three relate.
+> **Back up the owner wallet's private key or seed phrase.** The wizard's keystore export only covers the operator key - the owner key never touches your server and cannot be recovered from the node. If it is lost, staked funds can no longer be exited or claimed. See [Owner, Operator, and ValidatorWallet](/understand-genlayer-protocol/core-concepts/optimistic-democracy/staking#owner-operator-and-validatorwallet) for how the three relate.
 
 ### Prerequisites
 
@@ -10675,7 +10675,7 @@ node:
     port: 9151 # RPC server port
     # allowed_origins: unified browser-origin allowlist applied to BOTH
     # the HTTP transport (CORS) and the WS upgrade (gorilla CheckOrigin).
-    # Exact-match URLs only — no wildcard syntax beyond "*". Omit or
+    # Exact-match URLs only - no wildcard syntax beyond "*". Omit or
     # leave empty to keep the permissive default ["*"]. Operators can
     # override per-transport for WS via rpc.websocket.origins (rare).
     # allowed_origins:
@@ -10686,7 +10686,7 @@ node:
     # block (the default) to keep WS disabled.
     #
     # When enabled, the default is single-listener mode: WS upgrades are
-    # served on the existing RPC listener (port above) — one port, one
+    # served on the existing RPC listener (port above) - one port, one
     # firewall entry, one reverse-proxy upstream. To run a dedicated WS
     # listener instead (Geth-conventional dual-port pattern), set `port`
     # to a value other than 0 and other than rpc.port (e.g. 9152) and
@@ -10695,12 +10695,12 @@ node:
     #   enabled: true
     #   # port: 0            # 0 or unset → single-listener on rpc.port (default)
     #   # host: 0.0.0.0      # only used in dual-listener mode
-    #   path: "/ws"          # ws upgrade path — disambiguates HTTP RPC (POST /)
+    #   path: "/ws"          # ws upgrade path - disambiguates HTTP RPC (POST /)
     #                        # from WS upgrade (GET /ws) at the URL level.
     #                        # Set to "/" for legacy behaviour (root path).
     #   origins:             # WS-only override of rpc.allowed_origins (rare;
     #                        # leave unset to inherit the unified allowlist)
-    #     - "*"              # permissive default — tighten via rpc.allowed_origins
+    #     - "*"              # permissive default - tighten via rpc.allowed_origins
     #   max_conns: 1024
     #   max_conns_per_ip: 16
     #   max_subs_per_conn: 32
@@ -11282,13 +11282,13 @@ To contribute your node's metrics and logs to the centralized GenLayer Foundatio
 - Setup takes 10–15 minutes once credentials are provided.
 
 **Prerequisites**
-- Metrics enabled in `config.yaml` (`endpoints.metrics: true` — default in recent versions).
+- Metrics enabled in `config.yaml` (`endpoints.metrics: true` - default in recent versions).
 - Ops port 9153 exposed in docker-compose (`ports: - "9153:9153"`).
 - Credentials from the Foundation team (ask in #testnet-asimov):
-  - `CENTRAL_MONITORING_URL` — Prometheus remote write URL
-  - `CENTRAL_LOKI_URL` — Loki push URL
-  - `CENTRAL_MONITORING_USERNAME` / `CENTRAL_MONITORING_PASSWORD` — Metrics (Prometheus) credentials
-  - `CENTRAL_LOKI_USERNAME` / `CENTRAL_LOKI_PASSWORD` — Logs (Loki) credentials
+  - `CENTRAL_MONITORING_URL` - Prometheus remote write URL
+  - `CENTRAL_LOKI_URL` - Loki push URL
+  - `CENTRAL_MONITORING_USERNAME` / `CENTRAL_MONITORING_PASSWORD` - Metrics (Prometheus) credentials
+  - `CENTRAL_LOKI_USERNAME` / `CENTRAL_LOKI_PASSWORD` - Logs (Loki) credentials
 
 **Steps**
 
@@ -11395,7 +11395,7 @@ volumes:
   alloy_data:
 ```
 
-3. **Create or update ./alloy-config.river** (use the provided version — it handles logs and metrics forwarding):
+3. **Create or update ./alloy-config.river** (use the provided version - it handles logs and metrics forwarding):
 
 ```river
 // Grafana Alloy Configuration for GenLayer Node Telemetry
@@ -11568,7 +11568,7 @@ docker compose --profile monitoring up -d
 
 5. **Verify it works**:
 
-- Open Alloy UI: http://localhost:12345/targets — the "genlayer_node" scrape target should show status **UP**.
+- Open Alloy UI: http://localhost:12345/targets - the "genlayer_node" scrape target should show status **UP**.
 - Check logs for successful sends:
 
 ```bash copy
@@ -11608,9 +11608,7 @@ The Alloy UI provides:
 
 ```bash copy
 curl http://localhost:9153/metrics
-```
-
-— it should return Prometheus-formatted data.
+``` - it should return Prometheus-formatted data.
 
 - **Authentication errors (401/403)**: Double-check `CENTRAL_MONITORING_USERNAME`, `CENTRAL_MONITORING_PASSWORD`, `CENTRAL_LOKI_USERNAME`, and `CENTRAL_LOKI_PASSWORD` in `.env`.
 
@@ -11682,22 +11680,22 @@ Source: https://docs.genlayer.com/validators/genvm-configuration
 
 GenVM Configuration defines the LLM providers and web module settings a validator's GenVM needs to process AI-powered contract logic and fetch live internet data. This page covers how to configure both.
 
-**Why this matters:** The LLM providers you choose directly affect your validator's operating costs and performance. Faster, cheaper models reduce your costs per transaction. Higher-quality models improve your consensus accuracy, which affects your rewards and avoids slashing. By tuning your provider setup — choosing the right models, configuring fallback chains, running local inference, or applying input filters — you can optimize the economics of running your validator.
+**Why this matters:** The LLM providers you choose directly affect your validator's operating costs and performance. Faster, cheaper models reduce your costs per transaction. Higher-quality models improve your consensus accuracy, which affects your rewards and avoids slashing. By tuning your provider setup - choosing the right models, configuring fallback chains, running local inference, or applying input filters - you can optimize the economics of running your validator.
 
 ## LLM Provider Credits
 
 > **Note:**
 > GenLayer has partnered with multiple LLM providers to offer free credits for validators:
 >
-> **[Heurist](https://www.heurist.ai/)** — free [API credits](https://dev-api-form.heurist.ai) with referral code _"genlayer"_.
+> **[Heurist](https://www.heurist.ai/)** - free [API credits](https://dev-api-form.heurist.ai) with referral code _"genlayer"_.
 >
-> **[Comput3](https://genlayer.comput3.ai/)** — free [API credits](https://genlayer.comput3.ai/) for llama3, hermes3, and qwen3 models.
+> **[Comput3](https://genlayer.comput3.ai/)** - free [API credits](https://genlayer.comput3.ai/) for llama3, hermes3, and qwen3 models.
 >
-> **[io.net](/partners/ionet)** — create an account at [id.io.net](https://id.io.net/login) and [request free credits](https://form.typeform.com/to/pDmCCViV).
+> **[io.net](/partners/ionet)** - create an account at [id.io.net](https://id.io.net/login) and [request free credits](https://form.typeform.com/to/pDmCCViV).
 >
-> **[Chutes](/partners/chutes)** — create an account at [chutes.ai](https://chutes.ai) and generate an API key from settings.
+> **[Chutes](/partners/chutes)** - create an account at [chutes.ai](https://chutes.ai) and generate an API key from settings.
 >
-> **[Morpheus](/partners/morpheus)** — obtain a [Morpheus API key](https://mor.org/) for DeepSeek, Llama, Qwen, and more via OpenAI-compatible API.
+> **[Morpheus](/partners/morpheus)** - obtain a [Morpheus API key](https://mor.org/) for DeepSeek, Llama, Qwen, and more via OpenAI-compatible API.
 
 ## Hot-Reload
 
@@ -11724,9 +11722,9 @@ All configuration lives at `third_party/genvm/config/`. Three files:
 
 | File | What it controls | Should you modify? |
 |---|---|---|
-| `genvm-module-llm.yaml` | LLM providers, models, prompt templates, Lua script selection | **Yes** — this is your main configuration file |
-| `genvm-module-web.yaml` | Web access, webdriver, URL restrictions | Rarely — only for advanced URL policy changes |
-| `genvm-manager.yaml` | Concurrency permits, VM pool | Rarely — only if tuning for your hardware |
+| `genvm-module-llm.yaml` | LLM providers, models, prompt templates, Lua script selection | **Yes** - this is your main configuration file |
+| `genvm-module-web.yaml` | Web access, webdriver, URL restrictions | Rarely - only for advanced URL policy changes |
+| `genvm-manager.yaml` | Concurrency permits, VM pool | Rarely - only if tuning for your hardware |
 
 ## Configuring Your LLM Backends
 
@@ -11759,10 +11757,10 @@ Intelligent Contract LLM requests have two axes:
 
 This gives four combinations: text→text, text→JSON, images+text→text, images+text→JSON. The capability flags control which models are eligible:
 
-- `supports_json: true` — model can produce structured JSON output
-- `supports_image: true` — model can accept image inputs
+- `supports_json: true` - model can produce structured JSON output
+- `supports_image: true` - model can accept image inputs
 
-**Your validator must support all combinations across your model set.** Not every model needs to support everything — that's where routing comes in. You can use a cheap text model for simple prompts and a vision-capable model for image requests. But if a contract sends an image prompt and none of your enabled models support images, the request will fail.
+**Your validator must support all combinations across your model set.** Not every model needs to support everything - that's where routing comes in. You can use a cheap text model for simple prompts and a vision-capable model for image requests. But if a contract sends an image prompt and none of your enabled models support images, the request will fail.
 
 The `supports_json` and `supports_image` flags tell the Lua script which models are eligible for each request type. Set them accurately for each model.
 
@@ -11777,7 +11775,7 @@ The `supports_json` and `supports_image` flags tell the Lua script which models 
 
 ### Example: Adding a local Ollama instance
 
-Add this to the `backends` section. No API key needed — Ollama runs locally. Follow [Ollama's install guide](https://ollama.com) to set up the server and pull a model.
+Add this to the `backends` section. No API key needed - Ollama runs locally. Follow [Ollama's install guide](https://ollama.com) to set up the server and pull a model.
 
 ```yaml
 backends:
@@ -11833,18 +11831,18 @@ Set these in your `.env` file before starting the node. You only need to set the
 
 ## Greyboxing: Optimizing Your Validator
 
-Greyboxing is how you configure and optimize your validator's LLM execution. From the network's point of view, each validator is a **grey box** — an attacker can see that LLMs are being used, but cannot know which model will process a given request, how it's configured, or what filters are applied. This per-validator opacity is a security property: it makes prompt injection and manipulation attacks much harder because there's no single configuration to target.
+Greyboxing is how you configure and optimize your validator's LLM execution. From the network's point of view, each validator is a **grey box** - an attacker can see that LLMs are being used, but cannot know which model will process a given request, how it's configured, or what filters are applied. This per-validator opacity is a security property: it makes prompt injection and manipulation attacks much harder because there's no single configuration to target.
 
-As a validator operator, greyboxing is also your primary lever for **economics** — by choosing the right models, configuring fallback chains, and applying filters, you control your operating costs and consensus quality.
+As a validator operator, greyboxing is also your primary lever for **economics** - by choosing the right models, configuring fallback chains, and applying filters, you control your operating costs and consensus quality.
 
 ### Choosing models
 
-Start with a capable model and optimize down over time. Your validator needs to produce correct consensus results — using a model that's too weak will hurt your accuracy, leading to missed rewards or slashing. Once you're confident in your setup, you can experiment with cheaper alternatives.
+Start with a capable model and optimize down over time. Your validator needs to produce correct consensus results - using a model that's too weak will hurt your accuracy, leading to missed rewards or slashing. Once you're confident in your setup, you can experiment with cheaper alternatives.
 
 **Recommended starting points:**
-- **Frontier tier:** Claude Sonnet 4.6, GPT-5, Gemini 3 Flash — high accuracy, higher cost
-- **Strong open-source:** DeepSeek V3.2, Qwen3-235B, Llama 4 Maverick — good accuracy, lower cost
-- **Budget tier:** Nemotron, smaller Llama variants — lowest cost, test carefully before relying on these
+- **Frontier tier:** Claude Sonnet 4.6, GPT-5, Gemini 3 Flash - high accuracy, higher cost
+- **Strong open-source:** DeepSeek V3.2, Qwen3-235B, Llama 4 Maverick - good accuracy, lower cost
+- **Budget tier:** Nemotron, smaller Llama variants - lowest cost, test carefully before relying on these
 
 For image-capable requests, you need at least one vision model (e.g., GPT-5, Gemini Flash, Claude Sonnet).
 
@@ -11854,13 +11852,13 @@ A practical approach: use a frontier model as your primary, with cheaper models 
 
 Greyboxing encompasses several layers of configuration, all implemented in the Lua script that `lua_script_path` points to:
 
-**Model selection** — Choose which LLM handles each request. You can route text prompts to a cheap fast model and image prompts to a vision-capable one. This can be random, an ordered fallback chain, or a custom router.
+**Model selection** - Choose which LLM handles each request. You can route text prompts to a cheap fast model and image prompts to a vision-capable one. This can be random, an ordered fallback chain, or a custom router.
 
-**Input filtering** — Apply filters to prompts before they reach the LLM. Available text filters: `NFKC` (Unicode normalization), `NormalizeWS` (whitespace), `RmZeroWidth` (remove zero-width characters). Available image filters: `Denoise`, `JPEG` (compression), `GuassianNoise`, `Unsharpen`. Filtering normalizes inputs across validators and can improve consensus.
+**Input filtering** - Apply filters to prompts before they reach the LLM. Available text filters: `NFKC` (Unicode normalization), `NormalizeWS` (whitespace), `RmZeroWidth` (remove zero-width characters). Available image filters: `Denoise`, `JPEG` (compression), `GuassianNoise`, `Unsharpen`. Filtering normalizes inputs across validators and can improve consensus.
 
-**LLM parameters** — Temperature, max tokens, system prompts. Configured per-model in YAML or overridden in your Lua script.
+**LLM parameters** - Temperature, max tokens, system prompts. Configured per-model in YAML or overridden in your Lua script.
 
-**Cost management** — In future versions, your greyboxing script will be able to track execution costs and decide when a transaction is too expensive to process. As a validator, if the cost of LLM calls exceeds what makes economic sense, you can timeout the transaction rather than executing at a loss.
+**Cost management** - In future versions, your greyboxing script will be able to track execution costs and decide when a transaction is too expensive to process. As a validator, if the cost of LLM calls exceeds what makes economic sense, you can timeout the transaction rather than executing at a loss.
 
 ### Built-in strategies
 
@@ -11872,7 +11870,7 @@ GenVM ships with two Lua scripts. Switch between them by changing `lua_script_pa
 
 Iterates through all enabled backends that match the required capabilities (JSON support, image support) and tries them in arbitrary order. Falls back to the next provider on overload errors (429, 503, 408, 504, 529).
 
-This is the simplest strategy — works out of the box with no tuning.
+This is the simplest strategy - works out of the box with no tuning.
 
 #### Ordered fallback chain
 
@@ -11976,7 +11974,7 @@ end
 
 ## Prompt Templates
 
-The `prompt_templates` section in `genvm-module-llm.yaml` configures how your validator acts as a **judge** in [Equivalence Principle](/developers/intelligent-contracts/features/non-determinism) scenarios. Your validator isn't just running raw LLM calls — in certain consensus situations, it needs to evaluate whether two outputs are equivalent or whether a result meets specified criteria.
+The `prompt_templates` section in `genvm-module-llm.yaml` configures how your validator acts as a **judge** in [Equivalence Principle](/developers/intelligent-contracts/features/non-determinism) scenarios. Your validator isn't just running raw LLM calls - in certain consensus situations, it needs to evaluate whether two outputs are equivalent or whether a result meets specified criteria.
 
 Three templates, using `#{variable}` syntax for substitution:
 
@@ -12035,16 +12033,16 @@ Available in all Lua scripts:
 The web module (`genvm-module-web.yaml`) enables contracts to fetch web pages, make HTTP requests, and capture screenshots. You generally don't need to modify this.
 
 The Lua script (`genvm-web-default.lua`) implements two functions:
-- `Render(ctx, payload)` — render a page as text, HTML, or screenshot
-- `Request(ctx, payload)` — make HTTP requests (GET, POST, etc.)
+- `Render(ctx, payload)` - render a page as text, HTML, or screenshot
+- `Request(ctx, payload)` - make HTTP requests (GET, POST, etc.)
 
 **What you might customize:**
-- `extra_tld: ["local"]` — allow additional TLDs beyond the standard set
-- `always_allow_hosts: ["my-api.internal"]` — bypass URL checks for specific hosts
+- `extra_tld: ["local"]` - allow additional TLDs beyond the standard set
+- `always_allow_hosts: ["my-api.internal"]` - bypass URL checks for specific hosts
 
 ## Advanced: GenVM Manager
 
-The manager (`genvm-manager.yaml`) controls concurrency. The main setting is `permits` — max concurrent GenVM executions.
+The manager (`genvm-manager.yaml`) controls concurrency. The main setting is `permits` - max concurrent GenVM executions.
 
 > **Note:**
 > On macOS (native), auto-detection is not supported. Set `permits` manually (e.g., `32`).
@@ -12072,7 +12070,7 @@ A GenLayer validator upgrade is either **non-breaking** or **breaking**, and the
 | **Breaking** | Changelog mentions "upgrade consensus contracts" or new consensus deployment | Must be deleted | Full restart required |
 
 > **Note:**
-> When in doubt, treat it as a breaking change — the only cost is a longer sync time.
+> When in doubt, treat it as a breaking change - the only cost is a longer sync time.
 
 ---
 
@@ -12080,28 +12078,28 @@ A GenLayer validator upgrade is either **non-breaking** or **breaking**, and the
 
 No re-staking is required. You can minimize downtime by preparing the new version while your current node is still running.
 
-1. **Download and extract into a fresh folder** — See [download instructions](/validators/setup-guide#download-the-node-software). Always use a clean directory.
-2. **Configure the new version** — Set up `config.yaml` and `.env` as described in the [configuration section](/validators/setup-guide#configuration). You can reference your previous settings, but **do not blindly copy config files** — new versions may include updated defaults or new fields.
-3. **Copy the data folder** — Copy `data/` from your old installation to the new one (contains database and keystore). Skip this if your `datadir` points outside the project directory.
-4. **Validate** — Run `./bin/genlayernode doctor` and ensure all checks pass.
-5. **Switch over** — Stop the old node, then start the new one.
+1. **Download and extract into a fresh folder** - See [download instructions](/validators/setup-guide#download-the-node-software). Always use a clean directory.
+2. **Configure the new version** - Set up `config.yaml` and `.env` as described in the [configuration section](/validators/setup-guide#configuration). You can reference your previous settings, but **do not blindly copy config files** - new versions may include updated defaults or new fields.
+3. **Copy the data folder** - Copy `data/` from your old installation to the new one (contains database and keystore). Skip this if your `datadir` points outside the project directory.
+4. **Validate** - Run `./bin/genlayernode doctor` and ensure all checks pass.
+5. **Switch over** - Stop the old node, then start the new one.
 
 ---
 
 ## Breaking Change Upgrade
 
-Breaking changes involve a new consensus deployment. The old database is incompatible, so it cannot be reused. **Re-staking is required** — you must stake again using the [validator wizard](/validators/setup-guide#using-the-validator-wizard).
+Breaking changes involve a new consensus deployment. The old database is incompatible, so it cannot be reused. **Re-staking is required** - you must stake again using the [validator wizard](/validators/setup-guide#using-the-validator-wizard).
 
 > **Warning:**
 > **Always back up your keystore before a breaking upgrade.** You can copy the `data/node/keystore/` directory or use `genlayernode account export`. See [backing up your operator key](/validators/setup-guide#backing-up-your-operator-key).
 
-1. **Read the changelog** — Check the [changelog](/validators/changelog) for version-specific instructions and what changed.
-2. **Back up your keystore** — Copy `data/node/keystore/` to a safe location.
-3. **Download and extract into a fresh folder** — See [download instructions](/validators/setup-guide#download-the-node-software).
-4. **Configure from scratch** — Create `config.yaml` and `.env` using the new example files as a base. **Do not copy your old config** — the schema may have changed. Refer to the [configuration section](/validators/setup-guide#configuration) for the current format.
-5. **Import your operator key** — Copy your backed-up keystore into `data/node/keystore/`, or re-import using the CLI. See [restoring your operator key](/validators/setup-guide#restoring-your-operator-key).
-6. **Do NOT copy the old database** — Delete `data/node/genlayer.db` if you accidentally copied the full `data/` folder. The node will create a fresh database and sync from genesis.
-7. **Validate** — Run `./bin/genlayernode doctor` and ensure all checks pass.
+1. **Read the changelog** - Check the [changelog](/validators/changelog) for version-specific instructions and what changed.
+2. **Back up your keystore** - Copy `data/node/keystore/` to a safe location.
+3. **Download and extract into a fresh folder** - See [download instructions](/validators/setup-guide#download-the-node-software).
+4. **Configure from scratch** - Create `config.yaml` and `.env` using the new example files as a base. **Do not copy your old config** - the schema may have changed. Refer to the [configuration section](/validators/setup-guide#configuration) for the current format.
+5. **Import your operator key** - Copy your backed-up keystore into `data/node/keystore/`, or re-import using the CLI. See [restoring your operator key](/validators/setup-guide#restoring-your-operator-key).
+6. **Do NOT copy the old database** - Delete `data/node/genlayer.db` if you accidentally copied the full `data/` folder. The node will create a fresh database and sync from genesis.
+7. **Validate** - Run `./bin/genlayernode doctor` and ensure all checks pass.
 8. **Stop the old node, start the new one.**
 
 ---
@@ -12110,19 +12108,19 @@ Breaking changes involve a new consensus deployment. The old database is incompa
 
 ### v0.4.x to v0.5.0 (Breaking)
 
-- The two consensus contract addresses (`contractmainaddress` and `contractdataaddress`) have been replaced by a single `consensusaddress` field. Do not copy your old consensus config — use the new example `config.yaml`.
+- The two consensus contract addresses (`contractmainaddress` and `contractdataaddress`) have been replaced by a single `consensusaddress` field. Do not copy your old consensus config - use the new example `config.yaml`.
 - The GenLayer Chain ZKSync RPC URLs (`genlayerchainrpcurl` and `genlayerchainwebsocketurl`) have changed. Update both the HTTP RPC and WebSocket URLs in your `config.yaml` to the new endpoints.
 - Database must be wiped (the node creates a fresh one on startup).
-- Re-staking is required — breaking changes involve a new consensus deployment, so you must stake again using the [validator wizard](/validators/setup-guide#using-the-validator-wizard).
+- Re-staking is required - breaking changes involve a new consensus deployment, so you must stake again using the [validator wizard](/validators/setup-guide#using-the-validator-wizard).
 
 ---
 
 ## Quick Troubleshooting
 
-- **Node won't start** — Run `./bin/genlayernode doctor`. If it reports unknown config fields, reconfigure from the new example.
-- **Not participating in consensus** — Verify the consensus contract address, `validatorWalletAddress`, and `operatorAddress` are correct.
-- **Key errors** — Your operator key wasn't imported. See [restoring your operator key](/validators/setup-guide#restoring-your-operator-key).
-- **Slow sync after breaking upgrade** — Expected. Ensure `genesis` is set in `config.yaml` to avoid scanning from block 0.
+- **Node won't start** - Run `./bin/genlayernode doctor`. If it reports unknown config fields, reconfigure from the new example.
+- **Not participating in consensus** - Verify the consensus contract address, `validatorWalletAddress`, and `operatorAddress` are correct.
+- **Key errors** - Your operator key wasn't imported. See [restoring your operator key](/validators/setup-guide#restoring-your-operator-key).
+- **Slow sync after breaking upgrade** - Expected. Ensure `genesis` is set in `config.yaml` to avoid scanning from block 0.
 
 ---
 
@@ -13457,17 +13455,17 @@ const receipt = await client.waitForTransactionReceipt({
 });
 
 if (receipt.txExecutionResultName === ExecutionResult.FINISHED_WITH_RETURN) {
-  // Execution succeeded — safe to read state
+  // Execution succeeded - safe to read state
   const result = await client.readContract({
     address: contractAddress,
     functionName: "get_storage",
     args: [],
   });
 } else if (receipt.txExecutionResultName === ExecutionResult.FINISHED_WITH_ERROR) {
-  // Execution failed — contract state was not modified
+  // Execution failed - contract state was not modified
   console.error("Contract execution failed");
 } else {
-  // NOT_VOTED — execution hasn't completed
+  // NOT_VOTED - execution hasn't completed
   console.warn("Execution result not yet available");
 }
 ```
@@ -13514,12 +13512,12 @@ import { createClient } from "genlayer-js";
 import { testnetBradbury } from "genlayer-js/chains";
 import { TransactionStatus } from "genlayer-js/types";
 
-// Read client — talks directly to GenLayer RPC, no wallet needed
+// Read client - talks directly to GenLayer RPC, no wallet needed
 const readClient = createClient({
   chain: testnetBradbury,
 });
 
-// Write client — signs transactions through the wallet
+// Write client - signs transactions through the wallet
 const writeClient = createClient({
   chain: testnetBradbury,
   account: address as `0x${string}`, // from wallet connection
@@ -14000,7 +13998,7 @@ forwarder (which re-enters Staking with the correct sender).
 ### validatorExit
 
 Exits a validator position by burning the specified shares. Same
-msg.sender constraint as validatorDeposit — routed via the wallet.
+msg.sender constraint as validatorDeposit - routed via the wallet.
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
@@ -14345,17 +14343,17 @@ receipt = client.wait_for_transaction_receipt(
 )
 
 if receipt.get("tx_execution_result_name") == ExecutionResult.FINISHED_WITH_RETURN.value:
-    # Execution succeeded — safe to read state
+    # Execution succeeded - safe to read state
     result = client.read_contract(
         address=contract_address,
         function_name="get_storage",
         args=[],
     )
 elif receipt.get("tx_execution_result_name") == ExecutionResult.FINISHED_WITH_ERROR.value:
-    # Execution failed — contract state was not modified
+    # Execution failed - contract state was not modified
     raise RuntimeError("Contract execution failed")
 else:
-    # NOT_VOTED — execution hasn't completed
+    # NOT_VOTED - execution hasn't completed
     print("Execution result not yet available")
 ```
 
@@ -14783,7 +14781,7 @@ The testing suite provides two execution modes. Pick the one that fits your work
 
 ## Direct Mode
 
-Run contracts directly in Python — no simulator, no Docker, no network. Tests execute in milliseconds.
+Run contracts directly in Python - no simulator, no Docker, no network. Tests execute in milliseconds.
 
 ### Quick Start
 
@@ -14852,7 +14850,7 @@ direct_vm.strict_mocks = True
 direct_vm.check_pickling = True
 ```
 
-**[Full Direct Mode Documentation](docs/direct-runner.md)** — fixtures, cheatcodes, validator testing, limitations, and complete examples.
+**[Full Direct Mode Documentation](docs/direct-runner.md)** - fixtures, cheatcodes, validator testing, limitations, and complete examples.
 
 ---
 
@@ -14874,10 +14872,10 @@ from gltest.assertions import tx_execution_succeeded
 factory = get_contract_factory("MyContract")
 contract = factory.deploy()
 
-# Read method — returns value directly
+# Read method - returns value directly
 result = contract.get_value().call()
 
-# Write method — returns transaction receipt
+# Write method - returns transaction receipt
 tx_receipt = contract.set_value(args=["new_value"]).transact()
 assert tx_execution_succeeded(tx_receipt)
 ```
@@ -14905,7 +14903,7 @@ networks:
     leader_only: false
 
   studionet:
-    # Pre-configured — accounts auto-generated
+    # Pre-configured - accounts auto-generated
 
   testnet_asimov:
     accounts:
@@ -14957,10 +14955,10 @@ assert tx_execution_succeeded(receipt)
 ### Read and Write Methods
 
 ```python
-# Read — call() returns the value
+# Read - call() returns the value
 result = contract.get_storage().call()
 
-# Write — transact() returns a receipt
+# Write - transact() returns a receipt
 tx_receipt = contract.update_storage(args=["new_value"]).transact(
     value=0,
     consensus_max_rotations=3,
@@ -15043,7 +15041,7 @@ Mock keys map to GenLayer methods:
 | `"eq_principle_prompt_comparative"` | `gl.eq_principle.prompt_comparative` |
 | `"eq_principle_prompt_non_comparative"` | `gl.eq_principle.prompt_non_comparative` |
 
-The system performs **substring matching** on the internal user message — your mock key must appear within the message.
+The system performs **substring matching** on the internal user message - your mock key must appear within the message.
 
 ### Mock Web Responses
 
@@ -15112,7 +15110,7 @@ print(f"Reliability: {analysis.reliability_score:.2f}%")
 print(f"Unique states: {analysis.unique_states}")
 ```
 
-**[Full Studio Mode Documentation](docs/studio-runner.md)** — configuration reference, all CLI flags, mock LLM/web details, custom validators, statistical analysis, and complete examples.
+**[Full Studio Mode Documentation](docs/studio-runner.md)** - configuration reference, all CLI flags, mock LLM/web details, custom validators, statistical analysis, and complete examples.
 
 ---
 
@@ -15166,7 +15164,7 @@ See our [Contributing Guide](CONTRIBUTING.md).
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
 
 ## Support
 
@@ -15827,7 +15825,7 @@ Clear the captured validator list.
 
 ---
 
-# glsim — Local GenLayer Network
+# glsim - Local GenLayer Network
 Source: https://docs.genlayer.com/api-references/genlayer-test/glsim
 
 A lightweight single-process GenLayer network that runs contracts via direct mode. Supports real LLM and web calls without Docker or WASM.
@@ -15870,23 +15868,23 @@ glsim --seed my-test-seed
 glsim exposes a JSON-RPC 2.0 endpoint at `POST /api` compatible with both GenLayer Studio and standard Ethereum methods:
 
 ### GenLayer Methods
-- `gen_call` — Call a contract method
-- `gen_get_contract_schema` — Get contract schema
-- `gen_get_contract_schema_for_code` — Get schema from code
-- `gen_get_transaction_status` — Get transaction status
+- `gen_call` - Call a contract method
+- `gen_get_contract_schema` - Get contract schema
+- `gen_get_contract_schema_for_code` - Get schema from code
+- `gen_get_transaction_status` - Get transaction status
 
 ### Simulator Methods
-- `sim_deploy` — Deploy a contract
-- `sim_call` — Call a contract method
-- `sim_read` — Read contract state
-- `sim_fund_account` — Fund an account
-- `sim_get_balance` — Get account balance
-- `sim_create_snapshot` — Create state snapshot
-- `sim_restore_snapshot` — Restore snapshot
-- `sim_install_mocks` — Install web/LLM mocks
-- `sim_get_mocks` — Get current mocks
-- `sim_increase_time` — Advance time (Anvil-style)
-- `sim_set_time` — Set time to specific datetime
+- `sim_deploy` - Deploy a contract
+- `sim_call` - Call a contract method
+- `sim_read` - Read contract state
+- `sim_fund_account` - Fund an account
+- `sim_get_balance` - Get account balance
+- `sim_create_snapshot` - Create state snapshot
+- `sim_restore_snapshot` - Restore snapshot
+- `sim_install_mocks` - Install web/LLM mocks
+- `sim_get_mocks` - Get current mocks
+- `sim_increase_time` - Advance time (Anvil-style)
+- `sim_set_time` - Set time to specific datetime
 
 ### Ethereum Compatible
 - `eth_chainId`, `eth_blockNumber`, `eth_getBalance`
@@ -16553,7 +16551,7 @@ A `Transaction` object which contains the details of the transaction. The struct
 
 ### gen_getTransactionStatus
 
-Returns the current consensus status of a transaction. This is a lightweight endpoint that returns only the status without full receipt data — use it for polling transaction progress.
+Returns the current consensus status of a transaction. This is a lightweight endpoint that returns only the status without full receipt data - use it for polling transaction progress.
 
 **Method:** `gen_getTransactionStatus`
 
@@ -16622,7 +16620,7 @@ Returns the current consensus status of a transaction. This is a lightweight end
 **Notes:**
 
 - This endpoint queries the consensus contract on-chain via `getTransactionData`
-- Use this for polling — it's cheaper than `gen_getTransactionReceipt` which returns the full receipt
+- Use this for polling - it's cheaper than `gen_getTransactionReceipt` which returns the full receipt
 - The `timestamp` parameter is passed to the on-chain call and affects how the contract reports the status
 
 ### gen_syncing
@@ -17050,7 +17048,7 @@ curl -X GET http://localhost:9153/health
 - `status` (string): Overall health status - "up" if all checks pass, "down" if any check fails
 - `node_version` (string): The version of the GenLayer node software
 - `protocol_version` (string): The consensus protocol version
-- `genvm_modules` (object): Per-module GenVM health — whether this node can currently do LLM and web work. Reported for `llm` and `web`.
+- `genvm_modules` (object): Per-module GenVM health - whether this node can currently do LLM and web work. Reported for `llm` and `web`.
   - `state` (string): `healthy`, `suspect`, `degraded`, or `unknown`. `suspect` means one failure has been observed and is not yet treated as confirmed; `unknown` means the module has not been exercised yet.
   - `timestamp` (string, optional): ISO 8601 time the verdict was last updated. Absent until the module is first observed.
   - `last_ok` (string, optional): ISO 8601 time the module last answered successfully. Absent if it never has.
@@ -17063,7 +17061,7 @@ curl -X GET http://localhost:9153/health
 
 **GenVM module health does not affect `status`.**
 
-A node with a broken module is still booted, synced and voting — it votes Timeout on the transactions that need that module, which is the designed degraded behaviour rather than an outage. Failing the endpoint would pull a working validator out of load balancers and page an operator about a node behaving as intended. So `genvm_modules` is reported alongside `checks` rather than as one of them, and `status` stays `up`:
+A node with a broken module is still booted, synced and voting - it votes Timeout on the transactions that need that module, which is the designed degraded behaviour rather than an outage. Failing the endpoint would pull a working validator out of load balancers and page an operator about a node behaving as intended. So `genvm_modules` is reported alongside `checks` rather than as one of them, and `status` stays `up`:
 
 ```json
 {
@@ -17073,14 +17071,14 @@ A node with a broken module is still booted, synced and voting — it votes Time
       "state": "degraded",
       "timestamp": "2024-01-15T10:30:45Z",
       "last_ok": "2024-01-15T04:12:03Z",
-      "detail": "provider unreachable — voting Timeout on transactions that need an LLM"
+      "detail": "provider unreachable - voting Timeout on transactions that need an LLM"
     },
     "web": { "state": "healthy", "timestamp": "2024-01-15T10:30:45Z", "last_ok": "2024-01-15T10:30:45Z" }
   }
 }
 ```
 
-`timestamp` and `last_ok` answer different questions and are both reported. `timestamp` is when the verdict was last updated; `last_ok` is when the module last worked. They match while healthy, and the gap between them while degraded shows how long the outage has run. `timestamp` matters more here than under `checks`: those entries are re-evaluated on every request, whereas module state is folded from real transaction traffic and is not polled while healthy — so on a quiet validator a `healthy` verdict can rest on an older observation.
+`timestamp` and `last_ok` answer different questions and are both reported. `timestamp` is when the verdict was last updated; `last_ok` is when the module last worked. They match while healthy, and the gap between them while degraded shows how long the outage has run. `timestamp` matters more here than under `checks`: those entries are re-evaluated on every request, whereas module state is folded from real transaction traffic and is not polled while healthy - so on a quiet validator a `healthy` verdict can rest on an older observation.
 
 **HTTP Status Codes:**
 
@@ -17549,7 +17547,7 @@ The token is the value of `GENLAYERNODE_NODE_OPERATOR_TOKEN` on the node process
 - Stream mode (`destDir` omitted): gzipped tar archive in the response body, `Content-Type: application/gzip`.
 - Write-to-path mode (`destDir` set): empty body, `204 No Content`.
 
-**Example Request — Stream Mode (operator):**
+**Example Request - Stream Mode (operator):**
 
 On the node (after `ssh <node>`):
 
@@ -17572,9 +17570,9 @@ curl -X POST http://localhost:9153/snapshot \
   -o snapshot.tar.gz
 ```
 
-The response body is a stream — `curl` can write it to a file (as above) or pipe it through any tool that reads stdin, without staging on local disk.
+The response body is a stream - `curl` can write it to a file (as above) or pipe it through any tool that reads stdin, without staging on local disk.
 
-**Example Response — Stream Mode:**
+**Example Response - Stream Mode:**
 
 ```
 HTTP/1.1 200 OK
@@ -17584,7 +17582,7 @@ Content-Disposition: attachment; filename="snapshot.tar.gz"
 <gzipped tar archive of the snapshot's files>
 ```
 
-**Example Request — Write-to-Path Mode (upgrade controller):**
+**Example Request - Write-to-Path Mode (upgrade controller):**
 
 ```bash
 curl -X POST http://127.0.0.1:9153/snapshot \
@@ -17593,7 +17591,7 @@ curl -X POST http://127.0.0.1:9153/snapshot \
   -d '{"destDir": "/var/snapshots/asimov-100"}'
 ```
 
-**Example Response — Write-to-Path Mode:**
+**Example Response - Write-to-Path Mode:**
 
 ```
 HTTP/1.1 204 No Content
@@ -17609,15 +17607,15 @@ HTTP/1.1 204 No Content
 
 **Notes:**
 
-- A snapshot may be several GB. In stream mode the connection stays open for the duration of the snapshot — configure reverse proxies / load balancers with adequate read timeouts and disable response buffering.
+- A snapshot may be several GB. In stream mode the connection stays open for the duration of the snapshot - configure reverse proxies / load balancers with adequate read timeouts and disable response buffering.
 - In stream mode, a dropped connection leaves no on-disk artifact on the node; retry the request from scratch.
-- In write-to-path mode, `destDir` must be an absolute path that does not yet exist; the node creates it. Path-traversal hardening beyond these checks is a separate (Sev: Medium) follow-up — treat the operator token as a credential that can write under the node user's filesystem permissions.
-- **Docker deploys**: in write-to-path mode, `destDir` is resolved inside the node container's filesystem, not on the host. To make the resulting directory reachable from the host (or from another container), use a volume mount that maps `destDir` identically on both sides, or stick with stream mode. Stream mode is unaffected — the response body is sent over HTTP regardless of where the node runs.
-- The snapshot includes the full chain database (SSTables, MANIFEST, WAL) at the moment of capture. Treat the artifact as sensitive — anyone holding it can reconstruct the node's state.
+- In write-to-path mode, `destDir` must be an absolute path that does not yet exist; the node creates it. Path-traversal hardening beyond these checks is a separate (Sev: Medium) follow-up - treat the operator token as a credential that can write under the node user's filesystem permissions.
+- **Docker deploys**: in write-to-path mode, `destDir` is resolved inside the node container's filesystem, not on the host. To make the resulting directory reachable from the host (or from another container), use a volume mount that maps `destDir` identically on both sides, or stick with stream mode. Stream mode is unaffected - the response body is sent over HTTP regardless of where the node runs.
+- The snapshot includes the full chain database (SSTables, MANIFEST, WAL) at the moment of capture. Treat the artifact as sensitive - anyone holding it can reconstruct the node's state.
 - Token comparison is constant-time and length-padded so neither the value nor the length of the secret can be inferred from response timing.
 - Rotation: update `GENLAYERNODE_NODE_OPERATOR_TOKEN` and restart the node. Tokens are read once at startup and not hot-reloaded.
 
-**Forward-compatibility note:** when the zero-downtime upgrade controller (Phase 3) lands, `/snapshot` will additionally accept a second role (`upgrade`) so the controller can drive the snapshot + stop + start sequence with its own credential. The operator-token path documented here remains the same — no migration is required for operator tooling.
+**Forward-compatibility note:** when the zero-downtime upgrade controller (Phase 3) lands, `/snapshot` will additionally accept a second role (`upgrade`) so the controller can drive the snapshot + stop + start sequence with its own credential. The operator-token path documented here remains the same - no migration is required for operator tooling.
 
 **cURL Example with Bearer header:**
 
@@ -18306,7 +18304,7 @@ Source: https://docs.genlayer.com/api-references/genlayer-node/gen/gen_getTransa
 
 ### gen_getTransactionStatus
 
-Returns the current consensus status of a transaction. This is a lightweight endpoint that returns only the status without full receipt data — use it for polling transaction progress.
+Returns the current consensus status of a transaction. This is a lightweight endpoint that returns only the status without full receipt data - use it for polling transaction progress.
 
 **Method:** `gen_getTransactionStatus`
 
@@ -18375,7 +18373,7 @@ Returns the current consensus status of a transaction. This is a lightweight end
 **Notes:**
 
 - This endpoint queries the consensus contract on-chain via `getTransactionData`
-- Use this for polling — it's cheaper than `gen_getTransactionReceipt` which returns the full receipt
+- Use this for polling - it's cheaper than `gen_getTransactionReceipt` which returns the full receipt
 - The `timestamp` parameter is passed to the on-chain call and affects how the contract reports the status
 
 ---
@@ -18740,7 +18738,7 @@ curl -X GET http://localhost:9153/health
 - `status` (string): Overall health status - "up" if all checks pass, "down" if any check fails
 - `node_version` (string): The version of the GenLayer node software
 - `protocol_version` (string): The consensus protocol version
-- `genvm_modules` (object): Per-module GenVM health — whether this node can currently do LLM and web work. Reported for `llm` and `web`.
+- `genvm_modules` (object): Per-module GenVM health - whether this node can currently do LLM and web work. Reported for `llm` and `web`.
   - `state` (string): `healthy`, `suspect`, `degraded`, or `unknown`. `suspect` means one failure has been observed and is not yet treated as confirmed; `unknown` means the module has not been exercised yet.
   - `timestamp` (string, optional): ISO 8601 time the verdict was last updated. Absent until the module is first observed.
   - `last_ok` (string, optional): ISO 8601 time the module last answered successfully. Absent if it never has.
@@ -18753,7 +18751,7 @@ curl -X GET http://localhost:9153/health
 
 **GenVM module health does not affect `status`.**
 
-A node with a broken module is still booted, synced and voting — it votes Timeout on the transactions that need that module, which is the designed degraded behaviour rather than an outage. Failing the endpoint would pull a working validator out of load balancers and page an operator about a node behaving as intended. So `genvm_modules` is reported alongside `checks` rather than as one of them, and `status` stays `up`:
+A node with a broken module is still booted, synced and voting - it votes Timeout on the transactions that need that module, which is the designed degraded behaviour rather than an outage. Failing the endpoint would pull a working validator out of load balancers and page an operator about a node behaving as intended. So `genvm_modules` is reported alongside `checks` rather than as one of them, and `status` stays `up`:
 
 ```json
 {
@@ -18763,14 +18761,14 @@ A node with a broken module is still booted, synced and voting — it votes Time
       "state": "degraded",
       "timestamp": "2024-01-15T10:30:45Z",
       "last_ok": "2024-01-15T04:12:03Z",
-      "detail": "provider unreachable — voting Timeout on transactions that need an LLM"
+      "detail": "provider unreachable - voting Timeout on transactions that need an LLM"
     },
     "web": { "state": "healthy", "timestamp": "2024-01-15T10:30:45Z", "last_ok": "2024-01-15T10:30:45Z" }
   }
 }
 ```
 
-`timestamp` and `last_ok` answer different questions and are both reported. `timestamp` is when the verdict was last updated; `last_ok` is when the module last worked. They match while healthy, and the gap between them while degraded shows how long the outage has run. `timestamp` matters more here than under `checks`: those entries are re-evaluated on every request, whereas module state is folded from real transaction traffic and is not polled while healthy — so on a quiet validator a `healthy` verdict can rest on an older observation.
+`timestamp` and `last_ok` answer different questions and are both reported. `timestamp` is when the verdict was last updated; `last_ok` is when the module last worked. They match while healthy, and the gap between them while degraded shows how long the outage has run. `timestamp` matters more here than under `checks`: those entries are re-evaluated on every request, whereas module state is folded from real transaction traffic and is not polled while healthy - so on a quiet validator a `healthy` verdict can rest on an older observation.
 
 **HTTP Status Codes:**
 
@@ -19247,7 +19245,7 @@ The token is the value of `GENLAYERNODE_NODE_OPERATOR_TOKEN` on the node process
 - Stream mode (`destDir` omitted): gzipped tar archive in the response body, `Content-Type: application/gzip`.
 - Write-to-path mode (`destDir` set): empty body, `204 No Content`.
 
-**Example Request — Stream Mode (operator):**
+**Example Request - Stream Mode (operator):**
 
 On the node (after `ssh <node>`):
 
@@ -19270,9 +19268,9 @@ curl -X POST http://localhost:9153/snapshot \
   -o snapshot.tar.gz
 ```
 
-The response body is a stream — `curl` can write it to a file (as above) or pipe it through any tool that reads stdin, without staging on local disk.
+The response body is a stream - `curl` can write it to a file (as above) or pipe it through any tool that reads stdin, without staging on local disk.
 
-**Example Response — Stream Mode:**
+**Example Response - Stream Mode:**
 
 ```
 HTTP/1.1 200 OK
@@ -19282,7 +19280,7 @@ Content-Disposition: attachment; filename="snapshot.tar.gz"
 <gzipped tar archive of the snapshot's files>
 ```
 
-**Example Request — Write-to-Path Mode (upgrade controller):**
+**Example Request - Write-to-Path Mode (upgrade controller):**
 
 ```bash
 curl -X POST http://127.0.0.1:9153/snapshot \
@@ -19291,7 +19289,7 @@ curl -X POST http://127.0.0.1:9153/snapshot \
   -d '{"destDir": "/var/snapshots/asimov-100"}'
 ```
 
-**Example Response — Write-to-Path Mode:**
+**Example Response - Write-to-Path Mode:**
 
 ```
 HTTP/1.1 204 No Content
@@ -19307,15 +19305,15 @@ HTTP/1.1 204 No Content
 
 **Notes:**
 
-- A snapshot may be several GB. In stream mode the connection stays open for the duration of the snapshot — configure reverse proxies / load balancers with adequate read timeouts and disable response buffering.
+- A snapshot may be several GB. In stream mode the connection stays open for the duration of the snapshot - configure reverse proxies / load balancers with adequate read timeouts and disable response buffering.
 - In stream mode, a dropped connection leaves no on-disk artifact on the node; retry the request from scratch.
-- In write-to-path mode, `destDir` must be an absolute path that does not yet exist; the node creates it. Path-traversal hardening beyond these checks is a separate (Sev: Medium) follow-up — treat the operator token as a credential that can write under the node user's filesystem permissions.
-- **Docker deploys**: in write-to-path mode, `destDir` is resolved inside the node container's filesystem, not on the host. To make the resulting directory reachable from the host (or from another container), use a volume mount that maps `destDir` identically on both sides, or stick with stream mode. Stream mode is unaffected — the response body is sent over HTTP regardless of where the node runs.
-- The snapshot includes the full chain database (SSTables, MANIFEST, WAL) at the moment of capture. Treat the artifact as sensitive — anyone holding it can reconstruct the node's state.
+- In write-to-path mode, `destDir` must be an absolute path that does not yet exist; the node creates it. Path-traversal hardening beyond these checks is a separate (Sev: Medium) follow-up - treat the operator token as a credential that can write under the node user's filesystem permissions.
+- **Docker deploys**: in write-to-path mode, `destDir` is resolved inside the node container's filesystem, not on the host. To make the resulting directory reachable from the host (or from another container), use a volume mount that maps `destDir` identically on both sides, or stick with stream mode. Stream mode is unaffected - the response body is sent over HTTP regardless of where the node runs.
+- The snapshot includes the full chain database (SSTables, MANIFEST, WAL) at the moment of capture. Treat the artifact as sensitive - anyone holding it can reconstruct the node's state.
 - Token comparison is constant-time and length-padded so neither the value nor the length of the secret can be inferred from response timing.
 - Rotation: update `GENLAYERNODE_NODE_OPERATOR_TOKEN` and restart the node. Tokens are read once at startup and not hot-reloaded.
 
-**Forward-compatibility note:** when the zero-downtime upgrade controller (Phase 3) lands, `/snapshot` will additionally accept a second role (`upgrade`) so the controller can drive the snapshot + stop + start sequence with its own credential. The operator-token path documented here remains the same — no migration is required for operator tooling.
+**Forward-compatibility note:** when the zero-downtime upgrade controller (Phase 3) lands, `/snapshot` will additionally accept a second role (`upgrade`) so the controller can drive the snapshot + stop + start sequence with its own credential. The operator-token path documented here remains the same - no migration is required for operator tooling.
 
 **cURL Example with Bearer header:**
 
@@ -19361,7 +19359,7 @@ genvm-lint typecheck contract.py
 genvm-lint typecheck contract.py --strict      # Strict mode
 genvm-lint typecheck contract.py --all         # Show all errors (disable SDK suppressions)
 
-# IDE setup — download SDK and output extraPaths for Pylance
+# IDE setup - download SDK and output extraPaths for Pylance
 genvm-lint setup                               # Latest version
 genvm-lint setup --contract contract.py        # Auto-detect version from header
 genvm-lint setup --version v0.2.12             # Specific version
@@ -19388,14 +19386,14 @@ genvm-lint check contract.py --json
 
 These rules run as part of Layer 1 and catch common mistakes in GenLayer consensus patterns.
 
-#### GL-S03 — `eq_principle_strict_eq` nondeterminism mismatch (ERROR)
+#### GL-S03 - `eq_principle_strict_eq` nondeterminism mismatch (ERROR)
 
 Flags `eq_principle_strict_eq` (all API generations: `gl.eq_principle.strict_eq`,
 `eq_principle_strict_eq`, `eq_principle.strict_eq`) wrapping a lambda or function that
 **returns raw nondeterministic output directly**. LLM outputs and raw web content vary
 across validators, so strict-equality consensus will always fail.
 
-**Detection is conservative** — only flagged when the wrapped function/lambda returns
+**Detection is conservative** - only flagged when the wrapped function/lambda returns
 the nondeterministic value without any transformation. Processed output (boolean comparisons,
 `json.loads`, sorted results, etc.) is not flagged.
 
@@ -19403,33 +19401,33 @@ Nondeterministic calls detected in two forms:
 
 - **Namespace-qualified** (v0.1.0 and v0.1.3+ APIs): `gl.exec_prompt`, `gl.get_webpage`,
   `gl.nondet.exec_prompt`, `gl.nondet.web.render`, and their `genlayer.*` equivalents
-- **Bare names** (direct SDK import convention): `exec_prompt`, `get_webpage` — matched
+- **Bare names** (direct SDK import convention): `exec_prompt`, `get_webpage` - matched
   when called without a namespace prefix, representing
   `from genlayer.std.nondet_fns import exec_prompt` style imports
 
 Flagged patterns:
 
 ```python
-# Bad — namespace-qualified, LLM output is non-deterministic (v0.1.0 API)
+# Bad - namespace-qualified, LLM output is non-deterministic (v0.1.0 API)
 gl.eq_principle.strict_eq(lambda: gl.exec_prompt("What is 2+2?"))
 
-# Bad — namespace-qualified, raw web content varies (v0.1.0 API)
+# Bad - namespace-qualified, raw web content varies (v0.1.0 API)
 gl.eq_principle.strict_eq(lambda: gl.get_webpage("https://example.com"))
 
-# Bad — namespace-qualified, v0.1.3+ API
+# Bad - namespace-qualified, v0.1.3+ API
 gl.eq_principle.strict_eq(lambda: gl.nondet.exec_prompt("What is 2+2?"))
 gl.eq_principle.strict_eq(lambda: gl.nondet.web.render("https://example.com"))
 
-# Bad — bare name (direct import: from genlayer.std.nondet_fns import exec_prompt)
+# Bad - bare name (direct import: from genlayer.std.nondet_fns import exec_prompt)
 gl.eq_principle.strict_eq(lambda: exec_prompt("What is 2+2?"))
 
-# Bad — named function returning raw nondet
+# Bad - named function returning raw nondet
 def fetch():
     return gl.exec_prompt("What is 2+2?")
 
 gl.eq_principle.strict_eq(fetch)
 
-# Bad — simple passthrough variable
+# Bad - simple passthrough variable
 def fetch():
     result = gl.exec_prompt("What is 2+2?")
     return result
@@ -19440,27 +19438,27 @@ gl.eq_principle.strict_eq(fetch)
 Not flagged (processed output or third-party calls):
 
 ```python
-# OK — bool is deterministic
+# OK - bool is deterministic
 gl.eq_principle.strict_eq(lambda: "Paris" in gl.get_webpage("https://example.com"))
 
-# OK — comparison produces deterministic bool
+# OK - comparison produces deterministic bool
 def classify():
     data = gl.exec_prompt("Answer YES or NO")
     return data == "YES"
 
 gl.eq_principle.strict_eq(classify)
 
-# OK — third-party: my_service.exec_prompt is not a GL SDK call
+# OK - third-party: my_service.exec_prompt is not a GL SDK call
 gl.eq_principle.strict_eq(lambda: my_service.exec_prompt("What is 2+2?"))
 ```
 
 **Alias handling:** GL-S03 matches by name convention, not by import tracking. Bare
 names `exec_prompt` and `get_webpage` are flagged when called without a namespace prefix
 (representing direct SDK imports such as `from genlayer.std.nondet_fns import exec_prompt`).
-Calls through a non-SDK object — e.g. `my_service.exec_prompt()` — are **not** flagged
+Calls through a non-SDK object - e.g. `my_service.exec_prompt()` - are **not** flagged
 because `my_service.exec_prompt` is not in the matched name list.
 
-Fix — switch to a comparative principle:
+Fix - switch to a comparative principle:
 
 ```python
 gl.eq_principle.prompt_comparative(
@@ -19774,19 +19772,19 @@ Source: https://docs.genlayer.com/FAQ
 
   What is GenLayer?
 
-  GenLayer is the **adjudication layer for the agentic economy**. It uses decentralized AI-validator consensus to resolve contracts that require judgment, not just code. It's built as an L2 on zkSync Elastic Chain, anchoring to Ethereum's security. Contracts on GenLayer — called **Intelligent Contracts** — can interpret language, process images, fetch live web data, and reach consensus on contested or subjective outcomes. See [What is GenLayer](/understand-genlayer-protocol/what-is-genlayer).
+  GenLayer is the **adjudication layer for the agentic economy**. It uses decentralized AI-validator consensus to resolve contracts that require judgment, not just code. It's built as an L2 on zkSync Elastic Chain, anchoring to Ethereum's security. Contracts on GenLayer - called **Intelligent Contracts** - can interpret language, process images, fetch live web data, and reach consensus on contested or subjective outcomes. See [What is GenLayer](/understand-genlayer-protocol/what-is-genlayer).
 
   How is GenLayer different from other blockchains?
 
-  Traditional smart contracts can only execute deterministic logic and rely on external oracles for off-chain data. GenLayer integrates AI at the protocol level — contracts natively access LLMs, the web, and image processing. No oracles, no intermediaries. Where Bitcoin reached consensus on the *order* of transactions and Ethereum on the *execution* of code, GenLayer reaches consensus on the **meaning** of transactions. See [What is GenLayer](/understand-genlayer-protocol/what-is-genlayer#how-it-compares).
+  Traditional smart contracts can only execute deterministic logic and rely on external oracles for off-chain data. GenLayer integrates AI at the protocol level - contracts natively access LLMs, the web, and image processing. No oracles, no intermediaries. Where Bitcoin reached consensus on the *order* of transactions and Ethereum on the *execution* of code, GenLayer reaches consensus on the **meaning** of transactions. See [What is GenLayer](/understand-genlayer-protocol/what-is-genlayer#how-it-compares).
 
   Is GenLayer trying to replace courts?
 
-  No. GenLayer is built to provide a **first-instance, internet-native adjudication layer** for disputes that arrive too quickly, too often, and too globally for traditional courts to handle in time — particularly the disputes the agentic economy is starting to produce at machine speed. It is designed to complement, not replace, existing legal frameworks.
+  No. GenLayer is built to provide a **first-instance, internet-native adjudication layer** for disputes that arrive too quickly, too often, and too globally for traditional courts to handle in time - particularly the disputes the agentic economy is starting to produce at machine speed. It is designed to complement, not replace, existing legal frameworks.
 
   Where does GenLayer fit in the agentic-commerce stack?
 
-  The agentic-commerce stack — Coinbase's [x402](https://www.x402.org/) for payments, Ethereum's [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) for trustless agent identity, the Linux Foundation's [A2A](https://a2a-protocol.org) for agent interoperability, plus Stripe/OpenAI's ACP, Visa's Trusted Agent Protocol, Google's AP2, and Mastercard's Agent Pay — engineers the happy path. None of these standards ships dispute resolution. GenLayer is the layer they reach for when a commitment becomes contested.
+  The agentic-commerce stack - Coinbase's [x402](https://www.x402.org/) for payments, Ethereum's [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) for trustless agent identity, the Linux Foundation's [A2A](https://a2a-protocol.org) for agent interoperability, plus Stripe/OpenAI's ACP, Visa's Trusted Agent Protocol, Google's AP2, and Mastercard's Agent Pay - engineers the happy path. None of these standards ships dispute resolution. GenLayer is the layer they reach for when a commitment becomes contested.
 
   What language are Intelligent Contracts written in?
 
@@ -19814,7 +19812,7 @@ Source: https://docs.genlayer.com/FAQ
 
   Can I run normal deterministic transactions?
 
-  Yes. GenLayer fully supports deterministic logic — standard state updates, value transfers, and contract interactions all work without any AI components. You can mix deterministic and non-deterministic operations in the same contract.
+  Yes. GenLayer fully supports deterministic logic - standard state updates, value transfers, and contract interactions all work without any AI components. You can mix deterministic and non-deterministic operations in the same contract.
 
   What are ghost contracts?
 
@@ -19826,7 +19824,7 @@ Source: https://docs.genlayer.com/FAQ
 
   How do I get started?
 
-  1. Try [GenLayer Studio](https://studio.genlayer.com) in the browser — no setup needed
+  1. Try [GenLayer Studio](https://studio.genlayer.com) in the browser - no setup needed
   2. Or install the [GenLayer CLI](/api-references/genlayer-cli) for local development
   3. Follow [Your First Contract](/developers/intelligent-contracts/first-contract)
   4. Use [genlayer-js](/api-references/genlayer-js) or [genlayer-py](/api-references/genlayer-py) for app integration
@@ -19836,7 +19834,7 @@ Source: https://docs.genlayer.com/FAQ
   Through delegated proof of stake and Optimistic Democracy:
   - Token holders delegate stake to validators, incentivizing honest behavior
   - Multiple validators independently verify each transaction
-  - Appeals provide a failsafe — dishonest validators get slashed
+  - Appeals provide a failsafe - dishonest validators get slashed
   - The system anchors to Ethereum via zkSync for finality
 
   How can I contribute?

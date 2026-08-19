@@ -52,6 +52,15 @@ def _mock_band(direct_vm, band, reason="mocked verdict"):
     direct_vm.mock_llm(r".*", '{"band": "%s", "reason": "%s"}' % (band, reason))
 
 
+def _addr_hex(raw: bytes) -> str:
+    """direct_alice/bob/charlie fixtures are raw 20-byte addresses; the
+    contract's views return Address.as_hex (EIP-55 checksummed). eth_utils
+    produces the identical checksum GenLayer's Address.as_hex uses."""
+    from eth_utils import to_checksum_address
+
+    return to_checksum_address(bytes(raw))
+
+
 def _set_max_submissions(n: int) -> None:
     mod = sys.modules.get("_contract_originalstake")
     if mod is not None:
@@ -567,3 +576,414 @@ def test_resolve_challenge_is_permissionless(direct_vm, direct_deploy, direct_al
     direct_vm.sender = direct_charlie  # neither submitter (alice) nor challenger (bob)
     band = c.resolve_challenge(cid)
     assert band == "DISTINCT"
+
+
+# ---------------------------------------------------------------------------
+# search_similar -- deterministic corpus-wide vector search
+# ---------------------------------------------------------------------------
+
+
+def test_search_similar_empty_corpus_returns_empty_list(direct_vm, direct_deploy, direct_alice):
+    c = _deploy(direct_deploy)
+    direct_vm.sender = direct_alice
+    assert c.search_similar("anything at all", 5) == []
+
+
+def test_search_similar_single_entry(direct_vm, direct_deploy, direct_alice):
+    c = _deploy(direct_deploy)
+    sid = _fund_and_submit(direct_vm, c, direct_alice, text="a lonely tagline about rivers")
+    direct_vm.sender = direct_alice
+    results = c.search_similar("a lonely tagline about rivers", 5)
+    assert len(results) == 1
+    assert results[0]["submission_id"] == sid
+    assert results[0]["text"] == "a lonely tagline about rivers"
+    assert results[0]["submitter"] == c.get_submission(sid)["submitter"]
+    assert results[0]["status"] == "OPEN"
+
+
+def test_search_similar_multiple_entries_ranked(direct_vm, direct_deploy, direct_alice):
+    c = _deploy(direct_deploy)
+    s0 = _fund_and_submit(direct_vm, c, direct_alice, text="foxes running through golden fields")
+    s1 = _fund_and_submit(direct_vm, c, direct_alice, text="a spreadsheet of quarterly tax filings")
+    results = c.search_similar("foxes running through golden fields", 5)
+    ids = [r["submission_id"] for r in results]
+    assert s0 in ids and s1 in ids
+    assert ids[0] == s0  # exact text match should rank nearest to itself
+
+
+def test_search_similar_k_clamped_to_corpus_size(direct_vm, direct_deploy, direct_alice):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, text="only one entry exists here")
+    results = c.search_similar("only one entry exists here", 50)
+    assert len(results) == 1
+
+
+def test_search_similar_k_capped_at_max(direct_vm, direct_deploy, direct_alice):
+    c = _deploy(direct_deploy)
+    for i in range(25):
+        _fund_and_submit(direct_vm, c, direct_alice, text=f"corpus filler entry number {i} here")
+    results = c.search_similar("corpus filler entry number 0 here", 1000)
+    assert len(results) == 20  # MAX_SEARCH_K
+
+
+def test_search_similar_rejects_empty_query(direct_vm, direct_deploy, direct_alice):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, text="something in the corpus")
+    with direct_vm.expect_revert("EXPECTED"):
+        c.search_similar("", 5)
+
+
+def test_search_similar_rejects_zero_k(direct_vm, direct_deploy, direct_alice):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, text="something in the corpus")
+    with direct_vm.expect_revert("EXPECTED"):
+        c.search_similar("something in the corpus", 0)
+
+
+# ---------------------------------------------------------------------------
+# bounties -- crowdfunded flag incentive, payout-on-win, rollover otherwise
+# ---------------------------------------------------------------------------
+
+
+def test_add_bounty_accumulates(direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie):
+    c = _deploy(direct_deploy)
+    sid = _fund_and_submit(direct_vm, c, direct_alice, text="submission worth flagging maybe")
+    direct_vm.sender = direct_bob
+    direct_vm.value = 200
+    c.add_bounty(sid)
+    direct_vm.sender = direct_charlie
+    direct_vm.value = 300
+    c.add_bounty(sid)
+    direct_vm.value = 0
+    sub = c.get_submission(sid)
+    assert sub["bounty_pool"] == 500
+    assert sub["bounty_total"] == 500
+
+
+def test_add_bounty_requires_value(direct_vm, direct_deploy, direct_alice, direct_bob):
+    c = _deploy(direct_deploy)
+    sid = _fund_and_submit(direct_vm, c, direct_alice, text="submission worth flagging maybe")
+    direct_vm.sender = direct_bob
+    direct_vm.value = 0
+    with direct_vm.expect_revert("EXPECTED"):
+        c.add_bounty(sid)
+
+
+def test_add_bounty_nonexistent_submission_reverts(direct_vm, direct_deploy, direct_bob):
+    c = _deploy(direct_deploy)
+    direct_vm.sender = direct_bob
+    direct_vm.value = 100
+    with direct_vm.expect_revert("EXPECTED"):
+        c.add_bounty(999)
+
+
+def test_bounty_paid_to_challenger_on_win(direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+
+    direct_vm.sender = direct_alice
+    direct_vm.value = 400
+    c.add_bounty(sid)
+    direct_vm.value = 0
+
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+    _mock_band(direct_vm, "SUBSTANTIALLY_SAME")
+    direct_vm.sender = direct_charlie
+    c.resolve_challenge(cid)
+
+    sub = c.get_submission(sid)
+    assert sub["bounty_pool"] == 0  # paid out and reset
+    assert sub["bounty_total"] == 400  # historical total is not reset
+
+
+def test_bounty_rolls_over_on_distinct_loss(direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+
+    direct_vm.sender = direct_alice
+    direct_vm.value = 400
+    c.add_bounty(sid)
+    direct_vm.value = 0
+
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+    _mock_band(direct_vm, "DISTINCT")
+    direct_vm.sender = direct_charlie
+    c.resolve_challenge(cid)
+
+    sub = c.get_submission(sid)
+    assert sub["bounty_pool"] == 400  # untouched, rolled over
+    assert sub["bounty_total"] == 400
+
+
+def test_bounty_rolls_over_on_inconclusive(direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+
+    direct_vm.sender = direct_bob
+    direct_vm.value = 150
+    c.add_bounty(sid)
+    direct_vm.value = 0
+
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+    _mock_band(direct_vm, "INCONCLUSIVE")
+    direct_vm.sender = direct_charlie
+    c.resolve_challenge(cid)
+
+    sub = c.get_submission(sid)
+    assert sub["bounty_pool"] == 150
+    assert sub["bounty_total"] == 150
+
+
+def test_bounty_survives_and_pays_out_on_second_challenge(
+    direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie
+):
+    """Bounty rolls over through an INCONCLUSIVE, then pays out to a
+    *later* challenger who actually wins."""
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+
+    direct_vm.sender = direct_alice
+    direct_vm.value = 100
+    c.add_bounty(sid)
+    direct_vm.value = 0
+
+    cid1 = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+    _mock_band(direct_vm, "INCONCLUSIVE")
+    direct_vm.sender = direct_charlie
+    c.resolve_challenge(cid1)
+    assert c.get_submission(sid)["bounty_pool"] == 100
+
+    cid2 = _challenge(direct_vm, c, direct_charlie, sid, value=1000)
+    direct_vm.clear_mocks()
+    _mock_band(direct_vm, "DERIVATIVE")
+    direct_vm.sender = direct_bob
+    c.resolve_challenge(cid2)
+    sub = c.get_submission(sid)
+    assert sub["bounty_pool"] == 0
+    assert sub["bounty_total"] == 100
+
+
+# ---------------------------------------------------------------------------
+# expire_stale_challenge -- permissionless time-based INCONCLUSIVE settlement
+# ---------------------------------------------------------------------------
+
+
+def test_expire_stale_challenge_before_threshold_reverts(
+    direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie
+):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    warp_to(direct_vm, "2026-01-01T00:00:00.000000Z")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+
+    warp_to(direct_vm, "2026-01-02T00:00:00.000000Z")  # only 1 day, threshold is 3
+    direct_vm.sender = direct_charlie
+    with direct_vm.expect_revert("EXPECTED"):
+        c.expire_stale_challenge(cid)
+
+
+def test_expire_stale_challenge_exactly_at_threshold_reverts(
+    direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie
+):
+    """Exactly-at-threshold is NOT yet expired -- strictly-greater-than is
+    required, symmetric with the rest of this series' deadline semantics."""
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    warp_to(direct_vm, "2026-01-01T00:00:00.000000Z")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+
+    warp_to(direct_vm, "2026-01-04T00:00:00.000000Z")  # exactly 3 days later
+    direct_vm.sender = direct_charlie
+    with direct_vm.expect_revert("EXPECTED"):
+        c.expire_stale_challenge(cid)
+
+
+def test_expire_stale_challenge_after_threshold_settles_inconclusive(
+    direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie
+):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    warp_to(direct_vm, "2026-01-01T00:00:00.000000Z")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+
+    warp_to(direct_vm, "2026-01-04T00:00:00.000001Z")  # just past 3 days
+    direct_vm.sender = direct_charlie
+    c.expire_stale_challenge(cid)
+
+    ch = c.get_challenge(cid)
+    assert ch["status"] == "RESOLVED"
+    assert ch["band"] == "INCONCLUSIVE"
+    sub = c.get_submission(sid)
+    assert sub["status"] == "OPEN"
+
+
+def test_expire_stale_challenge_permissionless(direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie):
+    """Anyone -- not just a party to the challenge -- may call this."""
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    warp_to(direct_vm, "2026-01-01T00:00:00.000000Z")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+    warp_to(direct_vm, "2026-01-10T00:00:00.000000Z")
+    direct_vm.sender = direct_charlie  # a totally unrelated third party
+    c.expire_stale_challenge(cid)
+    assert c.get_challenge(cid)["status"] == "RESOLVED"
+
+
+def test_expire_stale_challenge_already_resolved_reverts(
+    direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie
+):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+    _mock_band(direct_vm, "DISTINCT")
+    direct_vm.sender = direct_charlie
+    c.resolve_challenge(cid)
+    with direct_vm.expect_revert("EXPECTED"):
+        c.expire_stale_challenge(cid)
+
+
+def test_expire_stale_challenge_nonexistent_reverts(direct_vm, direct_deploy, direct_charlie):
+    c = _deploy(direct_deploy)
+    direct_vm.sender = direct_charlie
+    with direct_vm.expect_revert("EXPECTED"):
+        c.expire_stale_challenge(999)
+
+
+def test_expire_stale_challenge_bounty_rolls_over(direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    warp_to(direct_vm, "2026-01-01T00:00:00.000000Z")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+
+    direct_vm.sender = direct_alice
+    direct_vm.value = 250
+    c.add_bounty(sid)
+    direct_vm.value = 0
+
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+    warp_to(direct_vm, "2026-01-05T00:00:00.000000Z")
+    direct_vm.sender = direct_charlie
+    c.expire_stale_challenge(cid)
+
+    sub = c.get_submission(sid)
+    assert sub["bounty_pool"] == 250
+
+
+# ---------------------------------------------------------------------------
+# track record -- deterministic per-address counters, no privileged editor
+# ---------------------------------------------------------------------------
+
+
+def test_track_record_defaults_to_zero_for_unknown_address(direct_vm, direct_deploy, direct_alice):
+    c = _deploy(direct_deploy)
+    rec = c.get_track_record(_addr_hex(direct_alice))
+    assert rec == {
+        "address": _addr_hex(direct_alice),
+        "submissions_made": 0,
+        "times_flagged": 0,
+        "challenges_opened": 0,
+        "challenges_won": 0,
+        "challenges_lost": 0,
+    }
+
+
+def test_track_record_submissions_made_increments(direct_vm, direct_deploy, direct_alice):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, text="first piece of writing here")
+    _fund_and_submit(direct_vm, c, direct_alice, text="second piece of writing here")
+    rec = c.get_track_record(_addr_hex(direct_alice))
+    assert rec["submissions_made"] == 2
+
+
+def test_track_record_challenges_opened_increments(direct_vm, direct_deploy, direct_alice, direct_bob):
+    c = _deploy(direct_deploy)
+    sid = _fund_and_submit(direct_vm, c, direct_alice, text="submission open to challenge")
+    _challenge(direct_vm, c, direct_bob, sid, value=1000)
+    rec = c.get_track_record(_addr_hex(direct_bob))
+    assert rec["challenges_opened"] == 1
+
+
+def test_track_record_win_lose_flag_counters(direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+
+    _mock_band(direct_vm, "SUBSTANTIALLY_SAME")
+    direct_vm.sender = direct_charlie
+    c.resolve_challenge(cid)
+
+    alice_rec = c.get_track_record(_addr_hex(direct_alice))
+    bob_rec = c.get_track_record(_addr_hex(direct_bob))
+    assert alice_rec["times_flagged"] == 1
+    assert bob_rec["challenges_won"] == 1
+
+
+def test_track_record_challenges_lost_on_distinct(direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+
+    _mock_band(direct_vm, "DISTINCT")
+    direct_vm.sender = direct_charlie
+    c.resolve_challenge(cid)
+
+    bob_rec = c.get_track_record(_addr_hex(direct_bob))
+    assert bob_rec["challenges_lost"] == 1
+    alice_rec = c.get_track_record(_addr_hex(direct_alice))
+    assert alice_rec["times_flagged"] == 0
+
+
+def test_track_record_inconclusive_does_not_change_win_loss_counters(
+    direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie
+):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+
+    _mock_band(direct_vm, "INCONCLUSIVE")
+    direct_vm.sender = direct_charlie
+    c.resolve_challenge(cid)
+
+    bob_rec = c.get_track_record(_addr_hex(direct_bob))
+    alice_rec = c.get_track_record(_addr_hex(direct_alice))
+    assert bob_rec["challenges_won"] == 0
+    assert bob_rec["challenges_lost"] == 0
+    assert alice_rec["times_flagged"] == 0
+
+
+def test_track_record_expire_stale_challenge_does_not_change_win_loss_counters(
+    direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie
+):
+    c = _deploy(direct_deploy)
+    _fund_and_submit(direct_vm, c, direct_alice, value=500, text="a completely unrelated neighbor entry")
+    warp_to(direct_vm, "2026-01-01T00:00:00.000000Z")
+    sid = _fund_and_submit(direct_vm, c, direct_alice, value=1000, text="the challenged submission text")
+    cid = _challenge(direct_vm, c, direct_bob, sid, value=1000)
+    warp_to(direct_vm, "2026-01-10T00:00:00.000000Z")
+    direct_vm.sender = direct_charlie
+    c.expire_stale_challenge(cid)
+
+    bob_rec = c.get_track_record(_addr_hex(direct_bob))
+    assert bob_rec["challenges_won"] == 0
+    assert bob_rec["challenges_lost"] == 0
+
+
+def test_track_record_has_no_privileged_editor(direct_vm, direct_deploy):
+    """There must be no method to directly set track-record counters --
+    the only surface is get_track_record (a view). This test documents the
+    invariant by asserting the contract object has no such write method."""
+    c = _deploy(direct_deploy)
+    assert not hasattr(c, "set_track_record")
+    assert not hasattr(c, "edit_track_record")

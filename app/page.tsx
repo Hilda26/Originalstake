@@ -11,10 +11,10 @@ export default function Home() {
             Staked originality market
           </p>
           <h1 className="font-display mb-6 text-4xl leading-tight text-ink sm:text-5xl">
-            Prove your work is original — or bet that someone else&apos;s isn&apos;t.
+            Prove your work is original - or bet that someone else&apos;s isn&apos;t.
           </h1>
           <p className="mb-8 max-w-2xl text-base leading-relaxed text-ink-soft">
-            Writers post a GEN bond and submit a short piece of text — a tagline, a poem, a
+            Writers post a GEN bond and submit a short piece of text - a tagline, a poem, a
             product name. The contract embeds it into its own on-chain vector index. Anyone
             who believes it&apos;s a near-copy of something already stored can open a challenge
             by staking an equal counter-bond. A permissionless resolution step runs a
@@ -50,12 +50,12 @@ export default function Home() {
           <Feature
             icon={<ShieldCheck size={20} aria-hidden="true" />}
             title="Bond both sides"
-            body="A submitter's bond and a challenger's counter-bond are always equal. Whoever is wrong loses exactly what the other side risked — no free griefing on either side."
+            body="A submitter's bond and a challenger's counter-bond are always equal. Whoever is wrong loses exactly what the other side risked - no free griefing on either side."
           />
           <Feature
             icon={<Search size={20} aria-hidden="true" />}
             title="Evidence the contract owns"
-            body="The nearest-neighbor lookup is a deterministic vector search over the contract's own stored corpus — never a party's claim, never an external fetch."
+            body="The nearest-neighbor lookup is a deterministic vector search over the contract's own stored corpus - never a party's claim, never an external fetch."
           />
           <Feature
             icon={<Scale size={20} aria-hidden="true" />}
@@ -70,7 +70,7 @@ export default function Home() {
           <h2 className="font-display mb-4 text-2xl text-ink">Who this is for</h2>
           <p className="max-w-2xl text-sm leading-relaxed text-ink-soft">
             Marketers naming products, indie developers writing taglines, poets, and
-            meme-caption writers who submit short high-value text repeatedly — and who have an
+            meme-caption writers who submit short high-value text repeatedly - and who have an
             ongoing reason both to prove their own originality and to catch copycats reusing
             their expression. Every read call works without a wallet connected; you only need
             a wallet to submit or challenge.

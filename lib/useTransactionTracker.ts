@@ -12,8 +12,7 @@ const TERMINAL: TransactionStatus[] = [
   TransactionStatus.CANCELED,
 ];
 
-// Statuses that mean "validators could not agree, nothing was written" —
-// retryable, never rendered as a hard error.
+// Statuses that mean "validators could not agree, nothing was written" - // retryable, never rendered as a hard error.
 const RETRYABLE: TransactionStatus[] = [
   TransactionStatus.UNDETERMINED,
   TransactionStatus.VALIDATORS_TIMEOUT,
