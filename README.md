@@ -174,16 +174,22 @@ to build up an honest transaction history and observe bands not yet seen live:
   crowdfunded onto a submission survived untouched (`bounty_pool` unchanged) after a
   challenge against it resolved `DISTINCT` - proving the rollover policy against real
   consensus, not a mock.
+- **A genuine model-judged `INCONCLUSIVE`**, observed live for the first time: two single
+  common greeting words ("Hi" / "Hey") were submitted and challenged, and real validator
+  consensus resolved **`INCONCLUSIVE`**: *"Both texts are single common greeting words too
+  short and generic to assess whether one reuses the creative expression of the other."* An
+  earlier attempt with slightly longer phrases resolved a confident `DISTINCT` instead -
+  reported here too, since a consensus outcome can't be forced and an honest result includes
+  the miss alongside the hit.
 
-**Running total: 24 on-chain transactions on the v2 contract, 100% clean** - every `Call`
+**Running total: 38 on-chain transactions on the v2 contract, 100% clean** - every `Call`
 shows `SUCCESS`/`Accepted`, every payout `Send` shows `FINALIZED`, zero errors anywhere.
 Verifiable directly: [the public explorer](https://explorer-studio.genlayer.com/address/0xE60f324647039470065A263d709550Ec5D07C248).
 
-## Honest limits
+**All four real outcome bands, plus the deterministic no-neighbor path, have now been
+independently observed against real StudioNet consensus** - not just direct-mode mocks.
 
-- A genuine model-judged `INCONCLUSIVE` (as opposed to the deterministic no-neighbor case,
-  which *has* been observed live) is exercised thoroughly in direct-mode tests with mocked
-  responses, not yet independently reproduced live on real StudioNet consensus.
+## Honest limits
 - The hosted StudioNet RPC enforces real rate limits (30 requests/minute, 500/hour) that are
   easy to hit while testing or developing against this contract, and dropped a connection
   mid-run once during the v2 pass (a plain network reset, not a contract bug).

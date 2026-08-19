@@ -195,15 +195,24 @@ yet seen live:
   (`bounty_pool: 150`, unchanged) rather than refunded or lost - proving the rollover policy
   against real consensus, not just a mock.
 
-**Running total: 24 on-chain transactions on the v2 contract, 100% clean** - every `Call`
+A fifth scenario deliberately targeted the last untested path: a genuine model-judged
+`INCONCLUSIVE` (as opposed to the already-observed deterministic no-neighbor case). Two
+single common greeting words ("Hi" / "Hey") were submitted and challenged - real validator
+consensus resolved **`INCONCLUSIVE`**: *"Both texts are single common greeting words too
+short and generic to assess whether one reuses the creative expression of the other."* An
+earlier attempt with slightly longer phrases ("Rise up." / "Stand tall.") resolved a
+confident `DISTINCT` instead - included here rather than discarded, since a consensus
+outcome can't be forced either way and an honest report includes the miss, not just the hit.
+
+**Running total: 38 on-chain transactions on the v2 contract, 100% clean** - every `Call`
 shows `SUCCESS`/`Accepted`, every `Send` (payout) shows `FINALIZED`, zero error rows anywhere
 in the transaction history. Verifiable directly:
 https://explorer-studio.genlayer.com/address/0xE60f324647039470065A263d709550Ec5D07C248
 
-Only the genuine model-judged `INCONCLUSIVE` path (as opposed to the deterministic
-no-neighbor case, which *has* been observed live) remains untested against real StudioNet
-consensus in this pass - it is thoroughly covered in direct-mode tests with mocked model
-responses.
+**All four real outcome bands (`SUBSTANTIALLY_SAME`, `DERIVATIVE`, `DISTINCT`,
+`INCONCLUSIVE`) plus the deterministic no-neighbor `INCONCLUSIVE` path have now been
+independently observed against real StudioNet validator consensus**, not just direct-mode
+mocks.
 
 ### v2 honest limits
 
