@@ -174,6 +174,37 @@ An earlier full run of the whole integration suite in this pass hit a mid-run
 lifecycle scenarios (unrelated to this change); the bounty scenario above was re-run in
 isolation afterward and passed cleanly on the first retry.
 
+### v2 deployment - extended live verification
+
+After redeploying v2 to `0xE60f324647039470065A263d709550Ec5D07C248`, four more real
+scenarios were run directly against the persistent deployment (beyond the integration-suite
+run above) specifically to build up a real, honest transaction history and observe bands not
+yet seen live:
+
+- **`SUBSTANTIALLY_SAME`** (spelling variant) and **`DISTINCT`** (unrelated topic) -
+  reproduced live on the fresh v2 deployment, matching the earlier v1 observations.
+- **`DERIVATIVE`** - observed live for the first time, twice, with two independent reworded
+  paraphrase pairs. First: *"Both texts share the same parallel 'follow/chase the sunrise,
+  follow/chase your dreams' structure and the 'don't let the moment slip away' closing idea,
+  with only synonym substitutions and minor rephrasing rather than independent
+  construction."* Second: *"It preserves the same comparative proverb structure and imagery
+  - small daily steps versus one giant leap - while mainly swapping in close synonyms."*
+- **Bounty rollover on a loss** - observed live for the first time: a 150-wei bounty was
+  crowdfunded onto a submission, a challenge against it resolved `DISTINCT` (challenger
+  lost), and `get_submission` confirmed the bounty was left completely untouched
+  (`bounty_pool: 150`, unchanged) rather than refunded or lost - proving the rollover policy
+  against real consensus, not just a mock.
+
+**Running total: 24 on-chain transactions on the v2 contract, 100% clean** - every `Call`
+shows `SUCCESS`/`Accepted`, every `Send` (payout) shows `FINALIZED`, zero error rows anywhere
+in the transaction history. Verifiable directly:
+https://explorer-studio.genlayer.com/address/0xE60f324647039470065A263d709550Ec5D07C248
+
+Only the genuine model-judged `INCONCLUSIVE` path (as opposed to the deterministic
+no-neighbor case, which *has* been observed live) remains untested against real StudioNet
+consensus in this pass - it is thoroughly covered in direct-mode tests with mocked model
+responses.
+
 ### v2 honest limits
 
 - The hosted StudioNet RPC dropped the connection mid-run once during this pass (a plain

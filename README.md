@@ -155,15 +155,35 @@ unchanged in v2, so these results still hold)*
 
 Real observed result: challenger opened against a near-duplicate ("...breaks" vs "...breaks
 softly"), `resolve_challenge` ran a live consensus round and resolved **`SUBSTANTIALLY_SAME`**
-(*"trivial difference that does not constitute independent creative expression"*) - the
+(*"trivial difference that does not constitute independent creative expression."*) - the
 300-wei crowdfunded bounty was paid to the challenger on top of the forfeited bond,
 `bounty_pool` read back as **0**, `bounty_total` stayed at **300**. 1 passed in 313.51s.
 
+### Extended live verification on the deployed v2 contract
+
+Four more real scenarios were run directly against `0xE60f324647039470065A263d709550Ec5D07C248`
+to build up an honest transaction history and observe bands not yet seen live:
+
+- **`DERIVATIVE`** observed live for the first time, twice: *"Both texts share the same
+  parallel 'follow/chase the sunrise, follow/chase your dreams' structure and the 'don't let
+  the moment slip away' closing idea, with only synonym substitutions and minor rephrasing
+  rather than independent construction"*, and *"It preserves the same comparative proverb
+  structure and imagery - small daily steps versus one giant leap - while mainly swapping in
+  close synonyms."*
+- **Bounty rollover on a loss**, observed live for the first time: a 150-wei bounty
+  crowdfunded onto a submission survived untouched (`bounty_pool` unchanged) after a
+  challenge against it resolved `DISTINCT` - proving the rollover policy against real
+  consensus, not a mock.
+
+**Running total: 24 on-chain transactions on the v2 contract, 100% clean** - every `Call`
+shows `SUCCESS`/`Accepted`, every payout `Send` shows `FINALIZED`, zero errors anywhere.
+Verifiable directly: [the public explorer](https://explorer-studio.genlayer.com/address/0xE60f324647039470065A263d709550Ec5D07C248).
+
 ## Honest limits
 
-- `DERIVATIVE` and a genuine model-judged `INCONCLUSIVE` (as opposed to the zero-neighbor
-  deterministic case) are exercised thoroughly in direct-mode tests with mocked responses, not
-  yet independently reproduced live on real StudioNet consensus.
+- A genuine model-judged `INCONCLUSIVE` (as opposed to the deterministic no-neighbor case,
+  which *has* been observed live) is exercised thoroughly in direct-mode tests with mocked
+  responses, not yet independently reproduced live on real StudioNet consensus.
 - The hosted StudioNet RPC enforces real rate limits (30 requests/minute, 500/hour) that are
   easy to hit while testing or developing against this contract, and dropped a connection
   mid-run once during the v2 pass (a plain network reset, not a contract bug).
